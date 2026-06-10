@@ -41,6 +41,7 @@ class UserController extends CI_Controller {
                         'role' => $user->role
                     ];
                     $this->session->set_userdata($data);
+                    $this->session->unset_userdata('failed');
                     redirect('admin/dashboard');
                 }
                 else {
@@ -64,6 +65,9 @@ class UserController extends CI_Controller {
 
     public function index() {
         isAdminLogin();
+        if ($this->session->role !== 'admin') {
+            show_error('Anda tidak memiliki hak akses untuk halaman ini.', 403, 'Akses Ditolak');
+        }
         $context = [
             'data_user' => $this->M_User->get(),
         ];
@@ -73,6 +77,9 @@ class UserController extends CI_Controller {
 
     public function actions() {
         isAdminLogin();
+        if ($this->session->role !== 'admin') {
+            show_error('Anda tidak memiliki hak akses untuk halaman ini.', 403, 'Akses Ditolak');
+        }
         $id = !empty($this->uri->segment(4)) ? $this->uri->segment(4) : NULL;
         $context = [
             'data_user' => !empty($id) ? $this->M_User->get($id) : null,
@@ -129,6 +136,9 @@ class UserController extends CI_Controller {
 
     public function delete() {
         isAdminLogin();
+        if ($this->session->role !== 'admin') {
+            show_error('Anda tidak memiliki hak akses untuk halaman ini.', 403, 'Akses Ditolak');
+        }
         $id = $this->uri->segment(4);
         $this->M_User->delete($id);
         $this->session->set_flashdata('success', 'Sukses melakukan perubahan pada data user');
