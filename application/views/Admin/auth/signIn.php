@@ -82,19 +82,22 @@
         <?php if (!empty($this->session->flashdata('failed'))){ ?>
         <div class="alert alert-danger" role="alert"><?php echo $this->session->flashdata('failed'); ?></div>
         <?php }?>
+        <?php if (!empty($this->session->flashdata('success'))){ ?>
+        <div class="alert alert-success" role="alert"><?php echo $this->session->flashdata('success'); ?></div>
+        <?php }?>
         <form method="post">
             <div class="mb-3">
-              <label class="text-normal text-dark form-label">username</label><input type="text" class="form-control" name="username" placeholder="username" value="<?php echo !empty(set_value('username')) ? set_value('username') : ''?>"">
+              <label class="text-normal text-dark form-label">username</label><input type="text" class="form-control" name="username" placeholder="username" value="<?php echo !empty(set_value('username')) ? set_value('username') : ''?>">
               <span class="alert-danger"><?php echo form_error('username'); ?></span>
             </div>
             <div class="mb-3">
-                <label class="text-normal text-dark form-label">Password</label><input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo !empty(set_value('password')) ? set_value('password') : ''?>"">
+                <label class="text-normal text-dark form-label">Password</label><input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo !empty(set_value('password')) ? set_value('password') : ''?>">
                  <span class="alert-danger"><?php echo form_error('password'); ?></span>
             </div>
           <div class="">
             <div class="peers ai-c jc-sb fxw-nw">
               <div class="peer">
-                
+                <a href="<?php echo site_url('register'); ?>" class="text-decoration-none" style="font-size: 14px;">Daftar sebagai Penulis</a>
               </div>
               <div class="peer"><button class="btn btn-primary btn-color">Login</button></div>
             </div>

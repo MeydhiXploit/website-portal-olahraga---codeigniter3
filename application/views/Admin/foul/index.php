@@ -36,15 +36,7 @@
                 <th>Actions</th>
             </tr>
             </thead>
-            <tfoot>
-            <tr>
-                <th>Athlete</th>
-                <th>Tipe Pelanggaran</th>
-                <th>Match</th>
-                <th>Menit</th>
-                <th>Actions</th>
-            </tr>
-            </tfoot>
+
             <tbody>
             <?php 
                 if (!empty($data_foul)) {

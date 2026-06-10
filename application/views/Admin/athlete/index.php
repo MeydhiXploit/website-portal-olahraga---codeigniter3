@@ -35,14 +35,7 @@
                           <th>Actions</th>
                         </tr>
                       </thead>
-                      <tfoot>
-                        <tr>
-                          <th>Nama Athlete</th>
-                          <th>Back Number</th>
-                          <th>Tipe Pemain</th>
-                          <th>Actions</th>
-                        </tr>
-                      </tfoot>
+
                       <tbody>
                         <?php 
                         echo var_dump($data_athlete);

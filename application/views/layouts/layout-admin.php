@@ -68,7 +68,11 @@
       window.addEventListener("load", (function() {
         const t = document.getElementById("loader");
         setTimeout((function() {
-          t.classList.add("fadeOut")
+          t.classList.add("fadeOut");
+          // Otomatis trigger event resize agar kolom tabel DataTables lurus (tidak geser)
+          setTimeout((function() {
+            window.dispatchEvent(new Event('resize'));
+          }), 400);
         }), 300)
       }))
     </script>

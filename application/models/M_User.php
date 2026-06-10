@@ -45,17 +45,15 @@ class M_User extends CI_Model {
         return $this->db->delete('user', array('id'=>$id));
     }
 
-    public function check_username($str , $id = NULL)
+    public function check_username($str, $id = NULL)
     {
-        if ($this->db->get('user', array('username'=>$str))->num_rows() > 0)
-            return true;
-        return false;
+        $query = $this->db->get_where('user', array('username' => $str));
+        return $query->num_rows() === 0;
     }
 
     public function check_email($str, $id = NULL)
     {
-        if ($this->db->get('user', array('email'=>$str))->num_rows() > 0)
-            return true;
-        return false;
+        $query = $this->db->get_where('user', array('email' => $str));
+        return $query->num_rows() === 0;
     }
 }

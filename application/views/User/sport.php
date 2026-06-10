@@ -2,6 +2,14 @@
 <h1 class="hero-caption"><?php echo $data_sport->name_type; ?></h1>
 </div>
 <section id="contant" class="contant main-heading team">
+<?php if (empty($lastest_news) || empty($lastest_news_result)): ?>
+<div class="container">
+    <div class="alert alert-info text-center" style="margin: 50px 0; padding: 30px; border-radius: 8px;">
+        <h3>Belum ada berita yang diterbitkan untuk cabang olahraga <?php echo htmlspecialchars($data_sport->name_type); ?>.</h3>
+        <p>Silakan tambahkan data berita baru di database atau melalui panel admin.</p>
+    </div>
+</div>
+<?php else: ?>
 <div class="container">
 <div class="row">
     <div class="col-xl-12">
@@ -110,7 +118,6 @@ foreach($data_league as $league){
             </div>";
 
 }
-
-
+endif;
 ?>
 </section>

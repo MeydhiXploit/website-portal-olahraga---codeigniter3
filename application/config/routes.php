@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 // USER
 $route['login'] = 'UserController/loginUser';
+$route['register'] = 'UserController/register';
 $route['logout'] = 'UserController/logout';
 $route['news/(:any)'] = 'NewsController/news_page';
 $route['sport/(:any)'] = 'SportController/sport';
