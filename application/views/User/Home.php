@@ -45,7 +45,7 @@
                 <div class="news-post-widget">
                     <img class="img-responsive" src="<?php echo $lastest_news_result[0]->thumbnail?>" alt="">
                     <div class="news-post-detail">
-                        <h2><a href="<?php echo site_url('news/'.$lastest_news_result[0]->news_slug);?>"><?php echo $lastest_news_result[0]->title; ?></h2>
+                        <h2><a href="<?php echo site_url('news/'.$lastest_news_result[0]->news_slug);?>"><?php echo $lastest_news_result[0]->title; ?></a></h2>
                         <span class="date"><?php echo date('d M Y', strtotime($lastest_news_result[0]->created_at)); ?></span>
                         <p><?php echo $lastest_news_result[0]->description; ?></p>
                     </div>
@@ -104,7 +104,7 @@ foreach($data_league as $league){
                         <img class="img-responsive" src="<?php echo $news->thumbnail; ?>" alt="">
                         <div class="news-post-detail">
                         <h2><a href="<?php echo site_url('news/'.$news->news_slug); ?>"><?php echo $news->title; ?></a></h2>
-                        <span class="date"><?php date('d M Y', strtotime($news->created_at))?></span>
+                        <span class="date"><?php echo date('d M Y', strtotime($news->created_at))?></span>
                         <p><?php echo $news->description; ?></p>
                         </div>
                     </div>

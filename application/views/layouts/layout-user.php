@@ -25,6 +25,8 @@
    <link rel="stylesheet" href="<?php echo site_url('template/userpage/')?>css/responsive.css">
    <!-- Custom CSS -->
    <link rel="stylesheet" href="<?php echo site_url('template/userpage/')?>css/custom.css">
+   <!-- Premium Style Overrides -->
+   <link rel="stylesheet" href="<?php echo site_url('template/userpage/')?>css/premium.css">
    <!-- font family -->
    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
    <!-- end font family -->
@@ -121,7 +123,7 @@
                   <div class="full">
                      <div class="footer-widget">
                         <div class="footer-logo">
-                           <a href="#"><img src="images/footer-logo.png" alt="#" /></a>
+                           <a href="#"><img src="<?php echo site_url('template/userpage/')?>images/footer-logo.png" alt="#" /></a>
                         </div>
                         <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p>
                         <ul class="social-icons style-4 pull-left">

@@ -50,7 +50,7 @@ class UserController extends CI_Controller {
                 $this->session->set_flashdata('failed', "Username tidak tersedia !");
             }
         }
-        $this->load->view('Admin/auth/signIn');
+        $this->load->view('Auth/login');
     }
 
     public function register() {
@@ -78,7 +78,7 @@ class UserController extends CI_Controller {
             $this->session->set_flashdata('success', 'Registrasi berhasil! Silakan login.');
             redirect('login');
         }
-        $this->load->view('Admin/auth/signUp');
+        $this->load->view('Auth/register');
     }
 
     public function logout() {

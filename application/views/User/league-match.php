@@ -37,7 +37,7 @@
                                     <li class="vs"><span>vs</span></li>
                                     <li>
                                        <img src="<?php echo $match->logo_club_2; ?>" alt="" width="100" height="100">
-                                       <span><?php echo $match->club_1; ?></span>
+                                       <span><?php echo $match->club_2; ?></span>
                                     </li>
                                  </ul>
                             </div>
