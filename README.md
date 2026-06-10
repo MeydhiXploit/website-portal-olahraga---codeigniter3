@@ -2,7 +2,7 @@
 
 Website Portal Berita Olahraga ini dibuat dengan menggunakan CodeIgniter 3. Website ini menyediakan segala informasi mengenai dunia olahraga. Di dalam website ini juga tersedia fitur admin, di mana admin dapat membuat dan menambahkan informasi-informasi ke dalam website ini.
 
-## Link Akses Website
+## Link Akses Website (Server Local)
 
 *   **Frontend (Halaman Utama):** [http://localhost/website-portal-olahraga/](http://localhost/website-portal-olahraga/)
 *   **Backend (Halaman Admin):** [http://localhost/website-portal-olahraga/admin/login](http://localhost/website-portal-olahraga/admin/login)
