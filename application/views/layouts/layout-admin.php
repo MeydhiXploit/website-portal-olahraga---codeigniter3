@@ -112,6 +112,7 @@
                 <span class="title">Dashboard</span>
               </a>
             </li>
+            <?php if ($this->session->role === 'admin'): ?>
             <li class="nav-item">
               <a class="sidebar-link" href="<?php echo site_url('admin/user')?>">
                 <span class="icon-holder">
@@ -120,6 +121,7 @@
                 <span class="title">User</span>
               </a>
             </li>
+            <?php endif; ?>
             <li class="nav-item">
               <a class="sidebar-link" href="<?php echo site_url('admin/match')?>">
                 <span class="icon-holder">

@@ -30,7 +30,13 @@ class HomeController extends CI_Controller {
 
     public function indexAdmin() {
         isAdminLogin();
-        echo "Dashboard";
+        $data = [
+            'total_news' => $this->db->count_all('news'),
+            'total_user' => $this->db->count_all('user'),
+            'total_club' => $this->db->count_all('sport_club'),
+            'total_athlete' => $this->db->count_all('sport_athlete'),
+        ];
+        $this->template->show('Admin/dashboard', $data);
     }
 
     public function sport() {
