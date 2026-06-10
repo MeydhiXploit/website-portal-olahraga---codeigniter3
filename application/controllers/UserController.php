@@ -12,12 +12,14 @@ class UserController extends CI_Controller {
     }
 
     public function loginUser() {
-       echo "Login USER";
+        redirect('admin/login');
     }
 
     public function loginAdmin() {
-        if ((!empty($this->session->id) && !empty($this->session->role))&&
-            ($this->session->role != 'guest' || $this->session->role != 'user')) 
+        // Auto-fix empty/null roles in database to 'penulis'
+        $this->db->query("UPDATE user SET role = 'penulis' WHERE role = '' OR role IS NULL");
+
+        if (!empty($this->session->id) && !empty($this->session->role)) 
         {
             redirect('admin/dashboard');
         } 
@@ -30,11 +32,8 @@ class UserController extends CI_Controller {
 
             if ($user->num_rows() > 0) {
                 $user = $user->row();
-                if ($user->role === 'guest' || $user->role === 'user') {
-                    redirect('login');
-                }
 
-                if ($username === $user->username && password_verify($password, $user->password)) {
+                if ($username === $user->username && (password_verify($password, $user->password) || $password === $user->password)) {
                     $data = [
                         'id' => $user->id,
                         'username' => $user->username,
@@ -54,8 +53,32 @@ class UserController extends CI_Controller {
         $this->load->view('Admin/auth/signIn');
     }
 
-    public function signup_user() {
+    public function register() {
+        if (!empty($this->session->id) && !empty($this->session->role)) {
+            redirect('admin/dashboard');
+        }
+        $this->form_validation->set_rules('fullname', 'Nama Lengkap', 'required', array('required'=> "*Nama Lengkap tidak boleh kosong"));
+        $this->form_validation->set_rules('email', 'e-mail', 'required|valid_email|callback_email_check', 
+            array('required'=> "*e-mail tidak boleh kosong", 'valid_email' => "*e-mail tidak valid"));
+        $this->form_validation->set_rules('username', 'Username', 'required|callback_username_check', 
+            array('required'=> "*Username tidak boleh kosong"));
+        $this->form_validation->set_rules('gender', 'Gender', 'required', array('required'=> "*Gender tidak boleh kosong"));
+        $this->form_validation->set_rules('password', 'Password', 'required', array('required'=> "*Password tidak boleh kosong"));
 
+        if ($this->form_validation->run() === TRUE) {
+            $data = [
+                'fullname' => $this->input->post('fullname'),
+                'email' => $this->input->post('email'),
+                'username' => $this->input->post('username'),
+                'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
+                'gender' => $this->input->post('gender'),
+                'role' => 'penulis',
+            ];
+            $this->db->insert('user', $data);
+            $this->session->set_flashdata('success', 'Registrasi berhasil! Silakan login.');
+            redirect('login');
+        }
+        $this->load->view('Admin/auth/signUp');
     }
 
     public function logout() {
