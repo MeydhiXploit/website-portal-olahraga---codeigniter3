@@ -33,12 +33,7 @@
                 <th>Actions</th>
             </tr>
             </thead>
-            <tfoot>
-            <tr>
-                <th>League</th>
-                <th>Actions</th>
-            </tr>
-            </tfoot>
+
             <tbody>
             <?php 
                 if (!empty($data_league)) {

@@ -34,14 +34,7 @@
                 <th>Action</th>
             </tr>
             </thead>
-            <tfoot>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-            </tfoot>
+
             <tbody>
             <?php 
                 if (!empty($data_news)) {

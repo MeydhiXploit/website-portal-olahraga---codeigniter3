@@ -16,8 +16,7 @@ class UserController extends CI_Controller {
     }
 
     public function loginAdmin() {
-        if ((!empty($this->session->id) && !empty($this->session->role))&&
-            ($this->session->role != 'guest' || $this->session->role != 'user')) 
+        if (!empty($this->session->id) && !empty($this->session->role)) 
         {
             redirect('admin/dashboard');
         } 
@@ -30,9 +29,6 @@ class UserController extends CI_Controller {
 
             if ($user->num_rows() > 0) {
                 $user = $user->row();
-                if ($user->role === 'guest' || $user->role === 'user') {
-                    redirect('login');
-                }
 
                 if ($username === $user->username && password_verify($password, $user->password)) {
                     $data = [

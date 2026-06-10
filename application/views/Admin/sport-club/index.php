@@ -33,13 +33,7 @@
                           <th>Actions</th>
                         </tr>
                       </thead>
-                      <tfoot>
-                        <tr>
-                          <th>Nama Club</th>
-                          <th>Negara</th>
-                          <th>Actions</th>
-                        </tr>
-                      </tfoot>
+
                       <tbody>
                         <?php 
                          foreach($data_club as $club) {
