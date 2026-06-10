@@ -24,6 +24,9 @@ class M_User extends CI_Model {
                 'gender' => !empty($this->input->post('gender')) ? $this->input->post('gender') : $this->input->post('gender-lama'),
                 'role' => $this->input->post('role'),
             ];
+            if (!empty($this->input->post('password'))) {
+                $data['password'] = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
+            }
             return $this->db->update('user', $data, array('id'=> $id));
         } 
         else {

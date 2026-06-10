@@ -104,8 +104,15 @@ class UserController extends CI_Controller {
             show_error('Anda tidak memiliki hak akses untuk halaman ini.', 403, 'Akses Ditolak');
         }
         $id = !empty($this->uri->segment(4)) ? $this->uri->segment(4) : NULL;
+        $data_user = NULL;
+        if (!empty($id)) {
+            $data_user = $this->M_User->get($id);
+            if (empty($data_user)) {
+                show_404();
+            }
+        }
         $context = [
-            'data_user' => !empty($id) ? $this->M_User->get($id) : null,
+            'data_user' => $data_user,
         ];
 
         $this->form_validation->set_rules('fullname', 'Full Name', 'required', array('required'=> "*Nama Lengkap tidak boleh kosong"));

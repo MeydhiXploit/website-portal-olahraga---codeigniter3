@@ -37,16 +37,7 @@
                           <th>Actions</th>
                         </tr>
                       </thead>
-                      <tfoot>
-                        <tr>
-                          <th>Full Name</th>
-                          <th>Username</th>
-                          <th>email</th>
-                          <th>Gender</th>
-                          <th>Role Access</th>
-                          <th>Actions</th>
-                        </tr>
-                      </tfoot>
+
                       <tbody>
                         <?php 
                          foreach($data_user as $user) {
@@ -57,8 +48,8 @@
                                 <td>$user->gender</td>
                                 <td>$user->role</td>
                                 <td>
-                                  <a href='".site_url('admin/user/action/'.$user->id)."' class='btn cur-p btn-warning m-3'>edit</a>
-                                  <button type='button' class='btn cur-p btn-danger btn-color m-3' data-bs-toggle='modal' data-bs-target='#delete-modal$user->id'>Delete</button>
+                                  <a href='".site_url('admin/user/action/'.$user->id)."' class='btn btn-sm btn-warning m-1'>Edit</a>
+                                  <button type='button' class='btn btn-sm btn-danger m-1' data-bs-toggle='modal' data-bs-target='#delete-modal$user->id'>Delete</button>
                                 <div class='modal fade' id='delete-modal$user->id' tabindex='-1' aria-labelledby='delete-modal' aria-hidden='true' style='display:none'>
                                   <div class='modal-dialog modal-md modal-dialog-centered'>
                                     <div class='modal-content'>

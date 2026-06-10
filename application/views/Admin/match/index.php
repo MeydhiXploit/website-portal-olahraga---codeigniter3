@@ -54,15 +54,7 @@
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <tfoot>
-                        <tr>
-                            <th>Match</th>
-                            <th>Score</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                        </tfoot>
+
                         <tbody>
                         <?php 
                          foreach($data_match as $match) {
