@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AthleteController extends CI_Controller {
+    private $_uploaded_photo = null;
 
     public function __construct() {
         parent::__construct();
@@ -70,6 +71,20 @@ class AthleteController extends CI_Controller {
 
     }
 
+    public function upload_photo_check($str)
+    {
+        if (empty($_FILES['photo']['name'])) {
+            return TRUE;
+        }
+        $upload = $this->upload_data();
+        if (!is_array($upload)) {
+            $this->form_validation->set_message('upload_photo_check', strip_tags($upload));
+            return FALSE;
+        }
+        $this->_uploaded_photo = $upload;
+        return TRUE;
+    }
+
     public function actions()
     {
         $id_sport_club = $this->uri->segment(4);
@@ -98,17 +113,18 @@ class AthleteController extends CI_Controller {
                 if (!empty($id_athlete)) {
                     $this->form_validation->set_rules('photo-lama', 'Photo', 'required', array('required' => "Photo tidak boleh kosong")); 
                     $this->form_validation->set_rules('gender-lama', 'Gender', 'required', array('required' => "Gender tidak boleh kosong")); 
+                    $this->form_validation->set_rules('photo', 'Photo', 'callback_upload_photo_check');
                 } else {
-                    if (empty($_FILES['photo']['name']))
+                    if (empty($_FILES['photo']['name'])) {
                         $this->form_validation->set_rules('photo', 'Photo', 'required', array('required' => "Photo tidak boleh kosong"));
-                        $this->form_validation->set_rules('gender', 'Gender', 'required', array('required' => "Gender tidak boleh kosong"));
+                    } else {
+                        $this->form_validation->set_rules('photo', 'Photo', 'callback_upload_photo_check');
+                    }
+                    $this->form_validation->set_rules('gender', 'Gender', 'required', array('required' => "Gender tidak boleh kosong"));
                 }
 
                 if ($this->form_validation->run() === TRUE) {
-                    $upload = null;
-                    if (!empty($_FILES['photo']['name'])) {
-                        $upload = $this->upload_data();
-                    }
+                    $upload = !empty($this->_uploaded_photo) ? $this->_uploaded_photo : null;
 
                     if (empty($id_athlete)) {
                         if (!empty($upload['file_name'])) $this->M_Sport_Athlete->actions($id_sport_club, NULL, $upload['file_name']);

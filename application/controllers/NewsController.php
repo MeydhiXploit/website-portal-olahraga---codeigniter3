@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class NewsController extends CI_Controller{
+    private $_uploaded_thumbnail = null;
 
     public function __construct()
     {
@@ -76,6 +77,20 @@ class NewsController extends CI_Controller{
         $this->template->show('Admin/news/index', $context);
     }
 
+    public function upload_thumbnail_check($str)
+    {
+        if (empty($_FILES['thumbnail']['name'])) {
+            return TRUE;
+        }
+        $upload = $this->upload_data();
+        if (!is_array($upload)) {
+            $this->form_validation->set_message('upload_thumbnail_check', strip_tags($upload));
+            return FALSE;
+        }
+        $this->_uploaded_thumbnail = $upload;
+        return TRUE;
+    }
+
     public function news_actions()
     {
         isAdminLogin();
@@ -96,19 +111,20 @@ class NewsController extends CI_Controller{
             $this->form_validation->set_rules('news_status', 'News Status', 'required', array('required' => "News Status tidak boleh kosong"));
             if (!empty($id_news)) {
                 $this->form_validation->set_rules('thumbnail-lama', 'Thumbnail', 'required', array('required' => "Thumbnail tidak boleh kosong")); 
+                $this->form_validation->set_rules('thumbnail', 'Thumbnail', 'callback_upload_thumbnail_check');
             } else {
-                if (empty($_FILES['thumbnail']['name']))
-                        $this->form_validation->set_rules('thumbnail', 'Thumbnail', 'required', array('required' => "Thumbnail tidak boleh kosong"));
+                if (empty($_FILES['thumbnail']['name'])) {
+                    $this->form_validation->set_rules('thumbnail', 'Thumbnail', 'required', array('required' => "Thumbnail tidak boleh kosong"));
+                } else {
+                    $this->form_validation->set_rules('thumbnail', 'Thumbnail', 'callback_upload_thumbnail_check');
+                }
             }
 
             
 
             if ($this->input->method() === 'post') {
                 if ($this->form_validation->run() === TRUE) {
-                    $upload = null;
-                    if (!empty($_FILES['thumbnail']['name'])) {
-                        $upload = $this->upload_data();
-                    }
+                    $upload = !empty($this->_uploaded_thumbnail) ? $this->_uploaded_thumbnail : null;
 
                     if (empty($id_news)) {
                         if (!empty($upload['file_name'])) $this->M_News->actions($league_id, NULL, $upload['file_name']);

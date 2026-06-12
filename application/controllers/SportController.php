@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SportController extends CI_Controller
 {
+    private $_uploaded_logo = null;
 
     public function __construct()
     {
@@ -134,6 +135,20 @@ class SportController extends CI_Controller
 
     }
 
+    public function upload_logo_check($str)
+    {
+        if (empty($_FILES['logo']['name'])) {
+            return TRUE;
+        }
+        $upload = $this->upload_data();
+        if (!is_array($upload)) {
+            $this->form_validation->set_message('upload_logo_check', strip_tags($upload));
+            return FALSE;
+        }
+        $this->_uploaded_logo = $upload;
+        return TRUE;
+    }
+
     public function sportClub_actions()
     {
         isAdminLogin();
@@ -154,15 +169,16 @@ class SportController extends CI_Controller
         if ($this->input->method() === 'post') {
             if (!empty($id)) {
                 $this->form_validation->set_rules('logo-lama', 'Logo', 'required', array('required' => "Logo tidak boleh kosong")); 
+                $this->form_validation->set_rules('logo', 'Logo', 'callback_upload_logo_check');
             } else {
-                if (empty($_FILES['logo']['name']))
-                         $this->form_validation->set_rules('logo', 'Logo', 'required', array('required' => "Logo tidak boleh kosong"));
+                if (empty($_FILES['logo']['name'])) {
+                    $this->form_validation->set_rules('logo', 'Logo', 'required', array('required' => "Logo tidak boleh kosong"));
+                } else {
+                    $this->form_validation->set_rules('logo', 'Logo', 'callback_upload_logo_check');
+                }
             }
             if ($this->form_validation->run() === TRUE) {
-                $upload = null;
-                if (!empty($_FILES['logo']['name'])) {
-                    $upload = $this->upload_data();
-                }
+                $upload = !empty($this->_uploaded_logo) ? $this->_uploaded_logo : null;
                 
 
                 if (empty($id)) {
