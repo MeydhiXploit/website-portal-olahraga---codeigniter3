@@ -14,7 +14,7 @@
                     <div class="post-people">
                     <div class="left-profile">
                         <div class="post-info">
-                            <img src="<?php echo site_url('template/userpage/'); ?>images/profile-img.png" alt="#" />
+                            <img src="<?php echo site_url('vendor/userpage/'); ?>images/profile-img.png" alt="#" />
                             <span>
                                 <h4>by <?php echo $news->fullname; ?></h4>
                                 <h5>on May 27, 2018</h5>

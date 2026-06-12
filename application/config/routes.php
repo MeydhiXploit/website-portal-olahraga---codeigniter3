@@ -62,6 +62,8 @@ $route['sport/(:any)'] = 'SportController/sport';
 $route['league/(:any)'] = 'LeagueController/league';
 $route['league/(:any)/match'] = 'LeagueController/league_match';
 
+$route['search'] = 'HomeController/searchNews';
+
 $route['review'] = 'NewsController/reviews';
 $route['review/action/:num'] = 'NewsController/reviews_actions';
 $route['review/action/:num/:num'] = 'NewsController/reviews_actions';

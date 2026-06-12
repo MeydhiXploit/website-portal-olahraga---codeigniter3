@@ -58,7 +58,7 @@
         }
       }
     </style>
-    <script defer="defer" src="<?php echo site_url('template/admin/dist/main.js')?>"></script>
+    <script defer="defer" src="<?php echo site_url('vendor/admin/dist/main.js')?>"></script>
   </head>
   <body class="app">
     <div id="loader">
@@ -88,7 +88,7 @@
                   <div class="peers ai-c fxw-nw">
                     <div class="peer">
                       <div class="logo">
-                        <img src="<?php echo site_url('template/admin/dist/assets/static/images/logo.png')?>" alt="">
+                        <img src="<?php echo site_url('vendor/admin/dist/assets/static/images/logo.png')?>" alt="">
                       </div>
                     </div>
                     <div class="peer peer-greed">

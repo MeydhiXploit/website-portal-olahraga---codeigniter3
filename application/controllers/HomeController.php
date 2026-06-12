@@ -46,4 +46,27 @@ class HomeController extends CI_Controller {
     public function league() {
         
     }
+
+    public function searchNews() {
+        $query = $this->input->get('q');
+        $this->load->model(array('M_News', 'M_Sport_Type'));
+        
+        $data_news = [];
+        if (!empty($query)) {
+            $data_news = $this->db->query("SELECT news.*, user.fullname 
+                                           FROM news, user 
+                                           WHERE news.user_id = user.id 
+                                             AND news.news_status = 'published' 
+                                             AND (news.title LIKE ? OR news.description LIKE ? OR news.body LIKE ?) 
+                                           ORDER BY news.created_at DESC", 
+                                           array("%$query%", "%$query%", "%$query%"))->result();
+        }
+        
+        $context = [
+            'query' => $query,
+            'data_news' => $data_news,
+            'data_sportType' => $this->M_Sport_Type->get()
+        ];
+        $this->template->user_template('User/search', $context);
+    }
 }

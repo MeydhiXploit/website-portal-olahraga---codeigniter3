@@ -57,7 +57,7 @@
         }
       }
     </style>
-    <script defer="defer" src="<?php echo base_url("template/admin/dist/main.js")?>"></script>
+    <script defer="defer" src="<?php echo base_url("vendor/admin/dist/main.js")?>"></script>
   </head>
   <body class="app">
     <div id="loader">
@@ -72,9 +72,9 @@
       }))
     </script>
     <div class="peers ai-s fxw-nw h-100vh">
-      <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style='background-image:url("<?php echo base_url("template/admin/dist/assets/static/images/bg.jpg")?>")'>
+      <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style='background-image:url("<?php echo base_url("vendor/admin/dist/assets/static/images/bg.jpg")?>")'>
         <div class="pos-a centerXY">
-          <div class="bgc-white bdrs-50p pos-r" style="width:120px;height:120px"><img class="pos-a centerXY" src="<?php echo base_url("template/admin/dist/assets/static/images/logo.png")?>" alt=""></div>
+          <div class="bgc-white bdrs-50p pos-r" style="width:120px;height:120px"><img class="pos-a centerXY" src="<?php echo base_url("vendor/admin/dist/assets/static/images/logo.png")?>" alt=""></div>
         </div>
       </div>
       <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style="min-width:320px">
