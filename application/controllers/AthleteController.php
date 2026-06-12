@@ -13,7 +13,7 @@ class AthleteController extends CI_Controller {
     public function upload_data() 
     {
         $config['upload_path']          = FCPATH.'upload';
-        $config['allowed_types']        = 'jpg|jpeg|png';
+        $config['allowed_types']        = 'jpg|jpeg|png|webp';
         $config['file_name']            = uniqid();
         $config['overwrite']            = true;
         $config['max_size']             = 2048; // 1MB
@@ -78,7 +78,14 @@ class AthleteController extends CI_Controller {
         }
         $upload = $this->upload_data();
         if (!is_array($upload)) {
-            $this->form_validation->set_message('upload_photo_check', strip_tags($upload));
+            $detected_mime = 'unknown';
+            if (isset($_FILES['photo']['tmp_name']) && file_exists($_FILES['photo']['tmp_name'])) {
+                if (function_exists('mime_content_type')) {
+                    $detected_mime = mime_content_type($_FILES['photo']['tmp_name']);
+                }
+            }
+            $file_info = " (Name: " . $_FILES['photo']['name'] . ", Browser Type: " . $_FILES['photo']['type'] . ", Detected Type: " . $detected_mime . ")";
+            $this->form_validation->set_message('upload_photo_check', strip_tags($upload) . $file_info);
             return FALSE;
         }
         $this->_uploaded_photo = $upload;
