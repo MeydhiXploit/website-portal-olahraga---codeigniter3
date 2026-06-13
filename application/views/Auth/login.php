@@ -97,7 +97,7 @@
           <div class="">
             <div class="peers ai-c jc-sb fxw-nw">
               <div class="peer">
-                <a href="<?php echo site_url('register'); ?>" class="text-decoration-none" style="font-size: 14px;">Daftar sebagai Penulis</a>
+                <a href="<?php echo site_url('register'); ?>" class="text-decoration-none" style="font-size: 14px;">Daftar sebagai Editor</a>
               </div>
               <div class="peer"><button class="btn btn-primary btn-color">Login</button></div>
             </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Sign Up - Penulis</title>
+    <title>Sign Up - Editor</title>
     <style>
       #loader {
         transition: all .3s ease-in-out;
@@ -78,7 +78,7 @@
         </div>
       </div>
       <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style="min-width:320px">
-        <h1 class="fw-300 c-grey-900 mB-30">Register Penulis</h1>
+        <h1 class="fw-300 c-grey-900 mB-30">Register Editor</h1>
         <form method="post">
             <div class="mb-3">
               <label class="text-normal text-dark form-label">Nama Lengkap</label>

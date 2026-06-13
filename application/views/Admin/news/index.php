@@ -45,7 +45,7 @@
                         <td>$news->news_status</td>
 
                             <td>
-                                <a href='".site_url('admin/news/action/'.$news->sport_league.'/'.$news->id)."' class='btn cur-p btn-warning m-3'>edit</a>
+                                <a href='".site_url('admin/news/action/'.$news->sport_type.'/'.$news->id)."' class='btn cur-p btn-warning m-3'>edit</a>
                                 <button type='button' class='btn cur-p btn-danger btn-color m-3' data-bs-toggle='modal' data-bs-target='#delete-modal$news->id'>Delete</button>
                             <div class='modal fade' id='delete-modal$news->id' tabindex='-1' aria-labelledby='delete-modal' aria-hidden='true' style='display:none'>
                                 <div class='modal-dialog modal-md modal-dialog-centered'>

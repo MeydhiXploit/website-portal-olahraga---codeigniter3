@@ -73,7 +73,7 @@ CREATE TABLE `news` (
   `news_status` enum('draft','published') NOT NULL,
   `news_tags` text,
   `user_id` int NOT NULL,
-  `sport_league` int NOT NULL,
+  `sport_type` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -210,7 +210,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `fullname`, `username`, `email`, `password`, `gender`, `role`, `created_at`, `updated_at`) VALUES
 (10, 'admin', 'admin', 'admin@gmail.com', 'admin', 'male', 'admin', '2026-06-10 06:50:02', NULL),
-(11, 'Meydhi Ari Nugroho', 'Meydhi', 'meydhimeydhi@gmail.com', '24010110126', 'male', '', '2026-06-10 06:57:52', NULL);
+(11, 'Meydhi Ari Nugroho', 'Meydhi', 'meydhimeydhi@gmail.com', '24010110126', 'male', 'editor', '2026-06-10 06:57:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -272,7 +272,7 @@ ALTER TABLE `media`
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `sport_type` (`sport_league`);
+  ADD KEY `sport_type` (`sport_type`);
 
 --
 -- Indexes for table `player_type`

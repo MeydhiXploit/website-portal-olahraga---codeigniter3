@@ -16,19 +16,15 @@ class SportController extends CI_Controller
     {
         $slug = str_replace('-', ' ',$this->uri->segment(2));
         $sport = $this->M_Sport_Type->get_by_name($slug);
-        $data_league = $this->M_League->get($sport->id);
-        $data_news =  [];
-        foreach ($data_league as $league) {
-            $data_news[$league->name_league] = $this->M_News->getNews($league->id);
-        }
+        
+        $news_by_sport = $this->M_News->getNews($sport->id);
+
         $context = [
             'lastest_news_result' => $this->M_News->getSport_lastest_news_result($sport->id),
             'lastest_news' => $this->M_News->getSport_lastest_news($sport->id),
             'data_sportType' => $this->M_Sport_Type->get(),
             'data_sport' => $sport,
-            'data_league' => $data_league,
-            'data_news' => $data_news,
-            // 'data_match' => $this->M_Match->getMatch_today($league->id)
+            'news_by_sport' => $news_by_sport,
         ];
 
         $this->template->user_template('User/sport', $context);
@@ -37,7 +33,7 @@ class SportController extends CI_Controller
     public function upload_data() 
     {
         $config['upload_path']          = FCPATH.'upload';
-        $config['allowed_types']        = 'jpg|jpeg|png|webp';
+        $config['allowed_types']        = 'jpg|jpeg|png|webp|gif';
         $config['file_name']            = uniqid();
         $config['overwrite']            = true;
         $config['max_size']             = 2048; // 1MB

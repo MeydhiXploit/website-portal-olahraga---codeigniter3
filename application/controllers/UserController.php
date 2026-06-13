@@ -16,8 +16,8 @@ class UserController extends CI_Controller {
     }
 
     public function loginAdmin() {
-        // Auto-fix empty/null roles in database to 'penulis'
-        $this->db->query("UPDATE user SET role = 'penulis' WHERE role = '' OR role IS NULL");
+        // Auto-fix empty/null roles in database to 'editor'
+        $this->db->query("UPDATE user SET role = 'editor' WHERE role = '' OR role IS NULL");
 
         if (!empty($this->session->id) && !empty($this->session->role)) 
         {
@@ -72,7 +72,7 @@ class UserController extends CI_Controller {
                 'username' => $this->input->post('username'),
                 'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
                 'gender' => $this->input->post('gender'),
-                'role' => 'penulis',
+                'role' => 'editor',
             ];
             $this->db->insert('user', $data);
             $this->session->set_flashdata('success', 'Registrasi berhasil! Silakan login.');

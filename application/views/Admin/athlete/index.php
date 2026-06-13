@@ -38,8 +38,6 @@
 
                       <tbody>
                         <?php 
-                        echo var_dump($data_athlete);
-                        die;
                          foreach($data_athlete as $athlete) {
                           echo "<tr>
                                 <td>$athlete->name</td>

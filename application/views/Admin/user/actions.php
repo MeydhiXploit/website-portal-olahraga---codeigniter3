@@ -43,7 +43,7 @@
         <label for="role">Role</label>
         <select class="form-control" name="role" id="role">
         <?php 
-            $role = ['admin', 'penulis'];
+            $role = ['admin', 'editor'];
             foreach($role as $data){
                 if ($data === set_value('role') || (!empty($data_user) && $data === $data_user->role))
                 {

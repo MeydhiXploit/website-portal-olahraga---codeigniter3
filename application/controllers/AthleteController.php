@@ -13,7 +13,7 @@ class AthleteController extends CI_Controller {
     public function upload_data() 
     {
         $config['upload_path']          = FCPATH.'upload';
-        $config['allowed_types']        = 'jpg|jpeg|png|webp';
+        $config['allowed_types']        = 'jpg|jpeg|png|webp|gif';
         $config['file_name']            = uniqid();
         $config['overwrite']            = true;
         $config['max_size']             = 2048; // 1MB

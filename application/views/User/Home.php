@@ -106,25 +106,25 @@
         $featured_ids[] = $news_item->id;
     }
 
-    foreach($data_league as $league): 
-        // Filter news items for this league to only show those NOT in the featured grid
+    foreach($data_sportType as $sportType): 
+        // Filter news items for this sport type to only show those NOT in the featured grid
         $filtered_news = [];
-        if (isset($data_news["$league->name_league"])) {
-            foreach ($data_news["$league->name_league"] as $news) {
+        if (isset($data_news["$sportType->name_type"])) {
+            foreach ($data_news["$sportType->name_type"] as $news) {
                 if (!in_array($news->id, $featured_ids)) {
                     $filtered_news[] = $news;
                 }
             }
         }
         
-        // Only display league section if there are news items to show
+        // Only display sport type section if there are news items to show
         if (!empty($filtered_news)):
     ?>
     <div class="container">
         <div class="colormag-category-header">
             <h2 class="colormag-category-title">
-                <a href="<?php echo site_url('league/'.str_replace(' ', '-', strtolower($league->name_league))); ?>">
-                    <?php echo $league->name_league; ?>
+                <a href="<?php echo site_url('sport/'.str_replace(' ', '-', strtolower($sportType->name_type))); ?>">
+                    <?php echo $sportType->name_type; ?>
                 </a>
             </h2>
         </div>

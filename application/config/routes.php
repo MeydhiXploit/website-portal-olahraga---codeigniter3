@@ -132,8 +132,7 @@ $route['admin/foul/action/:num/:num'] = 'AthleteController/foul_actions';
 $route['admin/foul/delete/:num'] = 'AthleteController/foul_delete';
 
 $route['admin/news'] = 'NewsController/select_sportType';
-$route['admin/news/sport/:num'] = 'NewsController/select_league';
-$route['admin/news/league/:num'] = 'NewsController/news';
+$route['admin/news/sport/:num'] = 'NewsController/news';
 $route['admin/news/action/:num'] = 'NewsController/news_actions';
 $route['admin/news/action/:num/:num'] = 'NewsController/news_actions';
 $route['admin/news/delete/:num'] = 'NewsController/news_delete';

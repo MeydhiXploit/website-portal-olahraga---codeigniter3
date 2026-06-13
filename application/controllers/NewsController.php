@@ -22,7 +22,7 @@ class NewsController extends CI_Controller{
             'lastest_news_result' => $this->M_News->get_lastest_news_result(),
             'data_sportType' => $this->M_Sport_Type->get(),
             'news' => $news,
-            'data_match' => $this->M_Match->getMatch_today($news->sport_league)
+            'data_match' => $this->M_Match->getMatch_today_by_sport($news->sport_type)
         ];
         $this->template->user_template('User/news-detail', $context);
     }
@@ -33,7 +33,7 @@ class NewsController extends CI_Controller{
     public function upload_data() 
     {
         $config['upload_path']          = FCPATH.'upload';
-        $config['allowed_types']        = 'jpg|jpeg|png|webp';
+        $config['allowed_types']        = 'jpg|jpeg|png|webp|gif';
         $config['file_name']            = uniqid();
         $config['overwrite']            = true;
         $config['max_size']             = 2048; // 1MB
@@ -55,24 +55,12 @@ class NewsController extends CI_Controller{
         $this->template->show('Admin/news/select-sportType', $context);
     }
 
-    public function select_league() {
-        isAdminLogin();
-        $sportType_id = $this->uri->segment(4);
-        if (empty($sportType_id)) {
-            show_404();
-        }
-        $context = [
-            'data_league' => $this->M_League->get($sportType_id)
-        ];
-        $this->template->show('Admin/news/select-league', $context);
-    }
-
     public function news()
     {
         isAdminLogin();
-        $league_id = $this->uri->segment(4);
+        $sport_type_id = $this->uri->segment(4);
         $context = [
-            'data_news' => $this->M_News->getNews($league_id),
+            'data_news' => $this->M_News->getNews($sport_type_id),
         ];
         $this->template->show('Admin/news/index', $context);
     }
@@ -101,13 +89,13 @@ class NewsController extends CI_Controller{
     public function news_actions()
     {
         isAdminLogin();
-        $league_id = $this->uri->segment(4);
+        $sport_type_id = $this->uri->segment(4);
         $id_news = !empty($this->uri->segment(5)) ? $this->uri->segment(5) : NULL;
         $context = [
-            'data_news' => !empty($id_news) ? $this->M_News->getNews($league_id,$id_news) : null,
+            'data_news' => !empty($id_news) ? $this->M_News->getNews($sport_type_id,$id_news) : null,
         ];
 
-        if (empty($league_id)) {
+        if (empty($sport_type_id)) {
             show_404();
         }
         else {
@@ -134,14 +122,14 @@ class NewsController extends CI_Controller{
                     $upload = !empty($this->_uploaded_thumbnail) ? $this->_uploaded_thumbnail : null;
 
                     if (empty($id_news)) {
-                        if (!empty($upload['file_name'])) $this->M_News->actions($league_id, NULL, $upload['file_name']);
-                        else $this->M_News->actions($league_id);
-                        redirect('admin/news/league/'.$league_id);
+                        if (!empty($upload['file_name'])) $this->M_News->actions($sport_type_id, NULL, $upload['file_name']);
+                        else $this->M_News->actions($sport_type_id);
+                        redirect('admin/news/sport/'.$sport_type_id);
                     }
                     else {
-                        if (!empty($upload['file_name'])) $this->M_News->actions($league_id, $id_news, $upload['file_name']);
-                        else $this->M_News->actions($league_id , $id_news);
-                        redirect('admin/news/league/'.$league_id);
+                        if (!empty($upload['file_name'])) $this->M_News->actions($sport_type_id, $id_news, $upload['file_name']);
+                        else $this->M_News->actions($sport_type_id , $id_news);
+                        redirect('admin/news/sport/'.$sport_type_id);
                     }
                 }
             }

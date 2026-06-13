@@ -17,7 +17,7 @@ class M_Sport_Athlete extends CI_Model {
         if (!empty($id)) {
             return $this->db->query("SELECT * FROM sport_athlete WHERE id = $id")->row();
         } else {
-            return $this->db->query("SELECT sport_athlete.*, player_type.player_type as 'player' FROM `sport_athlete`, player_type WHERE sport_athlete.player_type = player_type.id and sport_athlete.sport_club = $club_id;")->result();
+            return $this->db->query("SELECT sport_athlete.*, player_type.player_type as 'player' FROM `sport_athlete`, player_type WHERE sport_athlete.playerType_id = player_type.id and sport_athlete.sport_club = $club_id;")->result();
         }
     }
 
@@ -37,7 +37,7 @@ class M_Sport_Athlete extends CI_Model {
                 'height' => $this->input->post('height'),
                 'photo' => !empty($photo) ? site_url('upload/' . $photo) : $this->input->post('photo-lama'),
                 'date_birth' => date('Y-m-d', strtotime($this->input->post('date_birth'))),
-                'player_type' => $this->input->post('player_type'),
+                'playerType_id' => $this->input->post('player_type'),
                 'sport_club' => $sport_club,
             ];
             return $this->db->update('sport_athlete', $data, array('id' => $id));
@@ -50,7 +50,7 @@ class M_Sport_Athlete extends CI_Model {
                 'height' => $this->input->post('height'),
                 'photo' => site_url('upload/' . $photo),
                 'date_birth' => date('Y-m-d', strtotime($this->input->post('date_birth'))),
-                'player_type' => $this->input->post('player_type'),
+                'playerType_id' => $this->input->post('player_type'),
                 'sport_club' => $sport_club,
             ];
             return $this->db->insert('sport_athlete', $data);

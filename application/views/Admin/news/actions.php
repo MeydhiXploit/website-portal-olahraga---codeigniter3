@@ -1,7 +1,7 @@
 <?php
     $id = $this->uri->segment(5);
-    $league_id = $this->uri->segment(4);
-    $routes = "admin/news/action/".(!empty($id) ? $league_id."/".$id : $league_id);
+    $sport_type_id = $this->uri->segment(4);
+    $routes = "admin/news/action/".(!empty($id) ? $sport_type_id."/".$id : $sport_type_id);
     echo form_open_multipart($routes, array("class"=>"modal-content")); 
 ?>
 <!-- <form class="modal-content" method="post"> -->
@@ -9,7 +9,7 @@
     <h5 class="modal-title" id="add-modal">Add/Edit News</h5>
     </div>
     <div class="modal-body">
-        <div class="mb-3>
+        <div class="mb-3">
             <label class="form-label" for="logo">Thumbnail</label>
             
             <input type="file" class="form-control" id="thumbnail" name="thumbnail"  >

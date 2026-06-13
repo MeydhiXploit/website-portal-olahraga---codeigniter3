@@ -13,17 +13,16 @@ class HomeController extends CI_Controller {
     }
 
     public function indexUser(){
-        $data_league = $this->M_League->get_all_league();
+        $data_sportType = $this->M_Sport_Type->get();
         $data_news =  [];
-        foreach ($data_league as $league) {
-            $data_news[$league->name_league] = $this->M_News->getNews($league->id);
+        foreach ($data_sportType as $sportType) {
+            $data_news[$sportType->name_type] = $this->M_News->getNews($sportType->id);
         }
         $context = [
             'lastest_news' => $this->M_News->get_lastest_news(),
             'lastest_news_result' => $this->M_News->get_lastest_news_result(),
-            'data_league' => $data_league,
             'data_news' => $data_news,
-            'data_sportType' => $this->M_Sport_Type->get()
+            'data_sportType' => $data_sportType
         ];
         $this->template->user_template('User/Home',$context);
     }

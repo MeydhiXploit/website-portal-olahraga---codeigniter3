@@ -40,6 +40,20 @@ class M_Match extends CI_Model {
                                 where sport_match.sport_club_1 = sport_club.id and sport_club.sport_league = league.id and league.id = $league_id and DATE(sport_match.match_date) >= CURDATE();")->result();
     }
 
+    public function getMatch_today_by_sport($sport_id) {
+        return $this->db->query("SELECT sport_match.*, 
+                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_1) as  'club_1',
+                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_2) as  'club_2',
+                                         (select sport_club.logo from sport_club where sport_club.id = sport_match.sport_club_1) as  'logo_club_1',
+                                         (select sport_club.logo from sport_club where sport_club.id = sport_match.sport_club_2) as  'logo_club_2',
+                                         league.id as 'league'
+                                 from sport_match, sport_club, league
+                                 where sport_match.sport_club_1 = sport_club.id 
+                                   and sport_club.sport_league = league.id 
+                                   and league.sport_type = $sport_id 
+                                   and DATE(sport_match.match_date) >= CURDATE();")->result();
+    }
+
     public function actions($id = NULL) {
         $date = strtotime($this->input->post('match_date').$this->input->post('match_time'));
         if (!empty($id)) {

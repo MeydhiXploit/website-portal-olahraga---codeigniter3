@@ -107,26 +107,23 @@
         $featured_ids[] = $news_item->id;
     }
 
-    foreach($data_league as $league): 
-        // Filter news items for this league to only show those NOT in the featured grid
-        $filtered_news = [];
-        if (isset($data_news["$league->name_league"])) {
-            foreach ($data_news["$league->name_league"] as $news) {
-                if (!in_array($news->id, $featured_ids)) {
-                    $filtered_news[] = $news;
-                }
+    // Filter news items to only show those NOT in the featured grid
+    $filtered_news = [];
+    if (!empty($news_by_sport)) {
+        foreach ($news_by_sport as $news) {
+            if (!in_array($news->id, $featured_ids)) {
+                $filtered_news[] = $news;
             }
         }
-        
-        // Only display league section if there are news items to show
-        if (!empty($filtered_news)):
+    }
+    
+    // Only display sport type section if there are news items to show
+    if (!empty($filtered_news)):
     ?>
     <div class="container">
         <div class="colormag-category-header">
             <h2 class="colormag-category-title">
-                <a href="<?php echo site_url('league/'.str_replace(' ', '-', strtolower($league->name_league))); ?>">
-                    <?php echo $league->name_league; ?>
-                </a>
+                Semua Berita <?php echo $data_sport->name_type; ?>
             </h2>
         </div>
         <div class="row">
@@ -151,8 +148,7 @@
         </div>
     </div>
     <?php 
-        endif;
-    endforeach; 
+    endif;
     ?>
 </section>
 <?php endif; ?>
