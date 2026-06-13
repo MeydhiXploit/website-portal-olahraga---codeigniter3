@@ -16,7 +16,7 @@ Website Portal Berita Olahraga ini dibuat dengan menggunakan CodeIgniter 3. Webs
 | Peran | Nama Lengkap | NIM |
 | :---: | :--- | :---: |
 | 👑 **Ketua Kelompok** | **Meydhi Ari Nugroho** | `24010110126` |
-| 💻 **Anggota** | **Clara septia ramdhani** | `2401010002` |
+| 💻 **Anggota** | **Clara septia ramdhani** | `24010110088` |
 | 💻 **Anggota** | **Villari Naufal Nety** | `24010110076` |
 | 💻 **Anggota** | **M.syarifudin** | `24010110078` |
 

@@ -41,12 +41,105 @@
             top: auto !important;
             float: left !important;
             width: 100% !important;
-            background-color: #ffffff !important;
+            background: #081e3f url('<?php echo site_url("vendor/userpage/images/stadium.png"); ?>') no-repeat center center !important;
+            background-size: cover !important;
             z-index: 100 !important;
+            padding-bottom: 20px !important;
         }
         .main-content-wrapper {
             margin-top: 30px !important;
             clear: both !important;
+        }
+        .header-auth-btn {
+            background-color: #d8302f !important;
+            color: #ffffff !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            text-transform: capitalize !important;
+            padding: 8px 20px !important;
+            border-radius: 50px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            transition: all 0.3s ease !important;
+            text-decoration: none !important;
+            border: none !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+        }
+        .header-auth-btn:hover {
+            background-color: #ffffff !important;
+            color: #d8302f !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15) !important;
+        }
+        .header-auth-btn i {
+            margin-right: 6px !important;
+            font-size: 14px !important;
+        }
+        
+        /* Make the menu bar look clean like the mockup */
+        .menu {
+            border-radius: 4px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+            overflow: hidden !important;
+        }
+        
+        /* Navbar brand style */
+        .navbar-inverse .navbar-brand {
+            display: none !important; /* Hide brand name 'Menu' on desktop */
+        }
+        
+        /* Search bar styling */
+        .search-bar {
+            float: right !important;
+            width: 280px !important;
+            padding: 10px !important;
+        }
+        #imaginary_container input.form-control {
+            border: 1px solid #ccc !important;
+            border-radius: 4px 0 0 4px !important;
+            font-size: 14px !important;
+            padding: 6px 12px !important;
+            height: 38px !important;
+            box-shadow: none !important;
+        }
+        div.menu div.search-bar .input-group-addon {
+            background: #d8302f !important;
+            border: none !important;
+            border-radius: 0 4px 4px 0 !important;
+            padding: 0 !important;
+            height: 38px !important;
+            width: 45px !important;
+        }
+        div.menu div.search-bar .input-group-addon button {
+            width: 100% !important;
+            height: 100% !important;
+            color: #ffffff !important;
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+        }
+        
+        /* Adjust navbar-nav link hover background */
+        .navbar-inverse .navbar-nav > li > a {
+            color: #333333 !important;
+            font-weight: 600 !important;
+            transition: all 0.2s ease !important;
+        }
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: #d8302f !important;
+        }
+        .navbar-inverse .navbar-nav > .active > a,
+        .navbar-inverse .navbar-nav > .active > a:hover,
+        .navbar-inverse .navbar-nav > .active > a:focus {
+            color: #d8302f !important;
+            background-color: transparent !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Fix container paddings for clean grid alignment */
+        .header-top {
+            padding: 10px 0 !important;
+            margin: 0 !important;
         }
     </style>
     </head>
@@ -64,16 +157,24 @@
                          </div>
                       </div>
                       <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                         <div class="full">
-                            <div class="header-auth-buttons" style="display: inline-flex; align-items: center; justify-content: flex-end; padding: 15px 0;">
+                         <div class="full" style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
+                            <!-- social icon -->
+                            <ul class="social-icons" style="margin-right: 15px; display: inline-flex; align-items: center; padding: 0;">
+                               <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                               <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                               <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                               <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            </ul>
+                            <!-- end social icon -->
+                            <div class="header-auth-buttons" style="display: inline-flex; align-items: center; padding: 15px 0;">
                                 <?php if (!empty($this->session->username)): ?>
-                                    <span style="color: #333333; font-size: 11px; font-weight: 700; margin-right: 15px; text-transform: uppercase; display: inline-flex; align-items: center;">
-                                       <i class="fa fa-user" style="color: var(--primary-color); margin-right: 6px; font-size: 13px;"></i><?php echo htmlspecialchars($this->session->username); ?>
+                                    <span style="color: #ffffff; font-size: 12px; font-weight: 700; margin-right: 15px; text-transform: uppercase; display: inline-flex; align-items: center;">
+                                       <i class="fa fa-user" style="color: #ffcb05; margin-right: 6px; font-size: 14px;"></i><?php echo htmlspecialchars($this->session->username); ?>
                                     </span>
-                                    <a href="<?php echo site_url('logout'); ?>" class="btn" style="background-color: #d8302f; color: #ffffff !important; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 7px 16px; border-radius: 4px; display: inline-block; transition: all 0.3s ease; text-decoration: none !important; float: none !important; margin-top: 0;">Logout</a>
+                                    <a href="<?php echo site_url('logout'); ?>" class="header-auth-btn"><i class="fa fa-sign-out"></i>Logout</a>
                                 <?php else: ?>
-                                    <a href="<?php echo site_url('login'); ?>" class="btn" style="background-color: var(--primary-color); color: #ffffff !important; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 7px 16px; border-radius: 4px; display: inline-block; transition: all 0.3s ease; margin-right: 10px; text-decoration: none !important; float: none !important; margin-top: 0;">Login</a>
-                                    <a href="<?php echo site_url('register'); ?>" class="btn" style="background-color: #333333; color: #ffffff !important; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 6px 16px; border: 1px solid #555555; border-radius: 4px; display: inline-block; transition: all 0.3s ease; text-decoration: none !important; float: none !important; margin-top: 0;">Sign Up</a>
+                                    <a href="<?php echo site_url('login'); ?>" class="header-auth-btn" style="margin-right: 10px;"><i class="fa fa-user"></i>Login</a>
+                                    <a href="<?php echo site_url('register'); ?>" class="header-auth-btn"><i class="fa fa-shopping-cart"></i>Register</a>
                                 <?php endif; ?>
                             </div>
                          </div>
@@ -81,7 +182,7 @@
                    </div>
                 </div>
              </div>
-             <div class="header-bottom" style="background-color: var(--dark-bg) !important; width: 100% !important; clear: both !important; float: left !important;">
+             <div class="header-bottom" style="width: 100% !important; clear: both !important; float: left !important;">
                 <div class="container">
                    <div class="row">
                       <div class="col-md-12">
@@ -106,24 +207,30 @@
                                                      $isActive = ($this->uri->segment(2) == str_replace(' ', '-', strtolower($sportType->name_type))) ? 'active' : '';
                                                      echo "<li class='$isActive'><a href=".site_url('sport/'.str_replace(' ', '-', strtolower($sportType->name_type))).">$sportType->name_type</a></li>";
                                                  }
-                                            ?>      
-                                        </ul>
-                                        <div class="nav-search-box hidden-xs">
-                                           <form action="<?php echo site_url('search'); ?>" method="GET" id="searchForm" style="display: flex; align-items: center; margin: 0;">
-                                              <input type="text" name="q" id="searchInput" placeholder="Cari berita..." style="display: none; width: 160px; border: 1px solid #555; border-radius: 4px; padding: 4px 10px; margin-right: 10px; color: #333; font-size: 12px; outline: none; background-color: #ffffff;" />
-                                              <i class="fa fa-search" id="searchIcon" style="cursor: pointer;"></i>
-                                           </form>
-                                        </div>
-                                     </div>
-                                     <!-- /.nav-collapse -->
-                                  </nav>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
+                                             ?>      
+                                         </ul>
+                                         <div class="search-bar hidden-xs">
+                                            <form action="<?php echo site_url('search'); ?>" method="GET" style="margin: 0;">
+                                               <div id="imaginary_container">
+                                                  <div class="input-group stylish-input-group">
+                                                     <input type="text" name="q" class="form-control" placeholder="Search..." value="<?php echo htmlspecialchars($this->input->get('q') ?? ''); ?>">
+                                                     <span class="input-group-addon">
+                                                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                                     </span>
+                                                  </div>
+                                               </div>
+                                            </form>
+                                         </div>
+                                      </div>
+                                      <!-- /.nav-collapse -->
+                                   </nav>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
           </header>
           <div class="main-content-wrapper">
              <?php echo $content; ?>
@@ -191,30 +298,6 @@
       <script src="<?php echo site_url('vendor/userpage/')?>js/all.js"></script>
       <!-- ALL PLUGINS -->
       <script src="<?php echo site_url('vendor/userpage/')?>js/custom.js"></script>
-      <!-- Search Toggle Script -->
-      <script>
-         $(document).ready(function() {
-            $('#searchIcon').click(function(e) {
-               var input = $('#searchInput');
-               if (input.is(':visible')) {
-                  if (input.val().trim() !== '') {
-                     $('#searchForm').submit();
-                  } else {
-                     input.fadeOut(200);
-                  }
-               } else {
-                  input.fadeIn(200).focus();
-               }
-            });
-
-            $('#searchForm').submit(function(e) {
-               var val = $('#searchInput').val().trim();
-               if (val === '') {
-                  e.preventDefault();
-                  $('#searchInput').fadeOut(200);
-               }
-            });
-         });
-      </script>
+      <!-- Search Toggle Script Removed -->
    </body>
 </html>
