@@ -18,6 +18,11 @@ class NewsController extends CI_Controller{
     {
         $news_slug = $this->uri->segment(2);
         $news = $this->M_News->getNews_by_slug($news_slug);
+        
+        if (empty($news)) {
+            show_404();
+        }
+        
         $context = [
             'lastest_news_result' => $this->M_News->get_lastest_news_result(),
             'data_sportType' => $this->M_Sport_Type->get(),

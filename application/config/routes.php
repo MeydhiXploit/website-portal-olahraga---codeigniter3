@@ -49,18 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'HomeController/indexUser';
+$route['default_controller'] = 'Home/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // USER
-$route['login'] = 'UserController/loginUser';
-$route['register'] = 'UserController/register';
-$route['logout'] = 'UserController/logout';
-$route['news/(:any)'] = 'NewsController/news_page';
-$route['sport/(:any)'] = 'SportController/sport';
-$route['league/(:any)'] = 'LeagueController/league';
-$route['league/(:any)/match'] = 'LeagueController/league_match';
+$route['login'] = 'Auth/login';
+$route['register'] = 'Auth/register';
+$route['logout'] = 'Auth/logout';
+$route['news/(:any)'] = 'Berita/detail/$1';
+$route['sport/(:any)'] = 'Berita/kategori/$1';
+$route['sport/(:any)/(:num)'] = 'Berita/kategori/$1/$2';
+$route['pertandingan'] = 'Pertandingan/index';
+$route['pertandingan/(:num)'] = 'Pertandingan/index/$1';
+$route['atlet'] = 'Atlet/index';
+$route['atlet/(:num)'] = 'Atlet/index/$1';
+$route['atlet/detail/(:num)'] = 'Atlet/detail/$1';
+$route['klub'] = 'Klub/index';
+$route['klub/(:num)'] = 'Klub/index/$1';
+$route['klub/detail/(:num)'] = 'Klub/detail/$1';
 
 $route['search'] = 'HomeController/searchNews';
 
@@ -97,11 +104,10 @@ $route['admin/sport-club/action/:num'] = 'SportController/sportClub_actions';
 $route['admin/sport-club/action/:num/:num'] = 'SportController/sportClub_actions';
 $route['admin/sport-club/delete/:num'] = 'SportController/sportClub_delete';
 
-$route['admin/player-type'] = 'AthleteController/playerType_selectSport';
-$route['admin/player-type/:num'] = 'AthleteController/playerType';
-$route['admin/player-type/action/:num'] = 'AthleteController/playerType_actions';
-$route['admin/player-type/action/:num/:num'] = 'AthleteController/playerType_actions';
-$route['admin/player-type/delete/:num'] = 'AthleteController/playerType_delete';
+$route['admin/player-type'] = 'Player_type/index';
+$route['admin/player-type/add'] = 'Player_type/add';
+$route['admin/player-type/edit/(:num)'] = 'Player_type/edit/$1';
+$route['admin/player-type/delete/(:num)'] = 'Player_type/delete/$1';
 
 $route['admin/foul-type'] = 'AthleteController/foulType_selectSport';
 $route['admin/foul-type/:num'] = 'AthleteController/foulType';

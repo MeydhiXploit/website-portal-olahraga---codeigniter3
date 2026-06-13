@@ -25,8 +25,8 @@
    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/custom.css?v=1.2">
-    <!-- ColorMag CSS -->
-    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=1.6">
+      <!-- ColorMag CSS -->
+      <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=2.1">
     <!-- font family -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- end font family -->
@@ -340,11 +340,11 @@
                 </div>
             </div>
          </div>
-         <div class="footer-bottom">
-            <div class="container">
-               <p>Copyright © 2018 Distributed by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a></p>
-            </div>
-         </div>
+          <div class="footer-bottom">
+             <div class="container">
+                <p>Copyright © <?php echo date('Y'); ?> by <a href="https://universitasbumigora.ac.id/" target="_blank">Universitas BumiGora</a>. All rights reserved.</p>
+             </div>
+          </div>
       </footer>
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       <!-- ALL JS FILES -->

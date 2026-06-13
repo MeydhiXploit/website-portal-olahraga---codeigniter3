@@ -53,9 +53,9 @@ class HomeController extends CI_Controller {
         $data_news = [];
         if (!empty($query)) {
             $data_news = $this->db->query("SELECT news.*, user.fullname 
-                                           FROM news, user 
-                                           WHERE news.user_id = user.id 
-                                             AND news.news_status = 'published' 
+                                           FROM news 
+                                           LEFT JOIN user ON news.user_id = user.id 
+                                           WHERE news.news_status = 'published' 
                                              AND (news.title LIKE ? OR news.description LIKE ? OR news.body LIKE ?) 
                                            ORDER BY news.created_at DESC", 
                                            array("%$query%", "%$query%", "%$query%"))->result();
