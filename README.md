@@ -24,89 +24,108 @@ Untuk menjaga agar kode project tetap rapi, tidak bentrok (conflict), dan semua 
 
 ### 0. Instalasi & Setup Dasar Git (Wajib bagi Pemula)
 
-Jika Anda belum pernah menggunakan Git/GitHub sama sekali di laptop Anda, ikuti langkah-langkah dasar berikut terlebih dahulu:
+Jika Anda belum pernah menggunakan Git/GitHub sama sekali di laptop Anda, ikuti langkah-langkah dasar berikut terlebih dahulu agar tidak bingung:
 
 #### A. Download dan Install Git Bash
 1. Buka browser Anda dan unduh installer Git di link ini: **[git-scm.com/downloads](https://git-scm.com/downloads)** (Pilih tombol **Windows**).
-2. Setelah selesai di-download, jalankan file installer-nya (misal `Git-x.xx.x-64-bit.exe`).
-3. Klik **Next** terus-menerus sampai selesai (tidak perlu ada yang diubah, biarkan semua pengaturan default/bawaan), lalu klik **Install**.
-4. Tunggu proses instalasi selesai, lalu klik **Finish**.
+2. Setelah selesai di-download, jalankan file installer-nya (misal `Git-2.xx.x-64-bit.exe` yang ada di folder Downloads Anda).
+3. **Penting:** Selama proses instalasi, klik **Next** terus-menerus sampai selesai. Anda tidak perlu mengubah pengaturan apa pun, biarkan semuanya default/bawaan.
+4. Di halaman terakhir, klik **Install**, tunggu sebentar, lalu klik **Finish**. Sekarang Git Bash sudah terpasang di komputer Anda.
 
-#### B. Cara Membuka Git Bash di Folder Project (Cara Paling Mudah)
-Agar tidak bingung mengetik perintah navigasi folder, cara terbaik untuk membuka Git Bash adalah langsung dari folder server lokal Anda:
+#### B. Konfigurasi Identitas Git Anda (Wajib Dilakukan Sekali)
+Sebelum bisa melakukan pengiriman kode ke GitHub, Anda harus mengenalkan identitas Anda kepada aplikasi Git di laptop Anda:
+1. Klik tombol **Start** Windows (logo Windows di kiri bawah desktop).
+2. Ketik **"Git Bash"**, lalu klik aplikasi Git Bash untuk membukanya. Sebuah jendela hitam mirip Command Prompt akan muncul.
+3. Ketik perintah di bawah ini satu per satu, lalu tekan **Enter** pada keyboard setelah mengetik masing-masing baris:
+   ```bash
+   # Ganti teks di dalam tanda kutip dengan nama lengkap Anda
+   git config --global user.name "Nama Lengkap Anda"
+
+   # Ganti teks di dalam tanda kutip dengan email yang Anda gunakan di GitHub
+   git config --global user.email "email_anda@gmail.com"
+   ```
+4. Setelah selesai, Anda bisa menutup jendela Git Bash tersebut. *Langkah ini hanya perlu dilakukan satu kali saja seumur hidup di laptop Anda.*
+
+#### C. Cara Membuka Git Bash di Folder Project (Cara Paling Mudah)
+Agar tidak bingung mengetik perintah navigasi folder (`cd folder`), cara terbaik untuk membuka Git Bash adalah langsung dari folder server lokal Anda:
 1. Buka **File Explorer** Windows Anda.
-2. Masuk ke folder web root Anda (misal: `C:\laragon\www\` atau `C:\xampp\htdocs\`).
+2. Masuk ke folder web root Anda:
+   - Bagi pengguna **Laragon**: Masuk ke `C:\laragon\www\`
+   - Bagi pengguna **XAMPP**: Masuk ke `C:\xampp\htdocs\`
 3. **Klik kanan** pada area kosong di dalam folder tersebut.
-4. Pilih **"Git Bash Here"** (Untuk pengguna **Windows 11**: Klik kanan $\rightarrow$ pilih **Show more options** / **Tampilkan opsi lainnya** $\rightarrow$ pilih **Git Bash Here**).
-5. Layar hitam terminal Git Bash akan otomatis terbuka dan langsung aktif di dalam folder tersebut.
-
-#### C. Konfigurasi Identitas Git Anda (Wajib Dilakukan Sekali)
-Sebelum bisa melakukan pengiriman kode, Anda harus mengenalkan identitas Anda kepada Git. Ketik perintah di bawah ini satu per satu di jendela Git Bash, lalu tekan **Enter**:
-```bash
-# Ganti teks di dalam tanda kutip dengan nama lengkap Anda
-git config --global user.name "Nama Lengkap Anda"
-
-# Ganti teks di dalam tanda kutip dengan email yang Anda gunakan di GitHub
-git config --global user.email "email_anda@gmail.com"
-```
-*Catatan: Langkah konfigurasi di atas hanya perlu dilakukan sekali saja setelah menginstal Git.*
+4. Pilih **"Git Bash Here"**.
+   - *Catatan untuk pengguna Windows 11:* Klik kanan pada area kosong $\rightarrow$ pilih **Show more options** (Tampilkan opsi lainnya) $\rightarrow$ pilih **Git Bash Here**.
+5. Layar hitam terminal Git Bash akan otomatis terbuka dan langsung aktif di dalam folder tersebut (Anda akan melihat tulisan alamat folder berwarna biru di atas ketikan Anda).
 
 ---
 
 ### 1. Persiapan Awal (Setup Project Pertama Kali)
 
-Jika Anda baru pertama kali bergabung ke repositori ini, pilih panduan di bawah sesuai dengan server lokal yang Anda gunakan (**Laragon** atau **XAMPP**):
+Jika Anda baru pertama kali bergabung ke repositori ini, silakan ikuti panduan detail di bawah sesuai dengan server lokal yang Anda gunakan (**Laragon** atau **XAMPP**):
 
 ---
 
-#### A. Panduan Pengguna Laragon
+#### A. Panduan Setup untuk Pengguna LARAGON
 
 1. **Buka Git Bash di folder `C:\laragon\www\`:**
-   - Buka File Explorer, masuk ke folder `C:\laragon\www\`.
+   - Masuk ke folder `C:\laragon\www\` melalui File Explorer.
    - Klik kanan di area kosong, lalu pilih **"Git Bash Here"**.
-2. **Clone Repositori:**
-   - Jalankan perintah berikut di Git Bash:
+2. **Clone Repositori (Menyalin Project dari GitHub):**
+   - Jalankan perintah berikut di Git Bash, lalu tekan Enter:
      ```bash
      git clone https://github.com/MeydhiXploit/website-portal-olahraga---codeigniter3.git
      ```
-   - Foldernya akan otomatis bernama `website-portal-olahraga---codeigniter3`. Silakan **rename** (ubah nama) folder tersebut menjadi **`website-portal-olahraga`** agar nama link aksesnya rapi dan pendek.
-3. **Nyalakan Server Laragon:**
-   - Buka aplikasi Laragon Anda.
-   - Klik tombol **"Start All"**.
-4. **Import Database:**
-   - Di aplikasi Laragon, klik tombol **"Database"** (ini akan membuka aplikasi HeidiSQL atau sejenisnya), ATAU jika Anda menggunakan phpMyAdmin, buka browser Anda ke `http://localhost/phpmyadmin/`.
-   - Buat database baru bernama **`portal_olahraga`**.
-   - Klik kanan database `portal_olahraga` tersebut $\rightarrow$ pilih **Import** $\rightarrow$ **Load SQL file...** $\rightarrow$ pilih file [portal_olahraga.sql](file:///c:/laragon/www/website-portal-olahraga/portal_olahraga.sql) yang terletak di folder project Anda $\rightarrow$ jalankan query-nya.
-5. **Akses Website:**
-   - Laragon secara otomatis membuat domain lokal untuk Anda. Buka browser dan akses:
-     * **Frontend (Halaman Utama):** `http://website-portal-olahraga.test/`
+   - Tunggu proses download hingga selesai 100%.
+3. **Rename Folder Project:**
+   - Folder hasil clone secara default bernama `website-portal-olahraga---codeigniter3`.
+   - Klik kanan folder tersebut di File Explorer $\rightarrow$ pilih **Rename** (atau klik folder lalu tekan **F2** pada keyboard).
+   - Ubah namanya menjadi **`website-portal-olahraga`** (agar link aksesnya lebih pendek dan rapi).
+4. **Nyalakan Server Laragon:**
+   - Buka aplikasi Laragon.
+   - Klik tombol **"Start All"** dan pastikan Apache serta MySQL sudah bertuliskan status running (jalan).
+5. **Import Database (Menggunakan HeidiSQL):**
+   - Di aplikasi Laragon, klik tombol **"Database"** di bagian bawah.
+   - Akan muncul jendela masuk HeidiSQL. Klik langsung tombol **"Open"** di pojok kanan bawah (tidak perlu mengisi password, biarkan default kosong).
+   - Pada daftar database di panel sebelah kiri, **klik kanan** area kosong $\rightarrow$ pilih **Create new** $\rightarrow$ **Database**.
+   - Beri nama database baru tersebut: **`portal_olahraga`**, lalu klik **OK**.
+   - Klik kiri database `portal_olahraga` yang baru dibuat agar terpilih.
+   - Klik menu **File** di bagian kiri atas jendela HeidiSQL $\rightarrow$ pilih **Run SQL file...**.
+   - Cari dan pilih file `portal_olahraga.sql` yang terletak di dalam folder project Anda (`C:\laragon\www\website-portal-olahraga\portal_olahraga.sql`).
+   - Jika ada konfirmasi, klik **Yes/Jalankan**. Tunggu sampai selesai, lalu tekan F5 untuk me-refresh HeidiSQL. Tabel-tabel database akan muncul.
+6. **Akses Website:**
+   - Buka browser Anda (Chrome/Edge/Firefox) dan ketik alamat berikut:
+     * **Frontend (Halaman Utama):** `http://website-portal-olahraga.test/` (atau jika tidak bisa, gunakan `http://localhost/website-portal-olahraga/`)
      * **Backend (Halaman Admin):** `http://website-portal-olahraga.test/admin/login`
 
 ---
 
-#### B. Panduan Pengguna XAMPP
+#### B. Panduan Setup untuk Pengguna XAMPP
 
 1. **Buka Git Bash di folder `C:\xampp\htdocs\`:**
-   - Buka File Explorer, masuk ke folder `C:\xampp\htdocs\`.
+   - Masuk ke folder `C:\xampp\htdocs\` melalui File Explorer.
    - Klik kanan di area kosong, lalu pilih **"Git Bash Here"**.
-2. **Clone Repositori:**
-   - Jalankan perintah berikut di Git Bash:
+2. **Clone Repositori (Menyalin Project dari GitHub):**
+   - Jalankan perintah berikut di Git Bash, lalu tekan Enter:
      ```bash
      git clone https://github.com/MeydhiXploit/website-portal-olahraga---codeigniter3.git
      ```
-   - **Rename** (ubah nama) folder hasil clone tersebut dari `website-portal-olahraga---codeigniter3` menjadi **`website-portal-olahraga`**.
-3. **Nyalakan Server XAMPP:**
+   - Tunggu proses download hingga selesai 100%.
+3. **Rename Folder Project:**
+   - Klik kanan folder `website-portal-olahraga---codeigniter3` di File Explorer $\rightarrow$ pilih **Rename** (atau tekan **F2**).
+   - Ubah namanya menjadi **`website-portal-olahraga`**.
+4. **Nyalakan Server XAMPP:**
    - Buka aplikasi **XAMPP Control Panel**.
-   - Klik tombol **"Start"** pada **Apache** dan **MySQL** hingga statusnya berwarna hijau.
-4. **Import Database:**
+   - Klik tombol **"Start"** pada **Apache** dan **MySQL** hingga kedua teks tersebut berwarna hijau dan ada angka port-nya.
+5. **Import Database (Menggunakan phpMyAdmin):**
    - Buka browser Anda dan akses **`http://localhost/phpmyadmin/`**.
-   - Klik tombol **"New" / "Baru"** di menu sebelah kiri.
-   - Tulis nama database: **`portal_olahraga`**, lalu klik tombol **"Create" / "Buat"**.
-   - Klik database `portal_olahraga` yang baru dibuat, lalu pilih tab **"Import"** di bagian atas.
-   - Klik tombol **"Choose File" / "Pilih File"**, lalu cari dan pilih file [portal_olahraga.sql](file:///c:/laragon/www/website-portal-olahraga/portal_olahraga.sql) di root folder project Anda.
-   - Scroll ke bawah halaman, lalu klik tombol **"Import" / "Kirim"** di pojok kanan bawah.
-5. **Akses Website:**
-   - Buka browser Anda dan akses:
+   - Klik menu **"New" / "Baru"** yang berlogo kertas plus di menu sebelah kiri atas.
+   - Pada kolom nama database, ketik: **`portal_olahraga`**, kemudian klik tombol **"Create" / "Buat"**.
+   - Klik database `portal_olahraga` yang baru Anda buat tadi di sebelah kiri.
+   - Klik tab **"Import"** di menu bagian atas halaman.
+   - Klik tombol **"Choose File" / "Pilih File"**, lalu cari dan pilih file [portal_olahraga.sql](file:///c:/laragon/www/website-portal-olahraga/portal_olahraga.sql) di folder project Anda (`C:\xampp\htdocs\website-portal-olahraga\portal_olahraga.sql`).
+   - Scroll ke bawah halaman, lalu klik tombol **"Import" / "Kirim"** di pojok kanan bawah. Tunggu hingga muncul pesan berhasil berwarna hijau.
+6. **Akses Website:**
+   - Buka browser Anda dan ketik alamat berikut:
      * **Frontend (Halaman Utama):** `http://localhost/website-portal-olahraga/`
      * **Backend (Halaman Admin):** `http://localhost/website-portal-olahraga/admin/login`
 
@@ -114,9 +133,11 @@ Jika Anda baru pertama kali bergabung ke repositori ini, pilih panduan di bawah 
 
 #### 🔧 Konfigurasi Tambahan Aplikasi (Wajib Diperiksa)
 
-Setelah melakukan clone dan import database, silakan sesuaikan konfigurasi file CodeIgniter berikut:
+Setelah project berhasil di-setup dan database di-import, silakan sesuaikan konfigurasi file CodeIgniter berikut di text editor Anda (misal VS Code):
 
-1. **Konfigurasi Database lokal Anda:**
+1. **Membuka Project di VS Code:**
+   - Jalankan aplikasi VS Code $\rightarrow$ klik **File** $\rightarrow$ **Open Folder** $\rightarrow$ pilih folder project `website-portal-olahraga` yang sudah di-rename tadi.
+2. **Konfigurasi Database lokal Anda:**
    - Buka file [application/config/database.php](file:///c:/laragon/www/website-portal-olahraga/application/config/database.php).
    - Cari baris kode berikut (sekitar baris 75-80):
      ```php
@@ -125,8 +146,7 @@ Setelah melakukan clone dan import database, silakan sesuaikan konfigurasi file 
      'database' => 'portal_olahraga',
      ```
    - Jika username atau password MySQL lokal Anda berbeda, silakan disesuaikan.
-
-2. **Konfigurasi Base URL:**
+3. **Konfigurasi Base URL:**
    - Buka file [application/config/config.php](file:///c:/laragon/www/website-portal-olahraga/application/config/config.php).
    - Cari baris `$config['base_url']` (sekitar baris 26):
      ```php
@@ -188,6 +208,14 @@ Kirim branch lokal Anda yang berisi fitur baru ke repositori GitHub online:
 ```bash
 git push origin feature/tambah-detail-liga
 ```
+
+> [!IMPORTANT]
+> **Penting untuk Pemula (Login GitHub):**
+> Saat pertama kali Anda mengetik `git push`, Windows biasanya akan memunculkan jendela pop-up login dari GitHub.
+> 1. Klik tombol **"Sign in with your browser"** (Masuk menggunakan browser).
+> 2. Browser Anda akan terbuka secara otomatis ke halaman login/konfirmasi GitHub.
+> 3. Klik tombol hijau **"Authorize GitCredentialManager"** (pastikan Anda sudah login ke akun GitHub Anda di browser tersebut).
+> 4. Setelah berhasil, jendela pop-up akan menutup sendiri dan proses pengiriman file di Git Bash Anda akan otomatis berjalan hingga selesai.
 
 ---
 
