@@ -24,9 +24,9 @@
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/custom.css?v=1.1">
+    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/custom.css?v=1.2">
     <!-- ColorMag CSS -->
-    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=1.5">
+    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=1.6">
     <!-- font family -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- end font family -->
@@ -137,35 +137,88 @@
         }
         
         /* Fix container paddings for clean grid alignment */
-        .header-top {
-            padding: 10px 0 !important;
-            margin: 0 !important;
-        }
-    </style>
+         .header-top {
+             padding: 10px 0 !important;
+             margin: 0 !important;
+         }
+         
+         /* Flexbox Sticky Footer */
+         html {
+             height: 100% !important;
+         }
+         body.game_info {
+             display: flex !important;
+             flex-direction: column !important;
+             min-height: 100vh !important;
+             margin: 0 !important;
+             padding: 0 !important;
+         }
+         #top {
+             display: flex !important;
+             flex-direction: column !important;
+             flex: 1 0 auto !important;
+             width: 100% !important;
+             min-height: 100vh !important;
+         }
+         .main-content-wrapper {
+             flex: 1 0 auto !important;
+             margin-top: 30px !important;
+             clear: both !important;
+         }
+         footer {
+             flex-shrink: 0 !important;
+         }
+
+         /* Mobile Responsiveness Improvements */
+         @media (max-width: 767px) {
+             .logo {
+                 text-align: center !important;
+                 margin-bottom: 10px !important;
+             }
+             .header-top .text-right {
+                 text-align: center !important;
+                 justify-content: center !important;
+             }
+             .header-top .row {
+                 flex-direction: column !important;
+                 align-items: center !important;
+             }
+             .header-auth-buttons {
+                 justify-content: center !important;
+                 width: 100% !important;
+                 padding: 10px 0 !important;
+             }
+             .header-auth-btn {
+                 padding: 6px 15px !important;
+                 font-size: 11px !important;
+             }
+             .search-bar {
+                 float: none !important;
+                 width: 100% !important;
+                 padding: 10px 15px !important;
+             }
+             .contact-footer iframe {
+                 height: 240px !important;
+             }
+         }
+     </style>
     </head>
     <body class="game_info" data-spy="scroll" data-target=".header">
        <section id="top">
           <header>
              <div class="container">
                 <div class="header-top">
-                   <div class="row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-                      <div class="col-md-6 col-sm-6 col-xs-6">
-                         <div class="full">
+                    <div class="row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div class="full">
                             <div class="logo">
-                               <a href="<?php echo base_url();?>"><img src="<?php echo site_url('vendor/userpage/')?>images/logo.png?v=1.1" alt="Portal Olahraga" style="max-height: 70px; width: auto;" /></a>
+                               <a href="<?php echo base_url();?>"><img src="<?php echo site_url('vendor/userpage/')?>images/logo.png?v=1.2" alt="Portal Olahraga" style="max-height: 70px; width: auto;" /></a>
                             </div>
                          </div>
                       </div>
-                      <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                         <div class="full" style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
-                            <!-- social icon -->
-                            <ul class="social-icons" style="margin-right: 15px; display: inline-flex; align-items: center; padding: 0;">
-                               <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                               <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                               <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                               <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                            </ul>
-                            <!-- end social icon -->
+                       <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+                          <div class="full" style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
+
                             <div class="header-auth-buttons" style="display: inline-flex; align-items: center; padding: 15px 0;">
                                 <?php if (!empty($this->session->username)): ?>
                                     <span style="color: #ffffff; font-size: 12px; font-weight: 700; margin-right: 15px; text-transform: uppercase; display: inline-flex; align-items: center;">
@@ -174,7 +227,7 @@
                                     <a href="<?php echo site_url('logout'); ?>" class="header-auth-btn"><i class="fa fa-sign-out"></i>Logout</a>
                                 <?php else: ?>
                                     <a href="<?php echo site_url('login'); ?>" class="header-auth-btn" style="margin-right: 10px;"><i class="fa fa-user"></i>Login</a>
-                                    <a href="<?php echo site_url('register'); ?>" class="header-auth-btn"><i class="fa fa-shopping-cart"></i>Register</a>
+                                    <a href="<?php echo site_url('register'); ?>" class="header-auth-btn"><i class="fa fa-pencil-square-o"></i>Daftar Sebagai Penulis</a>
                                 <?php endif; ?>
                             </div>
                          </div>
@@ -209,8 +262,8 @@
                                                  }
                                              ?>      
                                          </ul>
-                                         <div class="search-bar hidden-xs">
-                                            <form action="<?php echo site_url('search'); ?>" method="GET" style="margin: 0;">
+                                          <div class="search-bar">
+                                             <form action="<?php echo site_url('search'); ?>" method="GET" style="margin: 0;">
                                                <div id="imaginary_container">
                                                   <div class="input-group stylish-input-group">
                                                      <input type="text" name="q" class="form-control" placeholder="Search..." value="<?php echo htmlspecialchars($this->input->get('q') ?? ''); ?>">
@@ -242,7 +295,7 @@
                   <div class="full">
                      <div class="footer-widget">
                         <div class="footer-logo">
-                           <a href="#"><img src="<?php echo site_url('vendor/userpage/')?>images/footer-logo.png" alt="#" /></a>
+                           <a href="#"><img src="<?php echo site_url('vendor/userpage/')?>images/footer-logo.png?v=1.1" alt="#" /></a>
                         </div>
                         <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p>
                         <ul class="social-icons style-4 pull-left">
@@ -270,21 +323,21 @@
                   <div class="full">
                      <div class="footer-widget">
                         <h3>Contact us</h3>
-                        <ul class="address-list">
-                           <li><i class="fa fa-map-marker"></i> Lorem Ipsum is simply dummy text of the printing..</li>
-                           <li><i class="fa fa-phone"></i> 123 456 7890</li>
-                           <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> demo@gmail.com</li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="full">
-                     <div class="contact-footer">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d120615.72236587871!2d73.07890527988283!3d19.140910987164396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1527759905404" width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-                     </div>
-                  </div>
-               </div>
+                         <ul class="address-list">
+                            <li><i class="fa fa-map-marker"></i> Jl. Ismail Marzuki No.22, Mataram</li>
+                            <li><i class="fa fa-phone"></i> (0370) 638369</li>
+                            <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> info@universitasbumigora.ac.id</li>
+                         </ul>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-3">
+                   <div class="full">
+                      <div class="contact-footer">
+                         <iframe src="https://maps.google.com/maps?q=Universitas%20Bumigora,%20Mataram&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      </div>
+                   </div>
+                </div>
             </div>
          </div>
          <div class="footer-bottom">
