@@ -55,20 +55,87 @@ git config --global user.email "email_anda@gmail.com"
 
 ### 1. Persiapan Awal (Setup Project Pertama Kali)
 
-Jika Anda baru pertama kali bergabung ke repositori ini:
-1. **Clone Repositori:**
-   ```bash
-   git clone https://github.com/MeydhiXploit/website-portal-olahraga---codeigniter3.git
-   ```
-2. **Pindahkan folder project** ke dalam direktori server lokal Anda (misal `C:/laragon/www/` atau `C:/xampp/htdocs/`).
-3. **Nyalakan Server Lokal** (Laragon / XAMPP).
+Jika Anda baru pertama kali bergabung ke repositori ini, pilih panduan di bawah sesuai dengan server lokal yang Anda gunakan (**Laragon** atau **XAMPP**):
+
+---
+
+#### A. Panduan Pengguna Laragon
+
+1. **Buka Git Bash di folder `C:\laragon\www\`:**
+   - Buka File Explorer, masuk ke folder `C:\laragon\www\`.
+   - Klik kanan di area kosong, lalu pilih **"Git Bash Here"**.
+2. **Clone Repositori:**
+   - Jalankan perintah berikut di Git Bash:
+     ```bash
+     git clone https://github.com/MeydhiXploit/website-portal-olahraga---codeigniter3.git
+     ```
+   - Foldernya akan otomatis bernama `website-portal-olahraga---codeigniter3`. Silakan **rename** (ubah nama) folder tersebut menjadi **`website-portal-olahraga`** agar nama link aksesnya rapi dan pendek.
+3. **Nyalakan Server Laragon:**
+   - Buka aplikasi Laragon Anda.
+   - Klik tombol **"Start All"**.
 4. **Import Database:**
-   - Buka `http://localhost/phpmyadmin/`.
-   - Buat database baru bernama `portal_olahraga`.
-   - Import file `portal_olahraga.sql` yang ada di root project ke database tersebut.
-5. **Konfigurasi Aplikasi (Jika Perlu):**
-   - Cek [application/config/config.php](file:///c:/laragon/www/website-portal-olahraga/application/config/config.php) untuk base URL.
-   - Cek [application/config/database.php](file:///c:/laragon/www/website-portal-olahraga/application/config/database.php) untuk memastikan koneksi database (username, password, database) sudah sesuai dengan server lokal Anda.
+   - Di aplikasi Laragon, klik tombol **"Database"** (ini akan membuka aplikasi HeidiSQL atau sejenisnya), ATAU jika Anda menggunakan phpMyAdmin, buka browser Anda ke `http://localhost/phpmyadmin/`.
+   - Buat database baru bernama **`portal_olahraga`**.
+   - Klik kanan database `portal_olahraga` tersebut $\rightarrow$ pilih **Import** $\rightarrow$ **Load SQL file...** $\rightarrow$ pilih file [portal_olahraga.sql](file:///c:/laragon/www/website-portal-olahraga/portal_olahraga.sql) yang terletak di folder project Anda $\rightarrow$ jalankan query-nya.
+5. **Akses Website:**
+   - Laragon secara otomatis membuat domain lokal untuk Anda. Buka browser dan akses:
+     * **Frontend (Halaman Utama):** `http://website-portal-olahraga.test/`
+     * **Backend (Halaman Admin):** `http://website-portal-olahraga.test/admin/login`
+
+---
+
+#### B. Panduan Pengguna XAMPP
+
+1. **Buka Git Bash di folder `C:\xampp\htdocs\`:**
+   - Buka File Explorer, masuk ke folder `C:\xampp\htdocs\`.
+   - Klik kanan di area kosong, lalu pilih **"Git Bash Here"**.
+2. **Clone Repositori:**
+   - Jalankan perintah berikut di Git Bash:
+     ```bash
+     git clone https://github.com/MeydhiXploit/website-portal-olahraga---codeigniter3.git
+     ```
+   - **Rename** (ubah nama) folder hasil clone tersebut dari `website-portal-olahraga---codeigniter3` menjadi **`website-portal-olahraga`**.
+3. **Nyalakan Server XAMPP:**
+   - Buka aplikasi **XAMPP Control Panel**.
+   - Klik tombol **"Start"** pada **Apache** dan **MySQL** hingga statusnya berwarna hijau.
+4. **Import Database:**
+   - Buka browser Anda dan akses **`http://localhost/phpmyadmin/`**.
+   - Klik tombol **"New" / "Baru"** di menu sebelah kiri.
+   - Tulis nama database: **`portal_olahraga`**, lalu klik tombol **"Create" / "Buat"**.
+   - Klik database `portal_olahraga` yang baru dibuat, lalu pilih tab **"Import"** di bagian atas.
+   - Klik tombol **"Choose File" / "Pilih File"**, lalu cari dan pilih file [portal_olahraga.sql](file:///c:/laragon/www/website-portal-olahraga/portal_olahraga.sql) di root folder project Anda.
+   - Scroll ke bawah halaman, lalu klik tombol **"Import" / "Kirim"** di pojok kanan bawah.
+5. **Akses Website:**
+   - Buka browser Anda dan akses:
+     * **Frontend (Halaman Utama):** `http://localhost/website-portal-olahraga/`
+     * **Backend (Halaman Admin):** `http://localhost/website-portal-olahraga/admin/login`
+
+---
+
+#### 🔧 Konfigurasi Tambahan Aplikasi (Wajib Diperiksa)
+
+Setelah melakukan clone dan import database, silakan sesuaikan konfigurasi file CodeIgniter berikut:
+
+1. **Konfigurasi Database lokal Anda:**
+   - Buka file [application/config/database.php](file:///c:/laragon/www/website-portal-olahraga/application/config/database.php).
+   - Cari baris kode berikut (sekitar baris 75-80):
+     ```php
+     'username' => 'root',        // Default untuk XAMPP & Laragon adalah 'root'
+     'password' => '',            // Default XAMPP/Laragon biasanya kosong ('')
+     'database' => 'portal_olahraga',
+     ```
+   - Jika username atau password MySQL lokal Anda berbeda, silakan disesuaikan.
+
+2. **Konfigurasi Base URL:**
+   - Buka file [application/config/config.php](file:///c:/laragon/www/website-portal-olahraga/application/config/config.php).
+   - Cari baris `$config['base_url']` (sekitar baris 26):
+     ```php
+     $config['base_url'] = 'http://localhost/website-portal-olahraga/';
+     ```
+   - *Catatan bagi pengguna Laragon:* Jika Anda menggunakan domain lokal `.test`, Anda bisa menyesuaikannya menjadi:
+     ```php
+     $config['base_url'] = 'http://website-portal-olahraga.test/';
+     ```
 
 ---
 
