@@ -22,6 +22,37 @@ Website Portal Berita Olahraga ini dibuat dengan menggunakan CodeIgniter 3. Webs
 
 Untuk menjaga agar kode project tetap rapi, tidak bentrok (conflict), dan semua anggota kelompok bisa bekerja bersamaan dengan lancar, silakan ikuti alur kerja (workflow) di bawah ini:
 
+### 0. Instalasi & Setup Dasar Git (Wajib bagi Pemula)
+
+Jika Anda belum pernah menggunakan Git/GitHub sama sekali di laptop Anda, ikuti langkah-langkah dasar berikut terlebih dahulu:
+
+#### A. Download dan Install Git Bash
+1. Buka browser Anda dan unduh installer Git di link ini: **[git-scm.com/downloads](https://git-scm.com/downloads)** (Pilih tombol **Windows**).
+2. Setelah selesai di-download, jalankan file installer-nya (misal `Git-x.xx.x-64-bit.exe`).
+3. Klik **Next** terus-menerus sampai selesai (tidak perlu ada yang diubah, biarkan semua pengaturan default/bawaan), lalu klik **Install**.
+4. Tunggu proses instalasi selesai, lalu klik **Finish**.
+
+#### B. Cara Membuka Git Bash di Folder Project (Cara Paling Mudah)
+Agar tidak bingung mengetik perintah navigasi folder, cara terbaik untuk membuka Git Bash adalah langsung dari folder server lokal Anda:
+1. Buka **File Explorer** Windows Anda.
+2. Masuk ke folder web root Anda (misal: `C:\laragon\www\` atau `C:\xampp\htdocs\`).
+3. **Klik kanan** pada area kosong di dalam folder tersebut.
+4. Pilih **"Git Bash Here"** (Untuk pengguna **Windows 11**: Klik kanan $\rightarrow$ pilih **Show more options** / **Tampilkan opsi lainnya** $\rightarrow$ pilih **Git Bash Here**).
+5. Layar hitam terminal Git Bash akan otomatis terbuka dan langsung aktif di dalam folder tersebut.
+
+#### C. Konfigurasi Identitas Git Anda (Wajib Dilakukan Sekali)
+Sebelum bisa melakukan pengiriman kode, Anda harus mengenalkan identitas Anda kepada Git. Ketik perintah di bawah ini satu per satu di jendela Git Bash, lalu tekan **Enter**:
+```bash
+# Ganti teks di dalam tanda kutip dengan nama lengkap Anda
+git config --global user.name "Nama Lengkap Anda"
+
+# Ganti teks di dalam tanda kutip dengan email yang Anda gunakan di GitHub
+git config --global user.email "email_anda@gmail.com"
+```
+*Catatan: Langkah konfigurasi di atas hanya perlu dilakukan sekali saja setelah menginstal Git.*
+
+---
+
 ### 1. Persiapan Awal (Setup Project Pertama Kali)
 
 Jika Anda baru pertama kali bergabung ke repositori ini:
