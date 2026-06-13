@@ -9,12 +9,16 @@ Website Portal Berita Olahraga ini dibuat dengan menggunakan CodeIgniter 3. Webs
 
 ---
 
-## Dipersiapkan Oleh:
+## 👥 Tim Pengembang & Kontributor
 
-*   **Meydhi Ari Nugroho** (24010110126)
-*   **Clara septia ramdhani** (2401010002)
-*   **Villari Naufal Nety** (24010110076)
-*   **M.syarifudin** (24010110078)
+**Kelas: B**
+
+| Peran | Nama Lengkap | NIM |
+| :---: | :--- | :---: |
+| 👑 **Ketua Kelompok** | **Meydhi Ari Nugroho** | `24010110126` |
+| 💻 **Anggota** | **Clara septia ramdhani** | `2401010002` |
+| 💻 **Anggota** | **Villari Naufal Nety** | `24010110076` |
+| 💻 **Anggota** | **M.syarifudin** | `24010110078` |
 
 ---
 
