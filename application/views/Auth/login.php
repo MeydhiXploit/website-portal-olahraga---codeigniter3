@@ -87,7 +87,7 @@
         <?php }?>
         <form method="post">
             <div class="mb-3">
-              <label class="text-normal text-dark form-label">username</label><input type="text" class="form-control" name="username" placeholder="username" value="<?php echo !empty(set_value('username')) ? set_value('username') : ''?>">
+              <label class="text-normal text-dark form-label">Username / E-mail</label><input type="text" class="form-control" name="username" placeholder="Username atau E-mail" value="<?php echo !empty(set_value('username')) ? set_value('username') : ''?>">
               <span class="alert-danger"><?php echo form_error('username'); ?></span>
             </div>
             <div class="mb-3">

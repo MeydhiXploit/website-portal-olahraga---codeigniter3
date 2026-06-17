@@ -23,17 +23,22 @@ class UserController extends CI_Controller {
         {
             redirect('admin/dashboard');
         } 
-        $this->form_validation->set_rules('username', 'Username', 'required', array("required"=>"*Username tidak boleh kosong"));
+        $this->form_validation->set_rules('username', 'Username atau Email', 'required', array("required"=>"*Username atau Email tidak boleh kosong"));
         $this->form_validation->set_rules('password', 'Password', 'required', array("required"=>"*Password tidak boleh kosong"));
         if ($this->form_validation->run() === TRUE) {
-            $username = $this->input->post('username');
+            $login_input = $this->input->post('username');
             $password = $this->input->post('password');
-            $user = $this->M_User->get_by_username($username);
+            
+            if (filter_var($login_input, FILTER_VALIDATE_EMAIL)) {
+                $user_query = $this->db->get_where('user', array('email' => $login_input));
+            } else {
+                $user_query = $this->M_User->get_by_username($login_input);
+            }
 
-            if ($user->num_rows() > 0) {
-                $user = $user->row();
+            if ($user_query->num_rows() > 0) {
+                $user = $user_query->row();
 
-                if ($username === $user->username && (password_verify($password, $user->password) || $password === $user->password)) {
+                if (password_verify($password, $user->password) || $password === $user->password) {
                     $data = [
                         'id' => $user->id,
                         'username' => $user->username,
@@ -47,7 +52,7 @@ class UserController extends CI_Controller {
                     $this->session->set_flashdata('failed', "Password salah !");
                 }
             } else {
-                $this->session->set_flashdata('failed', "Username tidak tersedia !");
+                $this->session->set_flashdata('failed', "Username atau Email tidak tersedia !");
             }
         }
         $this->load->view('Auth/login');

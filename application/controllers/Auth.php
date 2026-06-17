@@ -18,19 +18,24 @@ class Auth extends CI_Controller {
             }
         }
 
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email', array(
-            'required' => '*Email tidak boleh kosong',
-            'valid_email' => '*Format email tidak valid'
+        $this->form_validation->set_rules('username', 'Username atau Email', 'required', array(
+            'required' => '*Username atau Email tidak boleh kosong'
         ));
         $this->form_validation->set_rules('password', 'Password', 'required', array(
             'required' => '*Password tidak boleh kosong'
         ));
 
         if ($this->form_validation->run() === TRUE) {
-            $email = $this->input->post('email');
+            $login_input = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $user = $this->Auth_model->check_login($email);
+            // Coba cari berdasarkan email, jika bukan format email coba cari berdasarkan username
+            $this->load->model('M_User');
+            if (filter_var($login_input, FILTER_VALIDATE_EMAIL)) {
+                $user = $this->db->get_where('user', array('email' => $login_input))->row();
+            } else {
+                $user = $this->db->get_where('user', array('username' => $login_input))->row();
+            }
 
             if ($user) {
                 if (password_verify($password, $user->password) || $password === $user->password) {
@@ -40,6 +45,7 @@ class Auth extends CI_Controller {
                         'role' => $user->role
                     ];
                     $this->session->set_userdata($session_data);
+                    $this->session->unset_userdata('failed');
                     
                     if (in_array($user->role, ['admin', 'editor'])) {
                         redirect('admin/dashboard');
@@ -50,15 +56,11 @@ class Auth extends CI_Controller {
                     $this->session->set_flashdata('failed', 'Password salah !');
                 }
             } else {
-                $this->session->set_flashdata('failed', 'Email tidak terdaftar !');
+                $this->session->set_flashdata('failed', 'Username atau Email tidak terdaftar !');
             }
         }
 
-        $sport_types = $this->M_Sport_Type->get();
-        $context = [
-            'data_sportType' => $sport_types
-        ];
-        $this->template->user_template('Auth/user_login', $context);
+        $this->load->view('Auth/login');
     }
 
     public function register() {
@@ -92,7 +94,7 @@ class Auth extends CI_Controller {
                 'email' => $this->input->post('email'),
                 'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
                 'gender' => $this->input->post('gender'),
-                'role' => 'user',
+                'role' => 'editor',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
@@ -102,11 +104,7 @@ class Auth extends CI_Controller {
             redirect('login');
         }
 
-        $sport_types = $this->M_Sport_Type->get();
-        $context = [
-            'data_sportType' => $sport_types
-        ];
-        $this->template->user_template('Auth/user_register', $context);
+        $this->load->view('Auth/register');
     }
 
     public function logout() {

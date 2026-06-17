@@ -24,9 +24,9 @@
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/custom.css?v=1.2">
+    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/custom.css?v=1.3">
       <!-- ColorMag CSS -->
-      <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=2.1">
+      <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=2.3">
     <!-- font family -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- end font family -->
@@ -44,7 +44,7 @@
             background: #081e3f url('<?php echo site_url("vendor/userpage/images/stadium.png"); ?>') no-repeat center center !important;
             background-size: cover !important;
             z-index: 100 !important;
-            padding-bottom: 20px !important;
+            padding-bottom: 8px !important;
         }
         .main-content-wrapper {
             margin-top: 30px !important;
@@ -92,14 +92,14 @@
         .search-bar {
             float: right !important;
             width: 280px !important;
-            padding: 10px !important;
+            padding: 4px 10px !important;
         }
         #imaginary_container input.form-control {
             border: 1px solid #ccc !important;
             border-radius: 4px 0 0 4px !important;
-            font-size: 14px !important;
+            font-size: 13px !important;
             padding: 6px 12px !important;
-            height: 38px !important;
+            height: 34px !important;
             box-shadow: none !important;
         }
         div.menu div.search-bar .input-group-addon {
@@ -107,7 +107,7 @@
             border: none !important;
             border-radius: 0 4px 4px 0 !important;
             padding: 0 !important;
-            height: 38px !important;
+            height: 34px !important;
             width: 45px !important;
         }
         div.menu div.search-bar .input-group-addon button {
@@ -212,31 +212,21 @@
                        <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="full">
                             <div class="logo">
-                               <a href="<?php echo base_url();?>"><img src="<?php echo site_url('vendor/userpage/')?>images/logo.png?v=1.2" alt="Portal Olahraga" style="max-height: 70px; width: auto;" /></a>
+                               <a href="<?php echo base_url();?>"><img src="<?php echo site_url('vendor/userpage/')?>images/logo.png?v=1.2" alt="Portal Olahraga" style="max-height: 50px; width: auto;" /></a>
                             </div>
                          </div>
                       </div>
                        <div class="col-md-6 col-sm-6 col-xs-12 text-right">
                           <div class="full" style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
 
-<<<<<<< HEAD
-                            <div class="header-auth-buttons" style="display: inline-flex; align-items: center; padding: 15px 0;">
-                                <?php if (!empty($this->session->username)): ?>
-                                    <span style="color: #ffffff; font-size: 12px; font-weight: 700; margin-right: 15px; text-transform: uppercase; display: inline-flex; align-items: center;">
-=======
-                            <div class="header-auth-buttons" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 0; flex-wrap: wrap; justify-content: flex-end;">
+                            <div class="header-auth-buttons" style="display: inline-flex; align-items: center; gap: 12px; padding: 6px 0; flex-wrap: wrap; justify-content: flex-end;">
                                 <?php if (!empty($this->session->username)): ?>
                                     <span style="color: #ffffff; font-size: 12px; font-weight: 700; text-transform: uppercase; display: inline-flex; align-items: center;">
->>>>>>> 37ceef525562d6b2e9f1e5ac9c5400bed2bededd
                                        <i class="fa fa-user" style="color: #ffcb05; margin-right: 6px; font-size: 14px;"></i><?php echo htmlspecialchars($this->session->username); ?>
                                     </span>
                                     <a href="<?php echo site_url('logout'); ?>" class="header-auth-btn"><i class="fa fa-sign-out"></i>Logout</a>
                                 <?php else: ?>
-<<<<<<< HEAD
-                                    <a href="<?php echo site_url('login'); ?>" class="header-auth-btn" style="margin-right: 10px;"><i class="fa fa-user"></i>Login</a>
-=======
                                     <a href="<?php echo site_url('login'); ?>" class="header-auth-btn" style="margin-right: 0;"><i class="fa fa-user"></i>Login</a>
->>>>>>> 37ceef525562d6b2e9f1e5ac9c5400bed2bededd
                                     <a href="<?php echo site_url('register'); ?>" class="header-auth-btn"><i class="fa fa-pencil-square-o"></i>Daftar Sebagai Penulis</a>
                                 <?php endif; ?>
                             </div>
@@ -245,10 +235,6 @@
                    </div>
                 </div>
              </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 37ceef525562d6b2e9f1e5ac9c5400bed2bededd
              <div class="header-bottom" style="width: 100% !important; clear: both !important; float: left !important;">
                 <div class="container">
                    <div class="row">
