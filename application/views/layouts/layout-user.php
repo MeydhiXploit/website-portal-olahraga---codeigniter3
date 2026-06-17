@@ -219,14 +219,24 @@
                        <div class="col-md-6 col-sm-6 col-xs-12 text-right">
                           <div class="full" style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
 
+<<<<<<< HEAD
                             <div class="header-auth-buttons" style="display: inline-flex; align-items: center; padding: 15px 0;">
                                 <?php if (!empty($this->session->username)): ?>
                                     <span style="color: #ffffff; font-size: 12px; font-weight: 700; margin-right: 15px; text-transform: uppercase; display: inline-flex; align-items: center;">
+=======
+                            <div class="header-auth-buttons" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 0; flex-wrap: wrap; justify-content: flex-end;">
+                                <?php if (!empty($this->session->username)): ?>
+                                    <span style="color: #ffffff; font-size: 12px; font-weight: 700; text-transform: uppercase; display: inline-flex; align-items: center;">
+>>>>>>> 37ceef525562d6b2e9f1e5ac9c5400bed2bededd
                                        <i class="fa fa-user" style="color: #ffcb05; margin-right: 6px; font-size: 14px;"></i><?php echo htmlspecialchars($this->session->username); ?>
                                     </span>
                                     <a href="<?php echo site_url('logout'); ?>" class="header-auth-btn"><i class="fa fa-sign-out"></i>Logout</a>
                                 <?php else: ?>
+<<<<<<< HEAD
                                     <a href="<?php echo site_url('login'); ?>" class="header-auth-btn" style="margin-right: 10px;"><i class="fa fa-user"></i>Login</a>
+=======
+                                    <a href="<?php echo site_url('login'); ?>" class="header-auth-btn" style="margin-right: 0;"><i class="fa fa-user"></i>Login</a>
+>>>>>>> 37ceef525562d6b2e9f1e5ac9c5400bed2bededd
                                     <a href="<?php echo site_url('register'); ?>" class="header-auth-btn"><i class="fa fa-pencil-square-o"></i>Daftar Sebagai Penulis</a>
                                 <?php endif; ?>
                             </div>
@@ -235,6 +245,10 @@
                    </div>
                 </div>
              </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 37ceef525562d6b2e9f1e5ac9c5400bed2bededd
              <div class="header-bottom" style="width: 100% !important; clear: both !important; float: left !important;">
                 <div class="container">
                    <div class="row">

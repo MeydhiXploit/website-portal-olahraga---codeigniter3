@@ -341,11 +341,19 @@
 
 <!-- Category Sections (Sports Grid) -->
 <section id="contant" class="contant main-heading team" style="padding-top: 0; margin-bottom: 40px;">
+<<<<<<< HEAD
     <?php foreach($news_by_sport as $sport_name => $sport_news): ?>
         <?php if (!empty($sport_news)): ?>
         <div class="container">
             <div class="colormag-category-header">
                 <h2 class="colormag-category-title">
+=======
+<?php foreach($news_by_sport as $sport_name => $sport_news): ?>
+        <?php if (!empty($sport_news)): ?>
+        <div class="container" style="margin-bottom: 10px;">
+            <div class="colormag-category-header" style="margin-bottom: 22px;">
+                <h2 class="colormag-category-title" style="margin-bottom: 0;">
+>>>>>>> 37ceef525562d6b2e9f1e5ac9c5400bed2bededd
                     <a href="<?php echo site_url('sport/'.str_replace(' ', '-', strtolower($sport_name))); ?>">
                         <?php echo $sport_name; ?>
                     </a>
@@ -356,6 +364,10 @@
             </div>
             
             <div class="row category-news-row" style="display: flex; flex-wrap: wrap;">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 37ceef525562d6b2e9f1e5ac9c5400bed2bededd
                 <?php foreach($sport_news as $news): 
                     $thumb = $news->thumbnail;
                     $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
