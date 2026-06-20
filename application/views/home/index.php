@@ -1,3 +1,4 @@
+<?php // updated UI for sports portal ?>
 <script type="text/template" id="deactivated-styles">
     /* Premium Home Styles */
     .cm-featured-large {
@@ -368,8 +369,8 @@
 <!-- Banner / Hero Section -->
 <div class="hero">
     <div class="hero-content">
-        <h1 class="hero-caption"><span class="live-glow">LIVE</span> SPORTS UPDATE</h1>
-        <p class="hero-subcaption">Portal Berita Olahraga Terkini, Akurat, dan Paling Terpercaya</p>
+        <h1 class="hero-caption"><span class="live-glow">LIVE</span> SPORTS PORTAL UPDATE</h1>
+        <p class="hero-subcaption">Live Sports Portal Update: Terkini, Akurat, dan Paling Terpercaya</p>
         <div class="hero-actions">
             <a href="#terkini" class="btn-hero btn-hero-primary">Lihat Berita <i class="fa fa-arrow-down"></i></a>
             <a href="<?php echo site_url('pertandingan'); ?>" class="btn-hero btn-hero-secondary">Live Match <i class="fa fa-play-circle"></i></a>
