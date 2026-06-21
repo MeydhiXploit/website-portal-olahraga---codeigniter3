@@ -31,12 +31,12 @@
                             <div class="col-md-8">
                                 <ul>
                                     <li>
-                                       <img src="<?php echo $match->logo_club_1; ?>" alt="" width="100" height="100">
+                                       <img src="<?php echo get_image_url($match->logo_club_1); ?>" alt="" width="100" height="100">
                                        <span><?php echo $match->club_1; ?></span>
                                     </li>
                                     <li class="vs"><span>vs</span></li>
                                     <li>
-                                       <img src="<?php echo $match->logo_club_2; ?>" alt="" width="100" height="100">
+                                       <img src="<?php echo get_image_url($match->logo_club_2); ?>" alt="" width="100" height="100">
                                        <span><?php echo $match->club_1; ?></span>
                                     </li>
                                  </ul>
@@ -62,7 +62,7 @@
                                 <div class='category-menu'>
                                     <ul>
                                     <li>
-                                        <span><img src='$lastest_news->thumbnail' alt='' width='210' height='210'></span>
+                                        <span><img src='".get_image_url($lastest_news->thumbnail)."' alt='' width='210' height='210'></span>
                                         <span>
                                             <p>$lastest_news->title</p>
                                             <p class='date'>".date('d M, Y', strtotime($lastest_news->created_at))."</p>
