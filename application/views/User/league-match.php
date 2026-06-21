@@ -41,49 +41,6 @@
                                         <strong style="color: #333; display: block; font-size: 14px;"><?php echo date('d M Y', strtotime($match->match_date)); ?></strong>
                                         Pukul <?php echo date('H:i', strtotime($match->match_date)); ?> WIB
                                     </span>
-=======
-                            <div class="col-md-8">
-                                <ul>
-                                    <li>
-                                       <img src="<?php echo get_image_url($match->logo_club_1); ?>" alt="" width="100" height="100">
-                                       <span><?php echo $match->club_1; ?></span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                       <img src="<?php echo get_image_url($match->logo_club_2); ?>" alt="" width="100" height="100">
-                                       <span><?php echo $match->club_1; ?></span>
-                                    </li>
-                                 </ul>
-                            </div>
-                        </div>
-                        <?php 
-                        }
-                        ?>
-                     </div>
-                     <div class="main-heading-holder">
-                        <div class="main-heading sytle-2">
-                           <h2>Jadwal Pertandingan</h2>
-                        </div>
-                     </div>
-                 </div>
-             </div>
-          </div>
-          <div class="col-md-3">
-              <?php
-                foreach($lastest_news_result as $lastest_news) {
-                        echo "<a href='".site_url('news/'.$lastest_news->news_slug)."'>
-                                <div class='blog-sidebar'>
-                                <div class='category-menu'>
-                                    <ul>
-                                    <li>
-                                        <span><img src='".get_image_url($lastest_news->thumbnail)."' alt='' width='210' height='210'></span>
-                                        <span>
-                                            <p>$lastest_news->title</p>
-                                            <p class='date'>".date('d M, Y', strtotime($lastest_news->created_at))."</p>
-                                        </span>
-                                    </li>
-                                    </ul>
->>>>>>> meydhi
                                 </div>
                                 <div style="flex: 2 1 300px; display: flex; align-items: center; justify-content: center; gap: 20px;">
                                     <div style="text-align: right; width: 42%; display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
