@@ -26,12 +26,12 @@
                                     foreach($data_match as $match) {
                                         echo "<div style='display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #eaeaea;'>
                                                 <div style='text-align: center; width: 40%;'>
-                                                    <img src='$match->logo_club_1' alt='' style='max-height: 40px; max-width: 40px; object-fit: contain; display: block; margin: 0 auto 5px;'>
+                                                    <img src='".get_image_url($match->logo_club_1)."' alt='' style='max-height: 40px; max-width: 40px; object-fit: contain; display: block; margin: 0 auto 5px;'>
                                                     <span style='font-size: 10.5px; font-weight: 700; color: #333; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>$match->club_1</span>
                                                 </div>
                                                 <div style='font-size: 11px; font-weight: 700; color: var(--primary-color);'>VS</div>
                                                 <div style='text-align: center; width: 40%;'>
-                                                    <img src='$match->logo_club_2' alt='' style='max-height: 40px; max-width: 40px; object-fit: contain; display: block; margin: 0 auto 5px;'>
+                                                    <img src='".get_image_url($match->logo_club_2)."' alt='' style='max-height: 40px; max-width: 40px; object-fit: contain; display: block; margin: 0 auto 5px;'>
                                                     <span style='font-size: 10.5px; font-weight: 700; color: #333; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>$match->club_2</span>
                                                 </div>
                                               </div>";
@@ -53,7 +53,7 @@
                     <div class="colormag-news-card" style="margin-bottom: 25px;">
                         <div class="row" style="margin: 0; display: flex; flex-wrap: wrap;">
                             <div class="col-md-5" style="padding: 0; overflow: hidden; height: 180px;">
-                                <img src="<?php echo $news->thumbnail; ?>" alt="" style="width:100%; height:100%; object-fit: cover;" />
+                                <img src="<?php echo get_image_url($news->thumbnail); ?>" alt="" style="width:100%; height:100%; object-fit: cover;" />
                             </div>
                             <div class="col-md-7" style="padding: 20px;">
                                 <div class="card-meta" style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
@@ -87,7 +87,7 @@
                 <?php else: ?>
                     <?php foreach($data_sportClub as $club): ?>
                     <div style="text-align: center; background-color: #f8f9fa; border: 1px solid #eaeaea; border-radius: 4px; padding: 15px; width: 140px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: transform 0.3s ease;">
-                        <img src="<?php echo $club->logo; ?>" alt="" style="max-height: 60px; max-width: 60px; object-fit: contain; margin: 0 auto 10px; display: block;" />
+                        <img src="<?php echo get_image_url($club->logo); ?>" alt="" style="max-height: 60px; max-width: 60px; object-fit: contain; margin: 0 auto 10px; display: block;" />
                         <span style="font-size: 12px; font-weight: 700; color: #333; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?php echo $club->name; ?></span>
                     </div>
                     <?php endforeach; ?>

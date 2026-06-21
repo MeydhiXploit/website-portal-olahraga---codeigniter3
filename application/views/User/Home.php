@@ -288,8 +288,7 @@
             <?php 
             if (isset($latest_news[0])): 
                 $n = $latest_news[0]; 
-                $thumb = $n->thumbnail;
-                $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
+                $img_src = get_image_url($n->thumbnail);
             ?>
             <div class="cm-featured-large">
                 <a href="<?php echo site_url('news/'.$n->news_slug); ?>">
@@ -314,8 +313,7 @@
                 for ($i = 1; $i <= 4; $i++) {
                     if (isset($latest_news[$i])) {
                         $n = $latest_news[$i];
-                        $thumb = $n->thumbnail;
-                        $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
+                        $img_src = get_image_url($n->thumbnail);
                 ?>
                 <a href="<?php echo site_url('news/'.$n->news_slug); ?>" class="cm-featured-small-item">
                     <div class="cm-featured-small-thumb">
@@ -357,8 +355,7 @@
             
             <div class="row category-news-row" style="display: flex; flex-wrap: wrap;">
                 <?php foreach($sport_news as $news): 
-                    $thumb = $news->thumbnail;
-                    $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
+                    $img_src = get_image_url($news->thumbnail);
                 ?>
                 <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px;">
                     <div class="colormag-news-card">

@@ -44,11 +44,11 @@
                                 <div style="flex: 2 1 300px; display: flex; align-items: center; justify-content: center; gap: 20px;">
                                     <div style="text-align: right; width: 42%; display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
                                         <span style="font-size: 14px; font-weight: 700; color: #333;"><?php echo $match->club_1; ?></span>
-                                        <img src="<?php echo $match->logo_club_1; ?>" alt="" style="height: 45px; width: 45px; object-fit: contain;">
+                                        <img src="<?php echo get_image_url($match->logo_club_1); ?>" alt="" style="height: 45px; width: 45px; object-fit: contain;">
                                     </div>
                                     <div style="font-size: 11px; font-weight: 800; color: var(--primary-color); background: rgba(138, 43, 226, 0.08); padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(138, 43, 226, 0.15); flex-shrink: 0;">VS</div>
                                     <div style="text-align: left; width: 42%; display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
-                                        <img src="<?php echo $match->logo_club_2; ?>" alt="" style="height: 45px; width: 45px; object-fit: contain;">
+                                        <img src="<?php echo get_image_url($match->logo_club_2); ?>" alt="" style="height: 45px; width: 45px; object-fit: contain;">
                                         <span style="font-size: 14px; font-weight: 700; color: #333;"><?php echo $match->club_2; ?></span>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                         <li>
                             <a href="<?php echo site_url('news/'.$lastest_news->news_slug); ?>" class="cm-sidebar-news-item">
                                 <div class="cm-sidebar-news-thumb">
-                                    <img src="<?php echo $lastest_news->thumbnail; ?>" alt="" />
+                                    <img src="<?php echo get_image_url($lastest_news->thumbnail); ?>" alt="" />
                                 </div>
                                 <div class="cm-sidebar-news-info">
                                     <h4 class="cm-sidebar-news-title"><?php echo $lastest_news->title; ?></h4>

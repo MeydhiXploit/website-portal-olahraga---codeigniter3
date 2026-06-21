@@ -31,7 +31,7 @@
         <?php if (isset($lastest_news_result[0])): $n = $lastest_news_result[0]; $tag = !empty($n->news_tags) ? explode(',', $n->news_tags)[0] : 'LATEST'; ?>
         <div class="cm-card large-card">
             <a href="<?php echo site_url('news/'.$n->news_slug); ?>" class="card-img-link">
-                <img src="<?php echo $n->thumbnail; ?>" alt="" />
+                <img src="<?php echo get_image_url($n->thumbnail); ?>" alt="" />
                 <div class="cm-card-overlay">
                     <span class="cm-badge"><?php echo strtoupper($tag); ?></span>
                     <h2 class="cm-title"><a href="<?php echo site_url('news/'.$n->news_slug); ?>"><?php echo $n->title; ?></a></h2>
@@ -48,7 +48,7 @@
         <?php if (isset($lastest_news_result[1])): $n = $lastest_news_result[1]; $tag = !empty($n->news_tags) ? explode(',', $n->news_tags)[0] : 'LATEST'; ?>
         <div class="cm-card medium-card">
             <a href="<?php echo site_url('news/'.$n->news_slug); ?>" class="card-img-link">
-                <img src="<?php echo $n->thumbnail; ?>" alt="" />
+                <img src="<?php echo get_image_url($n->thumbnail); ?>" alt="" />
                 <div class="cm-card-overlay">
                     <span class="cm-badge"><?php echo strtoupper($tag); ?></span>
                     <h2 class="cm-title"><a href="<?php echo site_url('news/'.$n->news_slug); ?>"><?php echo $n->title; ?></a></h2>
@@ -66,7 +66,7 @@
             <?php if (isset($lastest_news_result[2])): $n = $lastest_news_result[2]; $tag = !empty($n->news_tags) ? explode(',', $n->news_tags)[0] : 'LATEST'; ?>
             <div class="cm-card small-card">
                 <a href="<?php echo site_url('news/'.$n->news_slug); ?>" class="card-img-link">
-                    <img src="<?php echo $n->thumbnail; ?>" alt="" />
+                    <img src="<?php echo get_image_url($n->thumbnail); ?>" alt="" />
                     <div class="cm-card-overlay">
                         <span class="cm-badge"><?php echo strtoupper($tag); ?></span>
                         <h2 class="cm-title"><a href="<?php echo site_url('news/'.$n->news_slug); ?>"><?php echo $n->title; ?></a></h2>
@@ -82,7 +82,7 @@
             <?php if (isset($lastest_news_result[3])): $n = $lastest_news_result[3]; $tag = !empty($n->news_tags) ? explode(',', $n->news_tags)[0] : 'LATEST'; ?>
             <div class="cm-card small-card">
                 <a href="<?php echo site_url('news/'.$n->news_slug); ?>" class="card-img-link">
-                    <img src="<?php echo $n->thumbnail; ?>" alt="" />
+                    <img src="<?php echo get_image_url($n->thumbnail); ?>" alt="" />
                     <div class="cm-card-overlay">
                         <span class="cm-badge"><?php echo strtoupper($tag); ?></span>
                         <h2 class="cm-title"><a href="<?php echo site_url('news/'.$n->news_slug); ?>"><?php echo $n->title; ?></a></h2>
@@ -131,7 +131,7 @@
             <div class="news-modern-card">
                 <div class="news-card-thumb">
                     <a href="<?php echo site_url('news/'.$news->news_slug); ?>">
-                        <img src="<?php echo $news->thumbnail; ?>" alt="<?php echo htmlspecialchars($news->title); ?>" />
+                        <img src="<?php echo get_image_url($news->thumbnail); ?>" alt="<?php echo htmlspecialchars($news->title); ?>" />
                     </a>
                 </div>
                 <div class="news-card-body">

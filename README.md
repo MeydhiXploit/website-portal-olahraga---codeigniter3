@@ -24,6 +24,28 @@ Website Portal Berita Olahraga ini dibuat dengan menggunakan CodeIgniter 3. Webs
 
 ## 🚀 Panduan Kontribusi Kelompok (GitHub Workflow)
 
+> [!WARNING]
+> **ATURAN WAJIB: DILARANG PUSH LANGSUNG KE BRANCH `main`!**
+> 
+> Semua anggota kelompok **TIDAK DIPERBOLEHKAN** melakukan push langsung ke branch `main` (`git push origin main`). Pushing langsung ke `main` berisiko merusak kode utama dan menyebabkan *conflict* yang sulit diperbaiki.
+> 
+> **Ikuti Alur Kerja Wajib Ini:**
+> 1. **Buat Branch Baru** sebelum mulai bekerja:
+>    ```bash
+>    git checkout -b nama-branch-baru
+>    ```
+> 2. **Edit Kode** / Selesaikan pekerjaan Anda di text editor.
+> 3. **Add & Commit** perubahan Anda di lokal:
+>    ```bash
+>    git add .
+>    git commit -m "fix: deskripsi perubahan"
+>    ```
+> 4. **Push Branch Baru** ke origin (bukan `main`!):
+>    ```bash
+>    git push origin nama-branch-baru
+>    ```
+> 5. **Buka GitHub** dan ajukan **Pull Request (PR)** untuk digabungkan ke branch `main` setelah di-review bersama.
+
 Untuk menjaga agar kode project tetap rapi, tidak bentrok (conflict), dan semua anggota kelompok bisa bekerja bersamaan dengan lancar, silakan ikuti alur kerja (workflow) di bawah ini:
 
 ### 0. Instalasi & Setup Dasar Git (Wajib bagi Pemula)

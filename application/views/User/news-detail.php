@@ -7,7 +7,7 @@
         <div class="col-md-9">
             <div class="feature-post" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px;">
                 <div class="feature-img">
-                    <img src="<?php echo $news->thumbnail; ?>" class="img-responsive" alt="<?php echo htmlspecialchars($news->title); ?>" style="border-radius: 8px; max-height: 450px; width: 100%; object-fit: cover; margin-bottom: 20px;" />
+                    <img src="<?php echo get_image_url($news->thumbnail); ?>" class="img-responsive" alt="<?php echo htmlspecialchars($news->title); ?>" style="border-radius: 8px; max-height: 450px; width: 100%; object-fit: cover; margin-bottom: 20px;" />
                 </div>
                 <div class="feature-cont">
                     <div class="post-people" style="margin-bottom: 25px; border-bottom: 1px solid #eaeaea; padding-bottom: 20px;">
@@ -41,7 +41,7 @@
                     <li>
                         <a href="<?php echo site_url('news/'.$lastest_news->news_slug); ?>" class="cm-sidebar-news-item">
                             <div class="cm-sidebar-news-thumb">
-                                <img src="<?php echo $lastest_news->thumbnail; ?>" alt="" />
+                                <img src="<?php echo get_image_url($lastest_news->thumbnail); ?>" alt="" />
                             </div>
                             <div class="cm-sidebar-news-info">
                                 <h4 class="cm-sidebar-news-title"><?php echo $lastest_news->title; ?></h4>
@@ -71,12 +71,12 @@
                     ?>
                     <a href="<?php echo site_url('league/'.$match->league.'/match'); ?>" class="cm-sidebar-match-item">
                         <div class="cm-sidebar-match-team">
-                            <img src="<?php echo $match->logo_club_1; ?>" alt="" class="cm-sidebar-match-logo" />
+                            <img src="<?php echo get_image_url($match->logo_club_1); ?>" alt="" class="cm-sidebar-match-logo" />
                             <span class="cm-sidebar-match-name"><?php echo $match->club_1; ?></span>
                         </div>
                         <div class="cm-sidebar-match-vs">VS</div>
                         <div class="cm-sidebar-match-team">
-                            <img src="<?php echo $match->logo_club_2; ?>" alt="" class="cm-sidebar-match-logo" />
+                            <img src="<?php echo get_image_url($match->logo_club_2); ?>" alt="" class="cm-sidebar-match-logo" />
                             <span class="cm-sidebar-match-name"><?php echo $match->club_2; ?></span>
                         </div>
                     </a>
