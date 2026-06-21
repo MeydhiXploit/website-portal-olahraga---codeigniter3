@@ -276,3 +276,4 @@ Karena project ini menggunakan database MySQL (`portal_olahraga.sql`), ikuti atu
 ### ⚠️ Tips Menghindari Konflik Kode (Merge Conflict)
 - **Komunikasi:** Selalu koordinasikan dengan kelompok siapa mengerjakan file/fitur apa agar tidak ada dua orang yang mengubah file atau baris kode yang sama secara bersamaan.
 - **Sering Pull:** Sering-sering lakukan `git pull origin main` ketika berada di branch `main` untuk meminimalkan perbedaan kode yang terlalu jauh.
+// contribution update
