@@ -26,7 +26,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/custom.css?v=1.3">
       <!-- ColorMag CSS -->
-      <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=2.3">
+      <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=9.9">
     <!-- font family -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- end font family -->
@@ -346,6 +346,7 @@
              </div>
           </div>
       </footer>
+   </section>
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       <!-- ALL JS FILES -->
       <script src="<?php echo site_url('vendor/userpage/')?>js/all.js"></script>

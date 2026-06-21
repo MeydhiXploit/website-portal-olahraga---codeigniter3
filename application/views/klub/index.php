@@ -134,7 +134,6 @@
 <div class="hero">
     <h1 class="hero-caption">Klub Olahraga</h1>
 </div>
-</section>
 
 <section id="contant" class="contant cm-clubs-section">
     <div class="container">

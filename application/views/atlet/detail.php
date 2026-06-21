@@ -143,7 +143,6 @@
 <div class="hero">
     <h1 class="hero-caption">Profil Atlet</h1>
 </div>
-</section>
 
 <section id="contant" class="contant cm-athlete-detail-section">
     <div class="container">

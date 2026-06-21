@@ -90,7 +90,6 @@
 <div class="hero">
     <h1 class="hero-caption"><?php echo $news->title; ?></h1>
 </div>
-</section>
 
 <section id="contant" class="contant main-heading single-blog" style="margin-top: 40px; margin-bottom: 40px;">
     <div class="row">

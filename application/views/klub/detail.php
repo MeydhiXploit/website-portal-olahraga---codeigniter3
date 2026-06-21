@@ -289,7 +289,6 @@
 <div class="hero">
     <h1 class="hero-caption">Detail Klub</h1>
 </div>
-</section>
 
 <section id="contant" class="contant cm-club-detail-section">
     <div class="container">

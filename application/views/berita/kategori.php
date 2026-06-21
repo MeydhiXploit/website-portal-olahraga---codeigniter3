@@ -224,9 +224,8 @@
 </style>
 
 <div class="hero">
-    <h1 class="hero-caption">Kategori: <?php echo $sport_type->name_type; ?></h1>
+    <h1 class="hero-caption"><?php echo $sport_type->name_type; ?></h1>
 </div>
-</section>
 
 <section id="contant" class="contant" style="margin-top: 40px; margin-bottom: 40px;">
     <div class="container">
@@ -234,8 +233,9 @@
             <!-- News Grid List (Left) -->
             <div class="col-md-9 col-sm-8 col-xs-12">
                 <?php if (empty($news_list)): ?>
-                    <div class="alert alert-info text-center cm-alert" style="padding: 30px; border-radius: 8px;">
-                        <h4>Belum ada berita untuk kategori <?php echo $sport_type->name_type; ?>.</h4>
+                    <div class="alert alert-info cm-alert" style="padding: 18px 24px; border-radius: 8px; text-align: left; display: flex; align-items: center; gap: 12px; background: #ffffff; border-left: 4px solid var(--primary-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin: 10px 0;">
+                        <i class="fa fa-info-circle" style="color: var(--primary-color); font-size: 20px;"></i>
+                        <span style="font-size: 14.5px; font-weight: 600; color: #444; margin: 0;">Belum ada berita untuk kategori <?php echo $sport_type->name_type; ?>.</span>
                     </div>
                 <?php else: ?>
                     <div class="row" style="display: flex; flex-wrap: wrap;">

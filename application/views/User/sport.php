@@ -11,7 +11,7 @@
 <!-- Breaking News Ticker (Sport Specific) -->
 <div class="container" style="margin-top: 25px; margin-bottom: -15px;">
     <div class="breaking-news-bar" style="background-color: #ffffff; border: 1px solid #eaeaea; padding: 10px 15px; display: flex; align-items: center; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
-        <span style="background-color: hsl(270, 75%, 50%); color: #ffffff; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 2px; margin-right: 15px; letter-spacing: 0.5px;">Terkini</span>
+        <span style="background-color: var(--primary-color); color: #ffffff; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 2px; margin-right: 15px; letter-spacing: 0.5px;">Terkini</span>
         <marquee scrollamount="4" onmouseover="this.stop();" onmouseout="this.start();" style="font-size: 13px; font-weight: 500; color: #333; cursor: pointer;">
             <?php 
                 $marquee_items = [];

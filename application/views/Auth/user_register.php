@@ -161,7 +161,6 @@
 <div class="hero">
     <h1 class="hero-caption">Sign Up</h1>
 </div>
-</section>
 
 <section id="contant" class="contant cm-auth-section">
     <div class="container">

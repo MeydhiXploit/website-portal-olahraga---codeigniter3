@@ -1,7 +1,6 @@
 <div class="hero">
     <h1 class="hero-caption">Jadwal Pertandingan</h1>
 </div>
-</section>
 
 <section id="contant" class="contant" style="margin-top: 40px; margin-bottom: 40px;">
     <div class="container">
@@ -69,7 +68,7 @@
                                 <img src="<?php echo $logo1; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="height: 45px; width: 45px; object-fit: contain;">
                             </div>
                             
-                            <div style="font-size: 12.5px; font-weight: 800; color: #ffffff; background: var(--primary-color); padding: 6px 16px; border-radius: 4px; flex-shrink: 0; min-width: 60px; text-align: center; box-shadow: 0 2px 5px rgba(138,43,226,0.2);">
+                            <div style="font-size: 12.5px; font-weight: 800; color: #ffffff; background: var(--primary-color); padding: 6px 16px; border-radius: 4px; flex-shrink: 0; min-width: 60px; text-align: center; box-shadow: 0 2px 5px rgba(216, 48, 47, 0.2);">
                                 <?php echo $match->club_1_score; ?> - <?php echo $match->club_2_score; ?>
                             </div>
                             

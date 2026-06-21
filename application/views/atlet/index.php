@@ -75,7 +75,6 @@
 <div class="hero">
     <h1 class="hero-caption">Daftar Atlet Olahraga</h1>
 </div>
-</section>
 
 <section id="contant" class="contant" style="margin-top: 40px; margin-bottom: 40px;">
     <div class="container">

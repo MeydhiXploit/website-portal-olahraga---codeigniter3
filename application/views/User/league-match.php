@@ -1,7 +1,6 @@
 <div class="hero">
     <h1 class="hero-caption"><?php echo $data_league->name_league; ?></h1>
 </div>
-</section>
 
 <div class="matchs-info" style="background: transparent; margin-top: 25px; margin-bottom: 15px;">
     <div class="container">
