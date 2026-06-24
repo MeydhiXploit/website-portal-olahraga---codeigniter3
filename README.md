@@ -21,7 +21,7 @@ Untuk mengakses website di lingkungan server lokal Anda:
 
 | Peran | NIM | Nama |
 | :--- | :--- | :--- |
-| **Ketua Kelompok** | `24010110126` | - |
+| **Ketua Kelompok** | `24010110126` | Meydhi Ari Nugroho |
 | **Anggota** | `24010110088` | Clara Septia Ramdhani |
 | **Anggota** | `24010110076` | Villari Naufal Nety |
 | **Anggota** | `24010110078` | M. Syarifudin |
