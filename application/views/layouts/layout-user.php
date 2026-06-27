@@ -373,64 +373,6 @@
           <div class="main-content-wrapper">
              <?php echo $content; ?>
           </div>
-<<<<<<< HEAD
-      <footer id="footer" class="footer">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <div class="footer-logo">
-                           <a href="#"><img src="<?php echo base_url('vendor/userpage/images/footer-logo.png?v=1.1')?>" alt="#" /></a>
-                        </div>
-                        <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p>
-
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-2">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <h3>Menu</h3>
-                        <ul class="footer-menu">
-                           <li><a href="about.html">About Us</a></li>
-                           <li><a href="team.html">Our Team</a></li>
-                           <li><a href="news.html">Latest News</a></li>
-                           <li><a href="matche.html">Recent Matchs</a></li>
-                           <li><a href="blog.html">Our Blog</a></li>
-                           <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="full">
-                     <div class="footer-widget">
-                        <h3>Contact us</h3>
-                         <ul class="address-list">
-                            <li><i class="fa fa-map-marker"></i> Jl. Ismail Marzuki No.22, Mataram</li>
-                            <li><i class="fa fa-phone"></i> (0370) 76563467893</li>
-                            <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> info@universitasbumigora.ac.id</li>
-                         </ul>
-                      </div>
-                   </div>
-                </div>
-                <div class="col-md-3">
-                   <div class="full">
-                      <div class="contact-footer">
-                         <iframe src="https://maps.google.com/maps?q=Universitas%20Bumigora,%20Mataram&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-                      </div>
-                   </div>
-                </div>
-            </div>
-         </div>
-          <div class="footer-bottom">
-             <div class="container">
-                <p>Copyright © <?php echo date('Y'); ?> by <a href="https://universitasbumigora.ac.id/" target="_blank">Universitas BumiGora</a>. All rights reserved.</p>
-             </div>
-          </div>
-      </footer>
-=======
      <footer id="footer" class="footer">
 
 <div class="container">
@@ -441,7 +383,6 @@
 
 <div class="col-md-4">
 
-```
 <div class="footer-widget">
 
     <div class="footer-logo">
@@ -466,7 +407,6 @@
 
 
 </div>
-```
 
 </div>
 
@@ -612,7 +552,6 @@ Universitas BumiGora
 
 </footer>
 
->>>>>>> origin/syarif-update
    </section>
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       <!-- ALL JS FILES -->
