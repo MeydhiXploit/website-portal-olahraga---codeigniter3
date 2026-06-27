@@ -168,7 +168,92 @@
          footer {
              flex-shrink: 0 !important;
          }
+/* =====================
+   FIX FOOTER CONTACT + MAP
+===================== */
 
+
+.footer .row {
+
+    display:flex;
+    align-items:flex-start;
+
+}
+
+
+/* Contact lebih lebar */
+
+.footer-widget {
+
+    padding-right:30px;
+
+}
+
+
+
+/* Map pindah agak kanan */
+
+.footer-map {
+
+    padding-top:70px;
+    padding-left:40px;
+
+}
+
+
+
+/* ukuran map */
+
+.footer-map iframe {
+
+    width:220%;
+    height:220px;
+    border-radius:12px;
+
+}
+
+
+
+
+/* email jangan turun aneh */
+
+.address-list li {
+
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+
+}
+
+
+.address-list li i {
+
+    margin-top:5px;
+    flex-shrink:0;
+
+}
+
+
+
+/* responsive */
+
+@media(max-width:768px){
+
+.footer .row{
+
+    display:block;
+
+}
+
+
+.footer-map{
+
+    padding-left:0;
+    margin-top:70px;
+
+}
+
+}
          /* Mobile Responsiveness Improvements */
          @media (max-width: 767px) {
              .logo {
@@ -288,6 +373,7 @@
           <div class="main-content-wrapper">
              <?php echo $content; ?>
           </div>
+<<<<<<< HEAD
       <footer id="footer" class="footer">
          <div class="container">
             <div class="row">
@@ -346,6 +432,189 @@
              </div>
           </div>
       </footer>
+=======
+     <footer id="footer" class="footer">
+
+<div class="container">
+
+<div class="row">
+
+<!-- ABOUT -->
+
+<div class="col-md-4">
+
+```
+<div class="footer-widget">
+
+    <div class="footer-logo">
+
+        <a href="<?= base_url(); ?>">
+
+            <img 
+            src="<?= site_url('vendor/userpage/images/logo.png'); ?>"
+            alt="Logo"
+            style="width:150px; margin-bottom:20px;">
+
+        </a>
+
+    </div>
+
+
+    <p>
+        Portal informasi olahraga yang menyediakan berita,
+        pertandingan, dan informasi atlet terbaru.
+        Nikmati update olahraga terkini hanya di sini.
+    </p>
+
+
+</div>
+```
+
+</div>
+
+<!-- MENU -->
+
+<div class="col-md-3">
+
+<div class="footer-widget">
+
+<h3>
+Menu
+</h3>
+
+<ul class="footer-menu">
+
+<li>
+<a href="<?= base_url(); ?>">
+Home
+</a>
+</li>
+
+<li>
+<a href="#">
+About Us
+</a>
+</li>
+
+<li>
+<a href="#">
+Latest News
+</a>
+</li>
+
+<li>
+<a href="#">
+Recent Match
+</a>
+</li>
+
+<li>
+<a href="#">
+Contact Us
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CONTACT -->
+
+<div class="col-md-3">
+
+<div class="footer-widget">
+
+<h3>
+Contact Us
+</h3>
+
+<ul class="address-list">
+
+<li>
+
+<i class="fa fa-map-marker"></i>
+
+Jl. Ismail Marzuki No.22, Mataram
+
+</li>
+
+<li>
+
+<i class="fa fa-phone"></i>
+
+(0370) 638369
+
+</li>
+
+<li>
+
+<i class="fa fa-envelope"></i>
+
+[info@universitasbumigora.ac.id](mailto:info@universitasbumigora.ac.id)
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- MAP -->
+
+<div class="col-md-2">
+
+<div class="footer-map">
+
+<iframe
+
+src="https://maps.google.com/maps?q=Universitas%20Bumigora&t=&z=15&output=embed"
+
+width="100%"
+
+height="180"
+
+frameborder="0"
+
+style="border-radius:12px;">
+
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COPYRIGHT -->
+
+<div class="footer-bottom">
+
+<div class="container">
+
+<p>
+
+Copyright © <?= date('Y'); ?> by
+
+<a href="#">
+Universitas BumiGora
+</a>
+
+. All rights reserved.
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+>>>>>>> origin/syarif-update
    </section>
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       <!-- ALL JS FILES -->
