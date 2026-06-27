@@ -298,8 +298,7 @@
                            <a href="#"><img src="<?php echo site_url('vendor/userpage/')?>images/footer-logo.png?v=1.1" alt="#" /></a>
                         </div>
                         <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p>
-                        <ul class="social-icons style-4 pull-left">
-                           <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        
                         </ul>
                      </div>
                   </div>
