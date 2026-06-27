@@ -298,9 +298,7 @@
                            <a href="#"><img src="<?php echo site_url('vendor/userpage/')?>images/footer-logo.png?v=1.1" alt="#" /></a>
                         </div>
                         <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p>
-                        <ul class="social-icons style-4 pull-left">
-                           <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                        </ul>
+
                      </div>
                   </div>
                </div>
@@ -325,7 +323,7 @@
                         <h3>Contact us</h3>
                          <ul class="address-list">
                             <li><i class="fa fa-map-marker"></i> Jl. Ismail Marzuki No.22, Mataram</li>
-                            <li><i class="fa fa-phone"></i> (0370) 638369</li>
+                            <li><i class="fa fa-phone"></i> (0370) 76563467893</li>
                             <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> info@universitasbumigora.ac.id</li>
                          </ul>
                       </div>
