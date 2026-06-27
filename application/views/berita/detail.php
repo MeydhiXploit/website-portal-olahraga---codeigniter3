@@ -108,7 +108,7 @@
                         <div class="post-people" style="margin-bottom: 25px; border-bottom: 1px solid #eaeaea; padding-bottom: 20px;">
                             <div class="left-profile">
                                 <div class="post-info" style="display: flex; align-items: center;">
-                                    <img src="<?php echo site_url('vendor/userpage/'); ?>images/profile-img.png" alt="#" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-color);" />
+                                    <img src="<?php echo base_url('vendor/userpage/images/profile-img.png'); ?>" alt="#" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-color);" />
                                     <span style="margin-left: 15px; display: flex; flex-direction: column;">
                                         <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: #333;">Oleh <?php echo $news->fullname; ?></h4>
                                         <h5 style="margin: 3px 0 0 0; font-size: 12px; color: var(--text-muted); font-weight: 400;">

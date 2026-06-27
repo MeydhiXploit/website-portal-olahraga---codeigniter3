@@ -13,27 +13,27 @@
    <!-- Site Icons -->
    <link rel="shortcut icon" href="" type="image/x-icon" />
    <link rel="apple-touch-icon" href="">
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/bootstrap.min.css">
-   <!-- Site CSS -->
-   <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>style.css">
-   <!-- Colors CSS -->
-   <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colors.css">
-   <!-- ALL VERSION CSS -->	
-   <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/versions.css">
-   <!-- Responsive CSS -->
-   <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/custom.css?v=1.3">
-      <!-- ColorMag CSS -->
-      <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/colormag.css?v=9.9">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/bootstrap.min.css')?>">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/style.css')?>">
+    <!-- Colors CSS (File does not exist in vendor/userpage/css/) -->
+    <!-- <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/colors.css')?>"> -->
+    <!-- ALL VERSION CSS (File does not exist in vendor/userpage/css/) -->	
+    <!-- <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/versions.css')?>"> -->
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/responsive.css')?>">
+     <!-- Custom CSS -->
+     <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/custom.css?v=1.3')?>">
+       <!-- ColorMag CSS -->
+       <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/colormag.css?v=9.9')?>">
     <!-- font family -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- end font family -->
-    <link rel="stylesheet" href="<?php echo site_url('vendor/userpage/')?>css/3dslider.css" />
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <script src="<?php echo site_url('vendor/userpage/')?>js/3dslider.js"></script>
+     <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/3dslider.css')?>" />
+     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+     <script src="<?php echo base_url('vendor/userpage/js/3dslider.js')?>"></script>
     <style>
         header {
             position: relative !important;
@@ -41,7 +41,7 @@
             top: auto !important;
             float: left !important;
             width: 100% !important;
-            background: #081e3f url('<?php echo site_url("vendor/userpage/images/stadium.png"); ?>') no-repeat center center !important;
+            background: #081e3f url('<?php echo base_url("vendor/userpage/images/stadium.png"); ?>') no-repeat center center !important;
             background-size: cover !important;
             z-index: 100 !important;
             padding-bottom: 8px !important;
@@ -297,7 +297,7 @@
                        <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="full">
                             <div class="logo">
-                               <a href="<?php echo base_url();?>"><img src="<?php echo site_url('vendor/userpage/')?>images/logo.png?v=1.2" alt="Portal Olahraga" style="max-height: 50px; width: auto;" /></a>
+                               <a href="<?php echo base_url();?>"><img src="<?php echo base_url('vendor/userpage/images/logo.png?v=1.2')?>" alt="Portal Olahraga" style="max-height: 50px; width: auto;" /></a>
                             </div>
                          </div>
                       </div>
@@ -373,6 +373,66 @@
           <div class="main-content-wrapper">
              <?php echo $content; ?>
           </div>
+<<<<<<< HEAD
+      <footer id="footer" class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <div class="footer-logo">
+                           <a href="#"><img src="<?php echo base_url('vendor/userpage/images/footer-logo.png?v=1.1')?>" alt="#" /></a>
+                        </div>
+                        <p>Most of our events have hard and easy route choices as we are always keen to encourage new riders.</p>
+                        <ul class="social-icons style-4 pull-left">
+                           <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-2">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <h3>Menu</h3>
+                        <ul class="footer-menu">
+                           <li><a href="about.html">About Us</a></li>
+                           <li><a href="team.html">Our Team</a></li>
+                           <li><a href="news.html">Latest News</a></li>
+                           <li><a href="matche.html">Recent Matchs</a></li>
+                           <li><a href="blog.html">Our Blog</a></li>
+                           <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <h3>Contact us</h3>
+                         <ul class="address-list">
+                            <li><i class="fa fa-map-marker"></i> Jl. Ismail Marzuki No.22, Mataram</li>
+                            <li><i class="fa fa-phone"></i> (0370) 638369</li>
+                            <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> info@universitasbumigora.ac.id</li>
+                         </ul>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-3">
+                   <div class="full">
+                      <div class="contact-footer">
+                         <iframe src="https://maps.google.com/maps?q=Universitas%20Bumigora,%20Mataram&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      </div>
+                   </div>
+                </div>
+            </div>
+         </div>
+          <div class="footer-bottom">
+             <div class="container">
+                <p>Copyright © <?php echo date('Y'); ?> by <a href="https://universitasbumigora.ac.id/" target="_blank">Universitas BumiGora</a>. All rights reserved.</p>
+             </div>
+          </div>
+      </footer>
+=======
      <footer id="footer" class="footer">
 
 <div class="container">
@@ -554,12 +614,13 @@ Universitas BumiGora
 
 </footer>
 
+>>>>>>> origin/syarif-update
    </section>
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       <!-- ALL JS FILES -->
-      <script src="<?php echo site_url('vendor/userpage/')?>js/all.js"></script>
+      <script src="<?php echo base_url('vendor/userpage/js/all.js')?>"></script>
       <!-- ALL PLUGINS -->
-      <script src="<?php echo site_url('vendor/userpage/')?>js/custom.js"></script>
+      <script src="<?php echo base_url('vendor/userpage/js/custom.js')?>"></script>
       <!-- Search Toggle Script Removed -->
    </body>
 </html>
