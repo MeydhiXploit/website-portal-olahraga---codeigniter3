@@ -203,7 +203,7 @@
 
 
 /* ukuran map */
-
+4
 .footer-map iframe {
 
     width:220%;
