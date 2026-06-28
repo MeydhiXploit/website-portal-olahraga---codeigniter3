@@ -16,8 +16,7 @@
             <?php 
             if (!empty($id)) {
             ?>
-                <img src="<?php echo isset($data_news) ? $data_news->thumbnail : ''; ?>" width="150" height="150"alt="">
-                <?php echo $data_news->thumbnail;?>
+                <img src="<?php echo isset($data_news) ? get_image_url($data_news->thumbnail) : ''; ?>" width="150" height="150"alt="">
                 <input type='hidden' name='thumbnail-lama' value="<?php echo $data_news->thumbnail?>">
                 <span class="alert-danger"><?php echo form_error('thumbnail-lama'); ?></span>
             <?php
@@ -69,6 +68,3 @@
     <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
-
-
-   

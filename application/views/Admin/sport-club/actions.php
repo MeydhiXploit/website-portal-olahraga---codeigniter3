@@ -26,8 +26,7 @@
             <?php 
             if (!empty($id)) {
             ?>
-                <img src="<?php echo isset($data_sportClub) ? $data_sportClub->logo : ''; ?>" width="150" height="150"alt="">
-                <?php echo $data_sportClub->logo;?>
+                <img src="<?php echo isset($data_sportClub) ? get_image_url($data_sportClub->logo) : ''; ?>" width="150" height="150"alt="">
                 <input type='hidden' name='logo-lama' value="<?php echo $data_sportClub->logo?>">
                 <span class="alert-danger"><?php echo form_error('logo-lama'); ?></span>
             <?php
