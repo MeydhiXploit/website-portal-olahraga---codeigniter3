@@ -12,6 +12,7 @@ class M_Match extends CI_Model {
     }
 
     public function getMatch_by_league($league_id){
+        $league_id = (int)$league_id;
         return $this->db->query("SELECT sport_match.*, 
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_1) as  'club_1',
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_2) as  'club_2',
@@ -21,6 +22,7 @@ class M_Match extends CI_Model {
     }
 
     public function getMatch_today_only($league_id) {
+        $league_id = (int)$league_id;
         return $this->db->query("SELECT sport_match.*, 
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_1) as  'club_1',
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_2) as  'club_2',
@@ -30,6 +32,7 @@ class M_Match extends CI_Model {
     }
 
     public function getMatch_today($league_id) {
+        $league_id = (int)$league_id;
         return $this->db->query("SELECT sport_match.*, 
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_1) as  'club_1',
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_2) as  'club_2',
