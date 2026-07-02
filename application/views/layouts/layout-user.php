@@ -31,8 +31,8 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- end font family -->
 <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/3dslider.css') ?>" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <script src="<?php echo base_url('vendor/userpage/js/3dslider.js') ?>"></script>
 <style>
     header {
@@ -578,6 +578,9 @@
     </section>
     <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
     <!-- ALL JS FILES -->
+    <script>
+        var exports = window.exports = window.exports || {};
+    </script>
     <script src="<?php echo base_url('vendor/userpage/js/all.js') ?>"></script>
     <!-- ALL PLUGINS -->
     <script src="<?php echo base_url('vendor/userpage/js/custom.js') ?>"></script>
