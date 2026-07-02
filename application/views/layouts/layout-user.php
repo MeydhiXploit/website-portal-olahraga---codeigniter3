@@ -581,6 +581,11 @@
     <script>
         var exports = window.exports = window.exports || {};
     </script>
+    <script>
+        if (typeof module === 'undefined') window.module = {
+            exports: window.exports
+        };
+    </script>
     <script src="<?php echo base_url('vendor/userpage/js/all.js') ?>"></script>
     <!-- ALL PLUGINS -->
     <script src="<?php echo base_url('vendor/userpage/js/custom.js') ?>"></script>
