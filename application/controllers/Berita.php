@@ -1,16 +1,19 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Berita extends CI_Controller {
+class Berita extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model(array('News_model', 'M_Sport_Type'));
         $this->load->library('pagination');
         $this->visitor->count();
     }
 
-    public function kategori($slug = NULL, $offset = 0) {
+    public function kategori($slug = NULL, $offset = 0)
+    {
         if (empty($slug)) {
             show_404();
         }
@@ -63,7 +66,8 @@ class Berita extends CI_Controller {
         $this->template->user_template('berita/kategori', $context);
     }
 
-    public function detail($news_slug = NULL) {
+    public function detail($news_slug = NULL)
+    {
         if (empty($news_slug)) {
             show_404();
         }
