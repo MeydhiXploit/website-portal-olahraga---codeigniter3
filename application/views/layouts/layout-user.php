@@ -14,26 +14,26 @@
 <link rel="shortcut icon" href="" type="image/x-icon" />
 <link rel="apple-touch-icon" href="">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/bootstrap.min.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/userpage/css/bootstrap.min.css') ?>">
 <!-- Site CSS -->
-<link rel="stylesheet" href="<?php echo base_url('vendor/userpage/style.css') ?>">
-<!-- Colors CSS (File does not exist in vendor/userpage/css/) -->
-<!-- <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/colors.css') ?>"> -->
-<!-- ALL VERSION CSS (File does not exist in vendor/userpage/css/) -->
-<!-- <link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/versions.css') ?>"> -->
+<link rel="stylesheet" href="<?php echo base_url('assets/userpage/style.css') ?>">
+<!-- Colors CSS (File does not exist in assets/userpage/css/) -->
+<!-- <link rel="stylesheet" href="<?php echo base_url('assets/userpage/css/colors.css') ?>"> -->
+<!-- ALL VERSION CSS (File does not exist in assets/userpage/css/) -->
+<!-- <link rel="stylesheet" href="<?php echo base_url('assets/userpage/css/versions.css') ?>"> -->
 <!-- Responsive CSS -->
-<link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/responsive.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/userpage/css/responsive.css') ?>">
 <!-- Custom CSS -->
-<link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/custom.css?v=1.3') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/userpage/css/custom.css?v=1.3') ?>">
 <!-- ColorMag CSS -->
-<link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/colormag.css?v=9.9') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/userpage/css/colormag.css?v=9.9') ?>">
 <!-- font family -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- end font family -->
-<link rel="stylesheet" href="<?php echo base_url('vendor/userpage/css/3dslider.css') ?>" />
+<link rel="stylesheet" href="<?php echo base_url('assets/userpage/css/3dslider.css') ?>" />
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<script src="<?php echo base_url('vendor/userpage/js/3dslider.js') ?>"></script>
+<script src="<?php echo base_url('assets/userpage/js/3dslider.js') ?>"></script>
 <style>
     header {
         position: relative !important;
@@ -41,7 +41,7 @@
         top: auto !important;
         float: left !important;
         width: 100% !important;
-        background: #081e3f url('<?php echo base_url("vendor/userpage/images/stadium.png"); ?>') no-repeat center center !important;
+        background: #081e3f url('<?php echo base_url("assets/userpage/images/stadium.png"); ?>') no-repeat center center !important;
         background-size: cover !important;
         z-index: 100 !important;
         padding-bottom: 8px !important;
@@ -320,7 +320,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="full">
                                 <div class="logo">
-                                    <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('vendor/userpage/images/logo.png?v=1.2') ?>" alt="Portal Olahraga" style="max-height: 50px; width: auto;" /></a>
+                                    <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/userpage/images/logo.png?v=1.2') ?>" alt="Portal Olahraga" style="max-height: 50px; width: auto;" /></a>
                                 </div>
                             </div>
                         </div>
@@ -413,7 +413,7 @@
                                 <a href="<?= base_url(); ?>">
 
                                     <img
-                                        src="<?= site_url('vendor/userpage/images/logo.png'); ?>"
+                                        src="<?= site_url('assets/userpage/images/logo.png'); ?>"
                                         alt="Logo"
                                         style="width:150px; margin-bottom:20px;">
 
@@ -586,9 +586,9 @@
             exports: window.exports
         };
     </script>
-    <script src="<?php echo base_url('vendor/userpage/js/all.js') ?>"></script>
+    <script src="<?php echo base_url('assets/userpage/js/all.js') ?>"></script>
     <!-- ALL PLUGINS -->
-    <script src="<?php echo base_url('vendor/userpage/js/custom.js') ?>"></script>
+    <script src="<?php echo base_url('assets/userpage/js/custom.js') ?>"></script>
     <!-- Search Toggle Script Removed -->
 </body>
 
