@@ -9,7 +9,7 @@ class SportController extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
-        $this->load->model(array('M_Sport_Type', 'M_Sport_Club', 'M_League', 'M_News'));
+        $this->load->model(array('M_Sport_Type', 'M_Sport_Club', 'M_League', 'M_News', 'M_User'));
     }
 
     public function sport()
@@ -185,11 +185,11 @@ class SportController extends CI_Controller
 
 
                 if (empty($id)) {
-                    $this->M_Sport_Club->actions(NULL, $league_id, $upload['file_name']);
+                    $this->M_Sport_Club->actions($league_id, NULL, $upload['file_name'] ?? null);
                     redirect('admin/sport-club/league/' . $league_id);
                 } else {
-                    if (!empty($upload['file_name'])) $this->M_Sport_Club->actions($id, $league_id, $upload['file_name']);
-                    else $this->M_Sport_Club->actions($id, $league_id);
+                    if (!empty($upload['file_name'])) $this->M_Sport_Club->actions($league_id, $id, $upload['file_name']);
+                    else $this->M_Sport_Club->actions($league_id, $id);
                     redirect('admin/sport-club/league/' . $league_id);
                 }
             }

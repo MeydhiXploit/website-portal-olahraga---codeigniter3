@@ -1,18 +1,23 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_Sport_Athlete extends CI_Model {
-    
-    
-    public function get_sportType($club_Id) {
-        return $this->db->query("SELECT sport_type.* FROM sport_type, sport_club where sport_type.id = sport_club.id and sport_club.id = $club_Id");
+class M_Sport_Athlete extends CI_Model
+{
+
+
+    public function get_sportType($club_Id)
+    {
+        return $this->db->query("SELECT sport_type.* FROM sport_type
+                                JOIN league ON league.sport_type = sport_type.id
+                                JOIN sport_club ON sport_club.sport_league = league.id
+                                WHERE sport_club.id = $club_Id");
     }
 
 
     /**
      * ATHLETE
      */
-    public function getAthlete($club_id, $id = NULL) 
+    public function getAthlete($club_id, $id = NULL)
     {
         if (!empty($id)) {
             return $this->db->query("SELECT * FROM sport_athlete WHERE id = $id")->row();
@@ -21,7 +26,8 @@ class M_Sport_Athlete extends CI_Model {
         }
     }
 
-    public function getAthlete_by_league($league_id) {
+    public function getAthlete_by_league($league_id)
+    {
         return $this->db->query("SELECT sport_athlete.*, league.name_league FROM `sport_athlete`, sport_club, league WHERE league.id = $league_id and sport_athlete.sport_club = sport_club.id and sport_club.sport_league = league.id;")->result();
     }
 
@@ -32,10 +38,11 @@ class M_Sport_Athlete extends CI_Model {
             $data = [
                 'name' => $this->input->post('name'),
                 'gender' => empty($this->input->post('gender')) ? $this->input->post('gender-lama') : $this->input->post('gender'),
+                'age' => $this->input->post('age'),
                 'backNumber' => $this->input->post('backNumber'),
                 'weight' => $this->input->post('weight'),
                 'height' => $this->input->post('height'),
-                'photo' => !empty($photo) ? site_url('upload/' . $photo) : $this->input->post('photo-lama'),
+                'photo' => !empty($photo) ? $photo : $this->input->post('photo-lama'),
                 'date_birth' => date('Y-m-d', strtotime($this->input->post('date_birth'))),
                 'playerType_id' => $this->input->post('player_type'),
                 'sport_club' => $sport_club,
@@ -45,10 +52,11 @@ class M_Sport_Athlete extends CI_Model {
             $data = [
                 'name' => $this->input->post('name'),
                 'gender' => $this->input->post('gender'),
+                'age' => $this->input->post('age'),
                 'backNumber' => $this->input->post('backNumber'),
                 'weight' => $this->input->post('weight'),
                 'height' => $this->input->post('height'),
-                'photo' => site_url('upload/' . $photo),
+                'photo' => $photo,
                 'date_birth' => date('Y-m-d', strtotime($this->input->post('date_birth'))),
                 'playerType_id' => $this->input->post('player_type'),
                 'sport_club' => $sport_club,
@@ -60,7 +68,7 @@ class M_Sport_Athlete extends CI_Model {
 
     public function delete($id)
     {
-        return $this->db->delete('sport_athlete', array('id'=>$id));
+        return $this->db->delete('sport_athlete', array('id' => $id));
     }
 
 
@@ -72,16 +80,16 @@ class M_Sport_Athlete extends CI_Model {
         if (!empty($id)) {
             return $this->db->query("SELECT * FROM player_type WHERE id = $id")->row();
         } else {
-            return $this->db->get_where('player_type', array('sport_type'=>$sport_type))->result();
+            return $this->db->get_where('player_type', array('sport_type' => $sport_type))->result();
         }
     }
 
     public function getPlayerType_by_sporType($id)
     {
-        return $this->db->get('player_type', array('sport_type'=>$id))->result();
+        return $this->db->get('player_type', array('sport_type' => $id))->result();
     }
 
-    public function actionsPlayerType($sportType_id, $id = NULL) 
+    public function actionsPlayerType($sportType_id, $id = NULL)
     {
         if (!empty($id)) {
             $data = [
@@ -89,8 +97,7 @@ class M_Sport_Athlete extends CI_Model {
                 'sport_type' => $sportType_id,
             ];
             return $this->db->update('player_type', $data, array('id' => $id));
-        }
-        else {
+        } else {
             $data = [
                 'player_type' => $this->input->post('player_type'),
                 'sport_type' => $sportType_id,
@@ -101,7 +108,7 @@ class M_Sport_Athlete extends CI_Model {
 
     public function deletePlayerType($id)
     {
-        return $this->db->delete('player_type', array('id'=>$id));
+        return $this->db->delete('player_type', array('id' => $id));
     }
 
     /**
@@ -109,6 +116,10 @@ class M_Sport_Athlete extends CI_Model {
      */
     public function getFoulType($sport_type, $id = NULL)
     {
+        if (!$this->db->table_exists('foul_type')) {
+            return !empty($id) ? null : [];
+        }
+
         if (!empty($id)) {
             return $this->db->query("SELECT * FROM foul_type WHERE id = $id")->row();
         } else {
@@ -116,27 +127,30 @@ class M_Sport_Athlete extends CI_Model {
         }
     }
 
-    public function actionsFoulType($sport_type , $id = NULL) 
+    public function actionsFoulType($sport_type, $id = NULL)
     {
-        if (!empty($id)) {
-            $data = [
-                'foul_name' => $this->input->post('foul_name'),
-                'sport_type' => $sport_type,
-            ];
-            return $this->db->update('foul_type', $data, array('id'=>$id));
+        if (!$this->db->table_exists('foul_type')) {
+            return false;
         }
-        else {
-            $data = [
-                'foul_name' => $this->input->post('foul_name'),
-                'sport_type' => $sport_type,
-            ];
+
+        $data = [
+            'foul_name' => $this->input->post('foul_name'),
+            'sport_type' => $sport_type,
+        ];
+
+        if (!empty($id)) {
+            return $this->db->update('foul_type', $data, array('id' => $id));
+        } else {
             return $this->db->insert('foul_type', $data);
         }
     }
 
     public function deleteFoulType($id)
     {
-        return $this->db->delete('foul_type', array('id'=>$id));
+        if (!$this->db->table_exists('foul_type')) {
+            return false;
+        }
+        return $this->db->delete('foul_type', array('id' => $id));
     }
 
     /**
@@ -144,6 +158,10 @@ class M_Sport_Athlete extends CI_Model {
      */
     public function getFoul($league_id, $id = NULL)
     {
+        if (!$this->db->table_exists('foul')) {
+            return !empty($id) ? null : [];
+        }
+
         if (!empty($id)) {
             return $this->db->query("SELECT * FROM foul WHERE id = $id")->row();
         } else {
@@ -156,7 +174,7 @@ class M_Sport_Athlete extends CI_Model {
         }
     }
 
-    public function actionsFoul($id = NULL) 
+    public function actionsFoul($id = NULL)
     {
         if (!empty($id)) {
             $data = [
@@ -165,9 +183,8 @@ class M_Sport_Athlete extends CI_Model {
                 'match_id' => $this->input->post('match'),
                 'athlete_id' => $this->input->post('player'),
             ];
-            $this->db->update('foul', $data, array('id'=> $id));
-        }
-        else {
+            $this->db->update('foul', $data, array('id' => $id));
+        } else {
             $data = [
                 'minute' => $this->input->post('match_time'),
                 'foul_type' => $this->input->post('foul_type'),
@@ -180,6 +197,6 @@ class M_Sport_Athlete extends CI_Model {
 
     public function deleteFoul($id)
     {
-        return $this->db->delete('foul', array('id'=>$id));
+        return $this->db->delete('foul', array('id' => $id));
     }
 }

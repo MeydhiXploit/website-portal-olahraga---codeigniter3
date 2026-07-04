@@ -102,7 +102,8 @@ class AthleteController extends CI_Controller
     {
         $id_sport_club = $this->uri->segment(4);
         $id_athlete = !empty($this->uri->segment(5)) ? $this->uri->segment(5) : NULL;
-        $sport_type = $this->M_Sport_Athlete->get_sportType($id_sport_club)->num_rows() > 0 ? $this->M_Sport_Athlete->get_sportType($id_sport_club)->row() : '';
+        $sport_type_query = $this->M_Sport_Athlete->get_sportType($id_sport_club);
+        $sport_type = $sport_type_query->num_rows() > 0 ? $sport_type_query->row() : '';
         $id_sport_type = !empty($sport_type->id) ? $sport_type->id : '';
         $context = [
             'data_athlete' => !empty($id_athlete) ? $this->M_Sport_Athlete->getAthlete($id_sport_club, $id_athlete) : null,
@@ -114,6 +115,7 @@ class AthleteController extends CI_Controller
         } else {
             $this->form_validation->set_rules('name', 'Nama', 'required', array('required' => "Nama Athlete tidak boleh kosong"));
             $this->form_validation->set_rules('backNumber', 'Back Number', 'required', array('required' => "Back Number tidak boleh kosong"));
+            $this->form_validation->set_rules('age', 'Age', 'required|integer', array('required' => "Umur tidak boleh kosong", 'integer' => "Umur harus berupa angka"));
             $this->form_validation->set_rules('height', 'Height', 'required', array('required' => "Height tidak boleh kosong"));
             $this->form_validation->set_rules('weight', 'Weight', 'required', array('required' => "Weight tidak boleh kosong"));
             $this->form_validation->set_rules('date_birth', 'Date Birth', 'required', array('required' => "Tanggal Lahir tidak boleh kosong"));
@@ -224,6 +226,9 @@ class AthleteController extends CI_Controller
     public function foulType()
     {
         $sport_type = $this->uri->segment(3);
+        if (!$this->db->table_exists('foul_type')) {
+            show_404();
+        }
         $context = [
             'data_foulType' => $this->M_Sport_Athlete->getFoulType($sport_type),
         ];
@@ -238,6 +243,10 @@ class AthleteController extends CI_Controller
             'data_foulType' => !empty($id) ? $this->M_Sport_Athlete->getFoulType($sport_type, $id) : null,
         ];
 
+        if (!$this->db->table_exists('foul_type')) {
+            show_404();
+        }
+
         $this->form_validation->set_rules('foul_name', 'Type Nama', 'required', array('required' => "Nama Pelanggaran tidak boleh kosong"));
 
         if ($this->form_validation->run() === TRUE) {
@@ -251,6 +260,9 @@ class AthleteController extends CI_Controller
 
     public function foulType_delete()
     {
+        if (!$this->db->table_exists('foul_type')) {
+            show_404();
+        }
         $id = $this->uri->segment(4);
         $this->M_Sport_Athlete->deleteFoulType($id);
         echo "<script>history.back()</script>";
@@ -284,6 +296,9 @@ class AthleteController extends CI_Controller
     public function foul()
     {
         isAdminLogin();
+        if (!$this->db->table_exists('foul')) {
+            show_404();
+        }
         $league_id = $this->uri->segment(4);
         $context = [
             'data_foul' => $this->M_Sport_Athlete->getFoul($league_id),
@@ -293,37 +308,45 @@ class AthleteController extends CI_Controller
 
     public function foul_actions()
     {
+        if (!$this->db->table_exists('foul') || !$this->db->table_exists('foul_type')) {
+            show_404();
+        }
+
         $league_id = $this->uri->segment(4);
         $id_foul = !empty($this->uri->segment(5)) ? $this->uri->segment(5) : NULL;
-        $sport_type = $this->M_League->get(NULL, $league_id)->sport_type;
-        if (empty($league_id)) {
-            show_404($league_id);
-        } else {
-            $context = [
-                'data_foulType' => $this->M_Sport_Athlete->getFoulType($sport_type),
-                'data_match' => $this->M_Match->getMatch_by_league($league_id),
-                'data_player' => $this->M_Sport_Athlete->getAthlete_by_league($league_id),
-                'data_foul' => !empty($id_foul) ? $this->M_Sport_Athlete->getFoul($league_id, $id_foul) : null,
-            ];
+        $league = $this->M_League->get(NULL, $league_id);
 
-            $this->form_validation->set_rules('match_time', 'Menit Pelanggaran', 'required', array('required' => "*Menit tidak boleh kosong"));
-            $this->form_validation->set_rules('foul_type', 'Type Olahraga', 'required', array('required' => "*Type Olahraga tidak boleh kosong"));
-            $this->form_validation->set_rules('match', 'Match', 'required', array('required' => "*Match tidak boleh kosong"));
-            $this->form_validation->set_rules('player', 'Player', 'required', array('required' => "*Player tidak boleh kosong"));
-
-
-            if ($this->form_validation->run() === TRUE) {
-                if (!empty($id_foul)) $this->M_Sport_Athlete->actionsFoul($id_foul);
-                else $this->M_Sport_Athlete->actionsFoul();
-                redirect('admin/foul/league/' . $league_id);
-            }
-
-            $this->template->show('admin/foul/actions', $context);
+        if (empty($league_id) || empty($league)) {
+            show_404();
         }
+
+        $sport_type = $league->sport_type;
+        $context = [
+            'data_foulType' => $this->M_Sport_Athlete->getFoulType($sport_type),
+            'data_match' => $this->M_Match->getMatch_by_league($league_id),
+            'data_player' => $this->M_Sport_Athlete->getAthlete_by_league($league_id),
+            'data_foul' => !empty($id_foul) ? $this->M_Sport_Athlete->getFoul($league_id, $id_foul) : null,
+        ];
+
+        $this->form_validation->set_rules('match_time', 'Menit Pelanggaran', 'required', array('required' => "*Menit tidak boleh kosong"));
+        $this->form_validation->set_rules('foul_type', 'Type Olahraga', 'required', array('required' => "*Type Olahraga tidak boleh kosong"));
+        $this->form_validation->set_rules('match', 'Match', 'required', array('required' => "*Match tidak boleh kosong"));
+        $this->form_validation->set_rules('player', 'Player', 'required', array('required' => "*Player tidak boleh kosong"));
+
+        if ($this->form_validation->run() === TRUE) {
+            if (!empty($id_foul)) $this->M_Sport_Athlete->actionsFoul($id_foul);
+            else $this->M_Sport_Athlete->actionsFoul();
+            redirect('admin/foul/league/' . $league_id);
+        }
+
+        $this->template->show('admin/foul/actions', $context);
     }
 
     public function foul_delete()
     {
+        if (!$this->db->table_exists('foul')) {
+            show_404();
+        }
         $id = $this->uri->segment(4);
         $this->M_Sport_Athlete->deleteFoul($id);
         echo "<script>history.back()</script>";

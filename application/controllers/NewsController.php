@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class NewsController extends CI_Controller{
+class NewsController extends CI_Controller
+{
     private $_uploaded_thumbnail = null;
 
     public function __construct()
@@ -11,18 +12,17 @@ class NewsController extends CI_Controller{
         $this->visitor->count();
         $this->load->library('form_validation');
         $this->load->model(array('M_News', 'M_Review', 'M_Sport_Type', 'M_League', 'M_Match'));
-
     }
 
-    public function news_page() 
+    public function news_page()
     {
         $news_slug = $this->uri->segment(2);
         $news = $this->M_News->getNews_by_slug($news_slug);
-        
+
         if (empty($news)) {
             show_404();
         }
-        
+
         $context = [
             'lastest_news_result' => $this->M_News->get_lastest_news_result(),
             'data_sportType' => $this->M_Sport_Type->get(),
@@ -35,9 +35,9 @@ class NewsController extends CI_Controller{
 
 
 
-    public function upload_data() 
+    public function upload_data()
     {
-        $config['upload_path']          = FCPATH.'upload';
+        $config['upload_path']          = FCPATH . 'upload';
         $config['allowed_types']        = 'jpg|jpeg|png|webp|gif';
         $config['file_name']            = uniqid();
         $config['overwrite']            = true;
@@ -52,7 +52,8 @@ class NewsController extends CI_Controller{
     /**
      * NEWS
      */
-    public function select_sportType() {
+    public function select_sportType()
+    {
         isAdminLogin();
         $context = [
             'sport_type' => $this->M_Sport_Type->get()
@@ -97,20 +98,20 @@ class NewsController extends CI_Controller{
         $sport_type_id = $this->uri->segment(4);
         $id_news = !empty($this->uri->segment(5)) ? $this->uri->segment(5) : NULL;
         $context = [
-            'data_news' => !empty($id_news) ? $this->M_News->getNews($sport_type_id,$id_news) : null,
+            'data_news' => !empty($id_news) ? $this->M_News->getNews($sport_type_id, $id_news) : null,
         ];
 
         if (empty($sport_type_id)) {
             show_404();
-        }
-        else {
+        } else {
 
             $this->form_validation->set_rules('title', 'Title', 'required', array('required' => "Title tidak boleh kosong"));
             $this->form_validation->set_rules('description', 'Description', 'required', array('required' => "Description tidak boleh kosong"));
-            $this->form_validation->set_rules('body', 'Weight', 'required', array('required' => "Body tidak boleh kosong"));
+            $this->form_validation->set_rules('body', 'Body', 'required', array('required' => "Body tidak boleh kosong"));
+            $this->form_validation->set_rules('news_tags', 'Tags', 'trim', array());
             $this->form_validation->set_rules('news_status', 'News Status', 'required', array('required' => "News Status tidak boleh kosong"));
             if (!empty($id_news)) {
-                $this->form_validation->set_rules('thumbnail-lama', 'Thumbnail', 'required', array('required' => "Thumbnail tidak boleh kosong")); 
+                $this->form_validation->set_rules('thumbnail-lama', 'Thumbnail', 'required', array('required' => "Thumbnail tidak boleh kosong"));
                 $this->form_validation->set_rules('thumbnail', 'Thumbnail', 'callback_upload_thumbnail_check');
             } else {
                 if (empty($_FILES['thumbnail']['name'])) {
@@ -120,7 +121,7 @@ class NewsController extends CI_Controller{
                 }
             }
 
-            
+
 
             if ($this->input->method() === 'post') {
                 if ($this->form_validation->run() === TRUE) {
@@ -129,19 +130,17 @@ class NewsController extends CI_Controller{
                     if (empty($id_news)) {
                         if (!empty($upload['file_name'])) $this->M_News->actions($sport_type_id, NULL, $upload['file_name']);
                         else $this->M_News->actions($sport_type_id);
-                        redirect('admin/news/sport/'.$sport_type_id);
-                    }
-                    else {
+                        redirect('admin/news/sport/' . $sport_type_id);
+                    } else {
                         if (!empty($upload['file_name'])) $this->M_News->actions($sport_type_id, $id_news, $upload['file_name']);
-                        else $this->M_News->actions($sport_type_id , $id_news);
-                        redirect('admin/news/sport/'.$sport_type_id);
+                        else $this->M_News->actions($sport_type_id, $id_news);
+                        redirect('admin/news/sport/' . $sport_type_id);
                     }
                 }
             }
 
             $this->template->show('admin/news/actions', $context);
         }
-
     }
 
     public function news_delete()
@@ -149,7 +148,6 @@ class NewsController extends CI_Controller{
         $id = $this->uri->segment(4);
         $this->M_News->delete($id);
         echo "<script>history.back()</script>";
-
     }
 
 
@@ -158,12 +156,12 @@ class NewsController extends CI_Controller{
      */
     public function reviews()
     {
-        echo "INDEX REVIEW";
+        $reviews = $this->M_Review->getReview();
         $context = [
-            'data_review' => $this->M_Review->getReview(),
+            'data_reviews' => $reviews,
+            'message' => $this->session->flashdata('message'),
         ];
-        echo '<pre>';
-        echo var_dump($context);
+        $this->template->user_template('User/review/index', $context);
     }
 
     public function reviews_actions()
@@ -177,19 +175,24 @@ class NewsController extends CI_Controller{
 
         if (empty($news_id)) {
             show_404();
-        } else {
-            $this->form_validation->set_rules('rating', 'Type Nama', 'required', array('required'=> "Rating tidak boleh kosong"));
-
-            if ($this->form_validation->run() === TRUE)
-            {
-                if (!empty($review_id)) $this->M_Review->reviewActions($news_id, $review_id);
-                else $this->M_Review->reviewActions($news_id);
-                redirect('review');
-            }
-
-            // var_dump($context);die;
-            $this->load->view('User/review/actions', $context);
         }
+
+        $news = $this->db->get_where('news', array('id' => $news_id))->row();
+        if (empty($news)) {
+            show_404();
+        }
+
+        $this->form_validation->set_rules('rating', 'Rating', 'required', array('required' => "Rating tidak boleh kosong"));
+        $this->form_validation->set_rules('comment', 'Comment', 'required', array('required' => "Comment tidak boleh kosong"));
+
+        if ($this->form_validation->run() === TRUE) {
+            if (!empty($review_id)) $this->M_Review->reviewActions($news_id, $review_id);
+            else $this->M_Review->reviewActions($news_id);
+            redirect('review');
+        }
+
+        // var_dump($context);die;
+        $this->template->user_template('User/review/actions', $context);
     }
 
     public function reviews_delete()

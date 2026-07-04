@@ -6,12 +6,12 @@ echo form_open_multipart($routes, array("class" => "modal-content"));
 ?>
 <!-- <form class="modal-content" method="post"> -->
 <div class="modal-header">
-    <h5 class="modal-title" id="add-modal">Add/Edit User</h5>
+    <h5 class="modal-title" id="add-modal">Add/Edit Club</h5>
 </div>
 <div class="modal-body">
     <div class="mb-3">
-        <label class="form-label" for="name">Nama League</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Nama League" value="<?php echo set_value('name') ? set_value('name') : (isset($data_sportClub) ? $data_sportClub->name : ''); ?>">
+        <label class="form-label" for="name">Nama Club</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Nama Club" value="<?php echo set_value('name') ? set_value('name') : (isset($data_sportClub) ? $data_sportClub->name : ''); ?>">
         <span class="alert-danger"><?php echo form_error('name'); ?></span>
     </div>
     <div class="mb-3">
@@ -49,9 +49,8 @@ echo form_open_multipart($routes, array("class" => "modal-content"));
         </select>
         <span class="alert-danger"><?php echo form_error('country'); ?></span>
     </div>
-    <div class="mb-3>
-            <label class=" form-label" for="logo">Logo</label>
-
+    <div class="mb-3">
+        <label class="form-label" for="logo">Logo</label>
         <input type="file" class="form-control" id="logo" name="logo">
         <?php
         if (!empty($id)) {
