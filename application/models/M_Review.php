@@ -1,19 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-class M_Review extends CI_Model
-{
-    public function getReview($news_id = NULL, $review_id = NULL)
-    {
-        if (!empty($review_id) && !empty($news_id)) {
-            return $this->db->get_where('review', array('id' => $review_id))->row();
-        }
-
-        if (!empty($news_id)) {
-            return $this->db->get_where('review', array('news_id' => $news_id))->result();
-        }
-
-=======
 class M_Review extends CI_Model {
     public function getReview($news_id = NULL, $review_id = NULL) 
     {
@@ -24,7 +10,6 @@ class M_Review extends CI_Model {
         if (!empty($news_id)) {
             return $this->db->query("SELECT * FROM review WHERE news_id = $news_id")->result();
         }
->>>>>>> origin/villari
         return $this->db->get('review')->result();
     }
 
@@ -52,12 +37,6 @@ class M_Review extends CI_Model {
 
     public function reviewDelete($id)
     {
-<<<<<<< HEAD
-        return $this->db->delete('review', array('id' => $id));
-    }
-}
-=======
         return $this->db->delete('review', array('id'=>$id));
     }
 }
->>>>>>> origin/villari
