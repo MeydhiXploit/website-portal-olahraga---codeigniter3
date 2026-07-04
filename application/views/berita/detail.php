@@ -98,7 +98,7 @@
             <div class="col-md-9 col-sm-8 col-xs-12">
                 <div class="feature-post" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px;">
                     <div class="feature-img">
-                        <?php 
+                        <?php
                         $thumb = $news->thumbnail;
                         $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
                         ?>
@@ -108,7 +108,7 @@
                         <div class="post-people" style="margin-bottom: 25px; border-bottom: 1px solid #eaeaea; padding-bottom: 20px;">
                             <div class="left-profile">
                                 <div class="post-info" style="display: flex; align-items: center;">
-                                    <img src="<?php echo base_url('vendor/userpage/images/profile-img.png'); ?>" alt="#" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-color);" />
+                                    <img src="<?php echo base_url('assets/userpage/images/profile-img.png'); ?>" alt="#" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-color);" />
                                     <span style="margin-left: 15px; display: flex; flex-direction: column;">
                                         <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: #333;">Oleh <?php echo $news->fullname; ?></h4>
                                         <h5 style="margin: 3px 0 0 0; font-size: 12px; color: var(--text-muted); font-weight: 400;">
@@ -122,26 +122,26 @@
                         <div class="post-heading" style="font-size: 15px; line-height: 1.8; color: #444; text-align: left;">
                             <?php echo $news->body; ?>
                         </div>
-                        
+
                         <!-- Article Tags -->
                         <?php if (!empty($news->news_tags)): ?>
-                        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea; text-align: left;">
-                            <strong style="font-size: 13px; color: #333; margin-right: 10px;">TAGS:</strong>
-                            <?php 
-                            $tags = explode(',', $news->news_tags);
-                            foreach ($tags as $tag) {
-                                $tag = trim($tag);
-                                if (!empty($tag)) {
-                                    echo '<span class="badge" style="background-color: var(--primary-color); color: #fff; padding: 6px 12px; font-size: 11px; margin-right: 5px; font-weight: 600; border-radius: 4px;">' . htmlspecialchars($tag) . '</span>';
+                            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea; text-align: left;">
+                                <strong style="font-size: 13px; color: #333; margin-right: 10px;">TAGS:</strong>
+                                <?php
+                                $tags = explode(',', $news->news_tags);
+                                foreach ($tags as $tag) {
+                                    $tag = trim($tag);
+                                    if (!empty($tag)) {
+                                        echo '<span class="badge" style="background-color: var(--primary-color); color: #fff; padding: 6px 12px; font-size: 11px; margin-right: 5px; font-weight: 600; border-radius: 4px;">' . htmlspecialchars($tag) . '</span>';
+                                    }
                                 }
-                            }
-                            ?>
-                        </div>
+                                ?>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Sidebar Widgets (Right) -->
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <!-- Related News Widget -->
@@ -151,21 +151,21 @@
                         <?php if (empty($related_news)): ?>
                             <p style="font-size: 12.5px; color: var(--text-muted); margin: 10px 0; text-align: center;">Tidak ada berita terkait.</p>
                         <?php else: ?>
-                            <?php foreach($related_news as $rel): 
+                            <?php foreach ($related_news as $rel):
                                 $rel_thumb = $rel->thumbnail;
                                 $rel_img = (strpos($rel_thumb, 'http') === 0) ? $rel_thumb : base_url('uploads/' . $rel_thumb);
                             ?>
-                            <li>
-                                <a href="<?php echo site_url('news/'.$rel->news_slug); ?>" class="cm-sidebar-news-item">
-                                    <div class="cm-sidebar-news-thumb">
-                                        <img src="<?php echo $rel_img; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" />
-                                    </div>
-                                    <div class="cm-sidebar-news-info">
-                                        <h4 class="cm-sidebar-news-title"><?php echo $rel->title; ?></h4>
-                                        <span class="cm-sidebar-news-date"><?php echo date('d M Y', strtotime($rel->created_at)); ?></span>
-                                    </div>
-                                </a>
-                            </li>
+                                <li>
+                                    <a href="<?php echo site_url('news/' . $rel->news_slug); ?>" class="cm-sidebar-news-item">
+                                        <div class="cm-sidebar-news-thumb">
+                                            <img src="<?php echo $rel_img; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" />
+                                        </div>
+                                        <div class="cm-sidebar-news-info">
+                                            <h4 class="cm-sidebar-news-title"><?php echo $rel->title; ?></h4>
+                                            <span class="cm-sidebar-news-date"><?php echo date('d M Y', strtotime($rel->created_at)); ?></span>
+                                        </div>
+                                    </a>
+                                </li>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </ul>

@@ -358,7 +358,7 @@ footer#footer {
 }
 
 .footer-widget {
-    padding: 20px 0 !important;
+    padding: 10px 0 !important;
 }
 
 .footer-widget h3 {
@@ -376,54 +376,161 @@ footer#footer {
     max-height: 45px !important;
     width: auto !important;
     margin-bottom: 15px !important;
+    transition: transform 0.3s ease;
 }
 
+.footer-logo img:hover {
+    transform: scale(1.03);
+}
+
+.footer-widget p {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 20px !important;
+    color: #94a3b8 !important;
+}
+
+/* Footer Social Icons */
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.footer-social .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1e293b;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-social .social-btn:hover {
+    color: #ffffff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.footer-social .social-btn.facebook:hover {
+    background: #3b5998 !important;
+}
+
+.footer-social .social-btn.twitter:hover {
+    background: #1da1f2 !important;
+}
+
+.footer-social .social-btn.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+}
+
+.footer-social .social-btn.youtube:hover {
+    background: #ff0000 !important;
+}
+
+/* Footer Menu */
 .footer-menu {
-    line-height: 2.2 !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.footer-menu li {
+    margin-bottom: 10px !important;
 }
 
 .footer-menu li a {
     color: #94a3b8 !important;
-    transition: color 0.2s ease !important;
+    transition: all 0.2s ease !important;
     text-decoration: none !important;
-    font-size: 0.9rem !important;
+    font-size: 0.95rem !important;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-menu li a i {
+    font-size: 0.8rem;
+    margin-right: 8px;
+    transition: transform 0.2s ease;
 }
 
 .footer-menu li a:hover {
-    color: #ffffff !important;
-    padding-left: 4px;
+    color: #3b82f6 !important;
+    padding-left: 5px;
+}
+
+.footer-menu li a:hover i {
+    transform: translateX(3px);
+}
+
+/* Address List */
+.address-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .address-list li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
     color: #94a3b8 !important;
-    font-size: 0.9rem !important;
-    margin-bottom: 12px !important;
+    font-size: 0.95rem !important;
+    margin-bottom: 15px !important;
+    line-height: 1.5 !important;
 }
 
 .address-list li i {
     color: #2563eb !important;
     font-size: 1.1rem !important;
+    width: 20px !important;
+    text-align: center !important;
+    margin-top: 3px !important;
+}
+
+.address-list li span {
+    flex: 1;
+}
+
+/* Contact Footer Map */
+.contact-footer iframe {
+    height: 180px !important;
+    border-radius: 12px !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.contact-footer iframe:hover {
+    transform: scale(1.02);
 }
 
 .footer-bottom {
     background: #020617 !important;
     border-top: 1px solid #1e293b !important;
-    padding: 15px 0 !important;
+    padding: 20px 0 !important;
 }
 
 .footer-bottom p {
     color: #64748b !important;
-    font-size: 0.85rem !important;
+    font-size: 0.9rem !important;
     margin: 0 !important;
 }
 
 .footer-bottom a {
     color: #94a3b8 !important;
     text-decoration: none !important;
+    transition: color 0.2s ease;
 }
 
 .footer-bottom a:hover {
-    color: #ffffff !important;
+    color: #3b82f6 !important;
 }
 
 /* News Detail Styling */

@@ -32,6 +32,9 @@ class MatchController extends CI_Controller {
     public function indexAdmin() {
         isAdminLogin();
         $league_id = $this->uri->segment(4);
+        if (empty($league_id)) {
+            show_404();
+        }
         $context = [
             'match_today'=> $this->M_Match->getMatch_today_only($league_id),
             'data_match' => $this->M_Match->getMatch_by_league($league_id),
@@ -97,7 +100,22 @@ class MatchController extends CI_Controller {
     public function delete() {
         isAdminLogin();
         $id = $this->uri->segment(4);
+        
+        $match = $this->M_Match->get($id);
+        $league_id = null;
+        if ($match) {
+            $club = $this->M_Sport_Club->get(NULL, $match->sport_club_1);
+            if ($club) {
+                $league_id = $club->sport_league;
+            }
+        }
+        
         $this->M_Match->delete($id);
-        echo "<script>history.back()</script>";
+        
+        if (!empty($league_id)) {
+            redirect('admin/match/league/' . $league_id);
+        } else {
+            redirect('admin/match');
+        }
     }
 }

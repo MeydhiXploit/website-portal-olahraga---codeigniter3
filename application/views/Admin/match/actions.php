@@ -1,4 +1,9 @@
-<form class="modal-content" method="post">
+<?php
+    $id_league = $this->uri->segment(4);
+    $id_match = !empty($this->uri->segment(5)) ? $this->uri->segment(5) : null;
+    $routes = "admin/match/action/$id_league" . (!empty($id_match) ? "/$id_match" : "");
+    echo form_open($routes, array("class"=>"modal-content"));
+?>
     <div class="modal-header">
     <h5 class="modal-title" id="add-modal">Add/Edit Match</h5>
     </div>
@@ -11,7 +16,6 @@
             <label for="sport_club_1">Club 1</label>
             <select class="form-control" name="sport_club_1" id="sport_club_1" <?php echo !empty($id) ? "disabled" : ''?>>
             <?php
-                // var_dump($data_sportType);die;
                 if (empty($data_sportClub)) {
                     echo "<option><strong>Data Club Olahraga Kosong !!!</strong></option>";
                 }
@@ -32,10 +36,9 @@
             </select>
         </div>
         <div class="mb-3 col-md-6">
-        <label for="sport_club_2">Club 1</label>
+        <label for="sport_club_2">Club 2</label>
             <select class="form-control" name="sport_club_2" id="sport_club_2" <?php echo !empty($id) ? "disabled" : ''?>>
             <?php
-                // var_dump($data_sportType);die;
                 if (empty($data_sportClub)) {
                     echo "<option><strong>Data Club Olahraga Kosong !!!</strong></option>";
                 }
@@ -98,7 +101,7 @@
             $role = ['draft', 'published'];
             echo empty(set_value('role')) || (set_value('role') == "--- Pilih Match Status ---") ?"<option>--- Pilih Match Status ---</option>" : ''; 
             foreach($role as $data){
-                if ($data === set_value('role') || $data ===  $data_match->match_status)
+                if ($data === set_value('role') || (isset($data_match) && $data === $data_match->match_status))
                 {
                     echo "<option value='$data' selected>$data</option>";
                 }
@@ -108,12 +111,9 @@
                 }
             }
         ?>
-        <span class="alert-danger"><?php echo form_error('match_status'); ?></span>
         </select>
+        <span class="alert-danger"><?php echo form_error('match_status'); ?></span>
     </div>
-
-
-
 
     </div>
     <div class="modal-footer">

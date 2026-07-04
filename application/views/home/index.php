@@ -249,7 +249,7 @@
         text-decoration: none;
     }
 
-    /* Club Card Styles */
+    /* ===== Tampilan Kartu Klub ===== */
     .cm-home-club-card {
         text-align: center;
         background-color: #ffffff;
@@ -291,7 +291,7 @@
         width: 100%;
     }
 
-    /* Athlete card style */
+   /* ===== Tampilan Kartu Atlet ===== */
     .cm-athlete-card {
         background: #ffffff;
         border: 1px solid #eaeaea;
@@ -365,7 +365,7 @@
     }
 </style>
 
-<!-- Banner / Hero Section -->
+<!-- ===== Bagian Banner / Halaman Utama ===== -->
 <div class="hero">
     <h1 class="hero-caption">Portal Olahraga UBG</h1>
     <h2>Informasi Olahraga Paling Update dan Akurat</h2>
@@ -445,7 +445,7 @@
     </div>
 </div>
 
-<!-- Section PERTANDINGAN TERBARU -->
+<!-- ===== Bagian Pertandingan Terbaru ===== -->
 <div class="container" style="margin-top: 30px; margin-bottom: 20px;">
     <div class="colormag-category-header" style="margin-top: 0; margin-bottom: 25px;">
         <h2 class="colormag-category-title">
@@ -488,7 +488,7 @@
     </div>
 </div>
 
-<!-- Section Kategori Berita -->
+<!-- ===== Bagian Kategori Berita ===== -->
 <section id="contant" class="contant main-heading team" style="padding-top: 0; margin-bottom: 20px;">
     <?php foreach($news_by_sport as $sport_name => $sport_news): ?>
         <?php if (!empty($sport_news)): ?>
@@ -534,7 +534,7 @@
     <?php endforeach; ?>
 </section>
 
-<!-- Section ATLET UNGGULAN -->
+<!-- ===== Bagian Atlet Unggulan ===== -->
 <div class="container" style="margin-top: 10px; margin-bottom: 20px;">
     <div class="colormag-category-header" style="margin-top: 0; margin-bottom: 25px;">
         <h2 class="colormag-category-title">
@@ -572,7 +572,7 @@
     </div>
 </div>
 
-<!-- Section KLUB TERBARU -->
+<!-- ===== Bagian Klub Terbaru ===== -->
 <div class="container" style="margin-top: 20px; margin-bottom: 50px;">
     <div class="colormag-category-header" style="margin-top: 0; margin-bottom: 25px;">
         <h2 class="colormag-category-title">

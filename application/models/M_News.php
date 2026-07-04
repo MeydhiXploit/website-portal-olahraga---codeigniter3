@@ -93,7 +93,7 @@ class M_News extends CI_Model {
 
 
     public function delete($id)
-    {
+    { 
         return $this->db->delete('news', array('id'=>$id));
     }
 }

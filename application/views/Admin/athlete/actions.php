@@ -16,8 +16,7 @@
             <?php 
             if (!empty($id_athlete)) {
             ?>
-                <img src="<?php echo isset($data_athlete) ? $data_athlete->photo : ''; ?>" width="150" height="150"alt="">
-                <?php echo $data_athlete->photo;?>
+                <img src="<?php echo isset($data_athlete) ? get_image_url($data_athlete->photo) : ''; ?>" width="150" height="150"alt="">
                 <input type='hidden' name='photo-lama' value="<?php echo $data_athlete->photo?>">
                 <span class="alert-danger"><?php echo form_error('photo-lama'); ?></span>
             <?php
