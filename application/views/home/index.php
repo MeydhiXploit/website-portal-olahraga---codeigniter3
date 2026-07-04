@@ -252,7 +252,7 @@
         text-decoration: none;
     }
 
-    /* Club Card Styles */
+    /* ===== Tampilan Kartu Klub ===== */
     .cm-home-club-card {
         text-align: center;
         background-color: #ffffff;
@@ -294,7 +294,7 @@
         width: 100%;
     }
 
-    /* Athlete card style */
+    /* ===== Tampilan Kartu Atlet ===== */
     .cm-athlete-card {
         background: #ffffff;
         border: 1px solid #eaeaea;
@@ -369,7 +369,7 @@
     }
 </style>
 
-<!-- Banner / Hero Section -->
+<!-- ===== Bagian Banner / Halaman Utama ===== -->
 <div class="hero">
     <h1 class="hero-caption">Portal Olahraga UBG</h1>
     <h2>Informasi Olahraga Paling Update dan Akurat</h2>
@@ -474,13 +474,13 @@
                                 <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex: 2 1 300px;">
                                     <div style="text-align: right; width: 42%; display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
                                         <span style="font-size: 13.5px; font-weight: 700; color: #33;"><?php echo $match->club_1; ?></span>
-                                        <img src="<?php echo (strpos($match->logo_club_1, 'http') === 0) ? $match->logo_club_1 : base_url('upload/' . $match->logo_club_1); ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="height: 35px; width: 35px; object-fit: contain;">
+                                        <img src="<?php echo (strpos($match->logo_club_1, 'http') === 0) ? $match->logo_club_1 : base_url('uploads/' . $match->logo_club_1); ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="height: 35px; width: 35px; object-fit: contain;">
                                     </div>
                                     <div style="font-size: 12px; font-weight: 800; color: #ffffff; background: var(--primary-color); padding: 4px 12px; border-radius: 4px; flex-shrink: 0; min-width: 50px; text-align: center;">
                                         <?php echo $match->club_1_score; ?> - <?php echo $match->club_2_score; ?>
                                     </div>
                                     <div style="text-align: left; width: 42%; display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
-                                        <img src="<?php echo (strpos($match->logo_club_2, 'http') === 0) ? $match->logo_club_2 : base_url('upload/' . $match->logo_club_2); ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="height: 35px; width: 35px; object-fit: contain;">
+                                        <img src="<?php echo (strpos($match->logo_club_2, 'http') === 0) ? $match->logo_club_2 : base_url('uploads/' . $match->logo_club_2); ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="height: 35px; width: 35px; object-fit: contain;">
                                         <span style="font-size: 13.5px; font-weight: 700; color: #33;"><?php echo $match->club_2; ?></span>
                                     </div>
                                 </div>
@@ -511,7 +511,7 @@
                     <div class="row category-news-row" style="display: flex; flex-wrap: wrap;">
                         <?php foreach ($sport_news as $news):
                             $thumb = $news->thumbnail;
-                            $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('upload/' . $thumb);
+                            $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
                         ?>
                             <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px;">
                                 <div class="colormag-news-card">
@@ -555,7 +555,7 @@
                 </div>
             <?php else: ?>
                 <?php foreach ($latest_athletes as $athlete):
-                    $photo_src = (strpos($athlete->photo, 'http') === 0) ? $athlete->photo : base_url('upload/' . $athlete->photo);
+                    $photo_src = (strpos($athlete->photo, 'http') === 0) ? $athlete->photo : base_url('uploads/' . $athlete->photo);
                 ?>
                     <div class="col-md-2 col-sm-4 col-xs-6" style="margin-bottom: 20px;">
                         <div class="cm-athlete-card">
@@ -593,7 +593,7 @@
                         <p style="text-align: center; color: var(--text-muted); font-size: 13px; margin: 10px 0;">Belum ada klub terdaftar.</p>
                     <?php else: ?>
                         <?php foreach ($latest_clubs as $club):
-                            $logo_src = (strpos($club->logo, 'http') === 0) ? $club->logo : base_url('upload/' . $club->logo);
+                            $logo_src = (strpos($club->logo, 'http') === 0) ? $club->logo : base_url('uploads/' . $club->logo);
                         ?>
                             <a href="<?php echo site_url('klub/detail/' . $club->id); ?>" class="cm-home-club-card">
                                 <img src="<?php echo $logo_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($club->name); ?>">
