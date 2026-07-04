@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 defined('BASEPATH') or exit('No direct script access allowed');
+=======
+defined('BASEPATH') OR exit('No direct script access allowed');
+>>>>>>> origin/villari
 
 /*
 | -------------------------------------------------------------------------
@@ -72,9 +76,15 @@ $route['klub/detail/(:num)'] = 'Klub/detail/$1';
 $route['search'] = 'HomeController/searchNews';
 
 $route['review'] = 'NewsController/reviews';
+<<<<<<< HEAD
 $route['review/action/(:num)'] = 'NewsController/reviews_actions';
 $route['review/action/(:num)/(:num)'] = 'NewsController/reviews_actions';
 $route['review/delete/(:num)'] = 'NewsController/reviews_delete';
+=======
+$route['review/action/:num'] = 'NewsController/reviews_actions';
+$route['review/action/:num/:num'] = 'NewsController/reviews_actions';
+$route['review/delete/:num'] = 'NewsController/reviews_delete';
+>>>>>>> origin/villari
 
 // ADMIN
 $route['admin/login'] = 'UserController/loginAdmin';
@@ -83,6 +93,7 @@ $route['admin/dashboard'] = 'HomeController/indexAdmin';
 
 $route['admin/user'] = 'UserController/index';
 $route['admin/user/action'] = 'UserController/actions';
+<<<<<<< HEAD
 $route['admin/user/action/(:num)'] = 'UserController/actions';
 $route['admin/user/delete/(:num)'] = 'UserController/delete';
 
@@ -103,6 +114,28 @@ $route['admin/sport-club/league/(:num)'] = 'SportController/sportClub';
 $route['admin/sport-club/action/(:num)'] = 'SportController/sportClub_actions';
 $route['admin/sport-club/action/(:num)/(:num)'] = 'SportController/sportClub_actions';
 $route['admin/sport-club/delete/(:num)'] = 'SportController/sportClub_delete';
+=======
+$route['admin/user/action/:num'] = 'UserController/actions';
+$route['admin/user/delete/:num'] = 'UserController/delete';
+
+$route['admin/sport-type'] = 'SportController/sportType';
+$route['admin/sport-type/action'] = 'SportController/sportType_actions';
+$route['admin/sport-type/action/:num'] = 'SportController/sportType_actions';
+$route['admin/sport-type/delete/:num'] = 'SportController/sportType_delete';
+
+$route['admin/league'] = 'LeagueController/select_sportType';
+$route['admin/league/:num'] = 'LeagueController/indexAdmin';
+$route['admin/league/action/:num'] = 'LeagueController/actions';
+$route['admin/league/action/:num/:num'] = 'LeagueController/actions';
+$route['admin/league/delete/:num'] = 'LeagueController/delete';
+
+$route['admin/sport-club'] = 'SportController/select_sportType';
+$route['admin/sport-club/sport/:num'] = 'SportController/select_league';
+$route['admin/sport-club/league/:num'] = 'SportController/sportClub';
+$route['admin/sport-club/action/:num'] = 'SportController/sportClub_actions';
+$route['admin/sport-club/action/:num/:num'] = 'SportController/sportClub_actions';
+$route['admin/sport-club/delete/:num'] = 'SportController/sportClub_delete';
+>>>>>>> origin/villari
 
 $route['admin/player-type'] = 'Player_type/index';
 $route['admin/player-type/add'] = 'Player_type/add';
@@ -110,6 +143,7 @@ $route['admin/player-type/edit/(:num)'] = 'Player_type/edit/$1';
 $route['admin/player-type/delete/(:num)'] = 'Player_type/delete/$1';
 
 $route['admin/foul-type'] = 'AthleteController/foulType_selectSport';
+<<<<<<< HEAD
 $route['admin/foul-type/(:num)'] = 'AthleteController/foulType';
 $route['admin/foul-type/action/(:num)'] = 'AthleteController/foulType_actions';
 $route['admin/foul-type/action/(:num)/(:num)'] = 'AthleteController/foulType_actions';
@@ -142,3 +176,39 @@ $route['admin/news/sport/(:num)'] = 'NewsController/news';
 $route['admin/news/action/(:num)'] = 'NewsController/news_actions';
 $route['admin/news/action/(:num)/(:num)'] = 'NewsController/news_actions';
 $route['admin/news/delete/(:num)'] = 'NewsController/news_delete';
+=======
+$route['admin/foul-type/:num'] = 'AthleteController/foulType';
+$route['admin/foul-type/action/:num'] = 'AthleteController/foulType_actions';
+$route['admin/foul-type/action/:num/:num'] = 'AthleteController/foulType_actions';
+$route['admin/foul-type/delete/:num'] = 'AthleteController/foulType_delete';
+
+$route['admin/match'] = 'MatchController/select_sportType';
+$route['admin/match/sport/:num'] = 'MatchController/select_league';
+$route['admin/match/league/:num'] = 'MatchController/indexAdmin';
+$route['admin/match/action/:num'] = 'MatchController/actions';
+$route['admin/match/action/:num/:num'] = 'MatchController/actions';
+$route['admin/match/delete/:num'] = 'MatchController/delete';
+
+$route['admin/athlete'] = 'AthleteController/athlete_selectSport';
+$route['admin/athlete/sport/:num'] = 'AthleteController/athlete_selectLeague';
+$route['admin/athlete/league/:num'] = 'AthleteController/athlete_selectClub';
+$route['admin/athlete/club/:num'] = 'AthleteController/athlete';
+$route['admin/athlete/action/:num'] = 'AthleteController/actions';
+$route['admin/athlete/action/:num/:num'] = 'AthleteController/actions';
+$route['admin/athlete/delete/:num'] = 'AthleteController/delete';
+
+$route['admin/foul'] = 'AthleteController/foul_selectSport';
+$route['admin/foul/sport/:num'] = 'AthleteController/foul_selectLeague';
+$route['admin/foul/league/:num'] = 'AthleteController/foul';
+$route['admin/foul/action/:num'] = 'AthleteController/foul_actions';
+$route['admin/foul/action/:num/:num'] = 'AthleteController/foul_actions';
+$route['admin/foul/delete/:num'] = 'AthleteController/foul_delete';
+
+$route['admin/news'] = 'NewsController/select_sportType';
+$route['admin/news/sport/:num'] = 'NewsController/news';
+$route['admin/news/action/:num'] = 'NewsController/news_actions';
+$route['admin/news/action/:num/:num'] = 'NewsController/news_actions';
+$route['admin/news/delete/:num'] = 'NewsController/news_delete';
+
+
+>>>>>>> origin/villari

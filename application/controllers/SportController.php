@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 defined('BASEPATH') or exit('No direct script access allowed');
+=======
+defined('BASEPATH') OR exit('No direct script access allowed');
+>>>>>>> origin/villari
 
 class SportController extends CI_Controller
 {
@@ -9,6 +13,7 @@ class SportController extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+<<<<<<< HEAD
         $this->load->model(array('M_Sport_Type', 'M_Sport_Club', 'M_League', 'M_News', 'M_User'));
     }
 
@@ -17,6 +22,16 @@ class SportController extends CI_Controller
         $slug = str_replace('-', ' ', $this->uri->segment(2));
         $sport = $this->M_Sport_Type->get_by_name($slug);
 
+=======
+        $this->load->model(array('M_Sport_Type', 'M_Sport_Club', 'M_League','M_News'));
+    }  
+
+    public function sport()
+    {
+        $slug = str_replace('-', ' ',$this->uri->segment(2));
+        $sport = $this->M_Sport_Type->get_by_name($slug);
+        
+>>>>>>> origin/villari
         $news_by_sport = $this->M_News->getNews($sport->id);
 
         $context = [
@@ -30,9 +45,15 @@ class SportController extends CI_Controller
         $this->template->user_template('User/sport', $context);
     }
 
+<<<<<<< HEAD
     public function upload_data()
     {
         $config['upload_path']          = FCPATH . 'upload';
+=======
+    public function upload_data() 
+    {
+        $config['upload_path']          = FCPATH.'upload';
+>>>>>>> origin/villari
         $config['allowed_types']        = 'jpg|jpeg|png|webp|gif';
         $config['file_name']            = uniqid();
         $config['overwrite']            = true;
@@ -53,7 +74,12 @@ class SportController extends CI_Controller
         $context = [
             'data_sportType' => $this->M_Sport_Type->get(),
         ];
+<<<<<<< HEAD
         $this->template->show('admin/sport-type/index', $context);
+=======
+        $this->template->show('admin/sport-type/index',$context);
+
+>>>>>>> origin/villari
     }
 
     public function sportType_actions()
@@ -99,8 +125,12 @@ class SportController extends CI_Controller
     /**
      * SPORT CLUB
      */
+<<<<<<< HEAD
     public function select_sportType()
     {
+=======
+    public function select_sportType() {
+>>>>>>> origin/villari
         isAdminLogin();
         $context = [
             'sport_type' => $this->M_Sport_Type->get()
@@ -108,8 +138,12 @@ class SportController extends CI_Controller
         $this->template->show('Admin/sport-club/select-sportType', $context);
     }
 
+<<<<<<< HEAD
     public function select_league()
     {
+=======
+    public function select_league() {
+>>>>>>> origin/villari
         isAdminLogin();
         $sportType_id = $this->uri->segment(4);
         if (empty($sportType_id)) {
@@ -129,6 +163,10 @@ class SportController extends CI_Controller
             'data_club' => $this->M_Sport_Club->get($liga_id),
         ];
         $this->template->show('admin/sport-club/index', $context);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/villari
     }
 
     public function upload_logo_check($str)
@@ -158,7 +196,11 @@ class SportController extends CI_Controller
         $league_id = $this->uri->segment(4);
         $id = !empty($this->uri->segment(5)) ? $this->uri->segment(5) : NULL;
 
+<<<<<<< HEAD
         if (empty($league_id)) {
+=======
+        if (empty($league_id)){
+>>>>>>> origin/villari
             redirect('admin/sport-club');
         }
 
@@ -168,10 +210,17 @@ class SportController extends CI_Controller
 
         $this->form_validation->set_rules('name', 'Nama Club', 'required', array('required' => "Nama Club tidak boleh kosong"));
         $this->form_validation->set_rules('country', 'Negara', 'required', array('required' => "Negara tidak boleh kosong"));
+<<<<<<< HEAD
 
         if ($this->input->method() === 'post') {
             if (!empty($id)) {
                 $this->form_validation->set_rules('logo-lama', 'Logo', 'required', array('required' => "Logo tidak boleh kosong"));
+=======
+        
+        if ($this->input->method() === 'post') {
+            if (!empty($id)) {
+                $this->form_validation->set_rules('logo-lama', 'Logo', 'required', array('required' => "Logo tidak boleh kosong")); 
+>>>>>>> origin/villari
                 $this->form_validation->set_rules('logo', 'Logo', 'callback_upload_logo_check');
             } else {
                 if (empty($_FILES['logo']['name'])) {
@@ -182,6 +231,7 @@ class SportController extends CI_Controller
             }
             if ($this->form_validation->run() === TRUE) {
                 $upload = !empty($this->_uploaded_logo) ? $this->_uploaded_logo : null;
+<<<<<<< HEAD
 
 
                 if (empty($id)) {
@@ -191,6 +241,18 @@ class SportController extends CI_Controller
                     if (!empty($upload['file_name'])) $this->M_Sport_Club->actions($league_id, $id, $upload['file_name']);
                     else $this->M_Sport_Club->actions($league_id, $id);
                     redirect('admin/sport-club/league/' . $league_id);
+=======
+                
+
+                if (empty($id)) {
+                    $this->M_Sport_Club->actions(NULL, $league_id , $upload['file_name']);
+                    redirect('admin/sport-club/league/'.$league_id);
+                }
+                else {
+                    if (!empty($upload['file_name'])) $this->M_Sport_Club->actions($id, $league_id, $upload['file_name']);
+                    else $this->M_Sport_Club->actions($id, $league_id);
+                    redirect('admin/sport-club/league/'.$league_id);
+>>>>>>> origin/villari
                 }
             }
         }
@@ -202,6 +264,7 @@ class SportController extends CI_Controller
     {
         isAdminLogin();
         $id = $this->uri->segment(4);
+<<<<<<< HEAD
 
         if (empty($id)) {
             $this->session->set_flashdata('failed', 'ID Klub tidak valid.');
@@ -224,5 +287,9 @@ class SportController extends CI_Controller
         }
 
         redirect('admin/sport-club/league/' . $league_id);
+=======
+        $this->M_Sport_Club->delete($id);
+        echo "<script>history.back()</script>";
+>>>>>>> origin/villari
     }
 }

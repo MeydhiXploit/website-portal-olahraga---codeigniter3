@@ -218,6 +218,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ukuran map */
 4
 .footer-map iframe {
@@ -226,6 +227,11 @@
 
     .footer-map iframe {
 >>>>>>> 525c6d04c87987c19628228a744e80777f4b0578
+=======
+    /* ukuran map */
+
+    .footer-map iframe {
+>>>>>>> origin/villari
 
         width: 220%;
         height: 220px;

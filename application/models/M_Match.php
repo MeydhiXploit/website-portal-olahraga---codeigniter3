@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_Match extends CI_Model
@@ -6,6 +7,13 @@ class M_Match extends CI_Model
 
     public function get($id = NULL)
     {
+=======
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class M_Match extends CI_Model {
+
+    public function get($id = NULL) {
+>>>>>>> origin/villari
         if (!empty($id)) {
             return $this->db->query("SELECT * FROM sport_match WHERE id = $id")->row();
         } else {
@@ -13,8 +21,12 @@ class M_Match extends CI_Model
         }
     }
 
+<<<<<<< HEAD
     public function getMatch_by_league($league_id)
     {
+=======
+    public function getMatch_by_league($league_id){
+>>>>>>> origin/villari
         $league_id = (int)$league_id;
         return $this->db->query("SELECT sport_match.*, 
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_1) as  'club_1',
@@ -24,8 +36,12 @@ class M_Match extends CI_Model
                                 where sport_match.sport_club_1 = sport_club.id and sport_club.sport_league = league.id and league.id = $league_id;")->result();
     }
 
+<<<<<<< HEAD
     public function getMatch_today_only($league_id)
     {
+=======
+    public function getMatch_today_only($league_id) {
+>>>>>>> origin/villari
         $league_id = (int)$league_id;
         return $this->db->query("SELECT sport_match.*, 
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_1) as  'club_1',
@@ -35,8 +51,12 @@ class M_Match extends CI_Model
                                 where sport_match.sport_club_1 = sport_club.id and sport_club.sport_league = league.id and league.id = $league_id AND DATE(sport_match.match_date) = CURDATE();")->result();
     }
 
+<<<<<<< HEAD
     public function getMatch_today($league_id)
     {
+=======
+    public function getMatch_today($league_id) {
+>>>>>>> origin/villari
         $league_id = (int)$league_id;
         return $this->db->query("SELECT sport_match.*, 
                                         (select sport_club.name from sport_club where sport_club.id = sport_match.sport_club_1) as  'club_1',
@@ -48,8 +68,12 @@ class M_Match extends CI_Model
                                 where sport_match.sport_club_1 = sport_club.id and sport_club.sport_league = league.id and league.id = $league_id and DATE(sport_match.match_date) >= CURDATE();")->result();
     }
 
+<<<<<<< HEAD
     public function getMatch_today_by_sport($sport_id)
     {
+=======
+    public function getMatch_today_by_sport($sport_id) {
+>>>>>>> origin/villari
         if (empty($sport_id)) {
             return [];
         }
@@ -66,32 +90,57 @@ class M_Match extends CI_Model
                                     and DATE(sport_match.match_date) >= CURDATE();")->result();
     }
 
+<<<<<<< HEAD
     public function actions($id = NULL)
     {
         $date = strtotime($this->input->post('match_date') . ' ' . $this->input->post('match_time'));
+=======
+    public function actions($id = NULL) {
+        $date = strtotime($this->input->post('match_date').$this->input->post('match_time'));
+>>>>>>> origin/villari
         if (!empty($id)) {
             $data = [
                 'club_1_score' => $this->input->post('club_1_score'),
                 'club_2_score' => $this->input->post('club_2_score'),
+<<<<<<< HEAD
                 'match_date' => date('Y-m-d H:i:s', $date),
                 'match_status' => $this->input->post('match_status')
             ];
             return $this->db->update('sport_match', $data, array('id' => $id));
         } else {
+=======
+                'match_date' => date('Y-m-d H:i:s',$date),
+                'match_status' => $this->input->post('match_status')
+            ];
+            return $this->db->update('sport_match',$data, array('id'=>$id));
+        }else {
+>>>>>>> origin/villari
             $data = [
                 'sport_club_1' => $this->input->post('sport_club_1'),
                 'sport_club_2' => $this->input->post('sport_club_2'),
                 'club_1_score' => 0,
                 'club_2_score' => 0,
+<<<<<<< HEAD
                 'match_date' => date('Y-m-d H:i:s', $date),
+=======
+                'match_date' => date('Y-m-d H:i:s',$date),
+>>>>>>> origin/villari
                 'match_status' => $this->input->post('match_status')
             ];
             return $this->db->insert('sport_match', $data);
         }
     }
 
+<<<<<<< HEAD
     public function delete($id)
     {
         $this->db->delete('sport_match', array('id' => $id));
     }
 }
+=======
+    public function delete($id) {
+        $this->db->delete('sport_match', array('id'=>$id));
+    }
+
+}
+>>>>>>> origin/villari
