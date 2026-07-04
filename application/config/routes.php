@@ -1,9 +1,4 @@
 <?php
-<<<<<<< HEAD
-defined('BASEPATH') or exit('No direct script access allowed');
-=======
-defined('BASEPATH') OR exit('No direct script access allowed');
->>>>>>> origin/villari
 
 /*
 | -------------------------------------------------------------------------
@@ -76,11 +71,7 @@ $route['klub/detail/(:num)'] = 'Klub/detail/$1';
 $route['search'] = 'HomeController/searchNews';
 
 $route['review'] = 'NewsController/reviews';
-<<<<<<< HEAD
-$route['review/action/(:num)'] = 'NewsController/reviews_actions';
-$route['review/action/(:num)/(:num)'] = 'NewsController/reviews_actions';
-$route['review/delete/(:num)'] = 'NewsController/reviews_delete';
-=======
+
 $route['review/action/:num'] = 'NewsController/reviews_actions';
 $route['review/action/:num/:num'] = 'NewsController/reviews_actions';
 $route['review/delete/:num'] = 'NewsController/reviews_delete';
