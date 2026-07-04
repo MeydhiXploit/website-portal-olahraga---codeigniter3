@@ -8,12 +8,12 @@
         background: #ffffff;
         border: none;
         border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
         padding: 40px;
         margin-bottom: 40px;
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
     }
 
     .cm-club-header-card::before {
@@ -37,7 +37,7 @@
         border-radius: 50%;
         padding: 20px;
         margin: 0 auto 25px auto;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
         transition: transform 0.3s ease;
     }
 
@@ -131,13 +131,13 @@
         border: none;
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         text-align: center;
         height: 100%;
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
     }
 
     .cm-roster-card:hover {
@@ -209,12 +209,12 @@
         border: none;
         border-radius: 12px;
         padding: 20px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
         display: flex;
         flex-direction: column;
         gap: 12px;
         text-align: left;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
         transition: border-color 0.3s ease;
     }
 
@@ -272,7 +272,7 @@
         transition: all 0.3s ease;
         text-decoration: none !important;
         border: none;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .cm-back-btn:hover {
@@ -297,15 +297,15 @@
             <div class="row style-flex" style="display: flex; align-items: center; flex-wrap: wrap;">
                 <div class="col-md-3 col-sm-12 col-xs-12">
                     <div class="cm-club-header-logo">
-                        <?php 
-                            $logo = $club->logo;
-                            if (strpos($logo, 'http') === 0) {
-                                $logo_src = $logo;
-                            } elseif (strpos($logo, 'upload/') === 0) {
-                                $logo_src = base_url($logo);
-                            } else {
-                                $logo_src = base_url('upload/' . $logo);
-                            }
+                        <?php
+                        $logo = $club->logo;
+                        if (strpos($logo, 'http') === 0) {
+                            $logo_src = $logo;
+                        } elseif (strpos($logo, 'upload/') === 0) {
+                            $logo_src = base_url($logo);
+                        } else {
+                            $logo_src = base_url('upload/' . $logo);
+                        }
                         ?>
                         <img src="<?php echo $logo_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($club->name); ?>" />
                     </div>
@@ -342,7 +342,7 @@
                 <div style="text-align: left;">
                     <h3 class="cm-section-title">Daftar Pemain / Roster</h3>
                 </div>
-                
+
                 <?php if (empty($roster)): ?>
                     <div class="alert alert-info text-center cm-alert" style="padding: 30px; border-radius: 12px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
                         <i class="fa fa-info-circle" style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px; display: block;"></i>
@@ -350,7 +350,7 @@
                     </div>
                 <?php else: ?>
                     <div class="row" style="display: flex; flex-wrap: wrap;">
-                        <?php foreach($roster as $player): 
+                        <?php foreach ($roster as $player):
                             $photo = $player->photo;
                             if (strpos($photo, 'http') === 0) {
                                 $photo_src = $photo;
@@ -360,21 +360,21 @@
                                 $photo_src = base_url('upload/' . $photo);
                             }
                         ?>
-                        <div class="col-md-4 col-sm-4 col-xs-6" style="margin-bottom: 25px; display: flex;">
-                            <div class="cm-roster-card" style="width: 100%;">
-                                <div class="cm-roster-photo-container">
-                                    <a href="<?php echo site_url('atlet/detail/'.$player->id); ?>">
-                                        <img src="<?php echo $photo_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($player->name); ?>">
-                                    </a>
-                                </div>
-                                <div class="cm-roster-info">
-                                    <span class="cm-roster-pos">#<?php echo $player->backNumber; ?> &bull; <?php echo $player->player_type; ?></span>
-                                    <h5>
-                                        <a href="<?php echo site_url('atlet/detail/'.$player->id); ?>"><?php echo $player->name; ?></a>
-                                    </h5>
+                            <div class="col-md-4 col-sm-4 col-xs-6" style="margin-bottom: 25px; display: flex;">
+                                <div class="cm-roster-card" style="width: 100%;">
+                                    <div class="cm-roster-photo-container">
+                                        <a href="<?php echo site_url('atlet/detail/' . $player->id); ?>">
+                                            <img src="<?php echo $photo_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($player->name); ?>">
+                                        </a>
+                                    </div>
+                                    <div class="cm-roster-info">
+                                        <span class="cm-roster-pos">#<?php echo $player->backNumber; ?> &bull; <?php echo $player->player_type; ?></span>
+                                        <h5>
+                                            <a href="<?php echo site_url('atlet/detail/' . $player->id); ?>"><?php echo $player->name; ?></a>
+                                        </h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
@@ -393,14 +393,14 @@
                     </div>
                 <?php else: ?>
                     <div class="cm-match-list-wrapper">
-                        <?php foreach($matches as $match): 
-                            $logo1 = (strpos($match->logo_club_1, 'http') === 0) ? $match->logo_club_1 : base_url('uploads/' . $match->logo_club_1);
-                            $logo2 = (strpos($match->logo_club_2, 'http') === 0) ? $match->logo_club_2 : base_url('uploads/' . $match->logo_club_2);
-                            
+                        <?php foreach ($matches as $match):
+                            $logo1 = (strpos($match->logo_club_1, 'http') === 0) ? $match->logo_club_1 : base_url('upload/' . $match->logo_club_1);
+                            $logo2 = (strpos($match->logo_club_2, 'http') === 0) ? $match->logo_club_2 : base_url('upload/' . $match->logo_club_2);
+
                             $is_win = false;
                             $is_loss = false;
                             $score_text = $match->club_1_score . ' - ' . $match->club_2_score;
-                            
+
                             if ($match->club_1_score !== $match->club_2_score) {
                                 if ($match->sport_club_1 == $club->id) {
                                     if ($match->club_1_score > $match->club_2_score) $is_win = true;
@@ -410,7 +410,7 @@
                                     else $is_loss = true;
                                 }
                             }
-                            
+
                             $badge_color = '#666666';
                             $badge_label = 'DRAW';
                             if ($is_win) {
@@ -421,28 +421,28 @@
                                 $badge_label = 'LOSS';
                             }
                         ?>
-                        <div class="cm-club-match-card">
-                            <div class="cm-match-card-header">
-                                <span><i class="fa fa-calendar" style="color: var(--primary-color, #d8302f); margin-right: 4px;"></i> <?php echo date('d M Y', strtotime($match->match_date)); ?></span>
-                                <span class="badge" style="background-color: <?php echo $badge_color; ?>; color: #fff; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 4px;"><?php echo $badge_label; ?></span>
+                            <div class="cm-club-match-card">
+                                <div class="cm-match-card-header">
+                                    <span><i class="fa fa-calendar" style="color: var(--primary-color, #d8302f); margin-right: 4px;"></i> <?php echo date('d M Y', strtotime($match->match_date)); ?></span>
+                                    <span class="badge" style="background-color: <?php echo $badge_color; ?>; color: #fff; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 4px;"><?php echo $badge_label; ?></span>
+                                </div>
+
+                                <div class="cm-match-card-body">
+                                    <div class="cm-match-team-block" style="justify-content: flex-end; text-align: right;">
+                                        <span style="font-size: 13.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: <?php echo ($match->sport_club_1 == $club->id) ? 'var(--primary-color, #d8302f)' : '#333'; ?>;"><?php echo $match->club_1; ?></span>
+                                        <img src="<?php echo $logo1; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="width: 32px; height: 32px; object-fit: contain;">
+                                    </div>
+
+                                    <div class="cm-match-score-badge">
+                                        <?php echo $score_text; ?>
+                                    </div>
+
+                                    <div class="cm-match-team-block" style="justify-content: flex-start; text-align: left;">
+                                        <img src="<?php echo $logo2; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="width: 32px; height: 32px; object-fit: contain;">
+                                        <span style="font-size: 13.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: <?php echo ($match->sport_club_2 == $club->id) ? 'var(--primary-color, #d8302f)' : '#333'; ?>;"><?php echo $match->club_2; ?></span>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="cm-match-card-body">
-                                <div class="cm-match-team-block" style="justify-content: flex-end; text-align: right;">
-                                    <span style="font-size: 13.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: <?php echo ($match->sport_club_1 == $club->id) ? 'var(--primary-color, #d8302f)' : '#333'; ?>;"><?php echo $match->club_1; ?></span>
-                                    <img src="<?php echo $logo1; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="width: 32px; height: 32px; object-fit: contain;">
-                                </div>
-                                
-                                <div class="cm-match-score-badge">
-                                    <?php echo $score_text; ?>
-                                </div>
-                                
-                                <div class="cm-match-team-block" style="justify-content: flex-start; text-align: left;">
-                                    <img src="<?php echo $logo2; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" style="width: 32px; height: 32px; object-fit: contain;">
-                                    <span style="font-size: 13.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: <?php echo ($match->sport_club_2 == $club->id) ? 'var(--primary-color, #d8302f)' : '#333'; ?>;"><?php echo $match->club_2; ?></span>
-                                </div>
-                            </div>
-                        </div>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>

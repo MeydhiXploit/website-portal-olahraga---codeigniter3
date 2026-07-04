@@ -4,7 +4,7 @@
         border: 1px solid #eaeaea;
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         transition: all 0.3s ease;
         text-align: center;
         height: 100%;
@@ -14,7 +14,7 @@
 
     .cm-athlete-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         border-color: var(--primary-color);
     }
 
@@ -45,7 +45,7 @@
         margin: 0 0 8px 0;
         color: #333;
     }
-    
+
     .cm-athlete-info h4 a {
         color: #333;
         text-decoration: none;
@@ -85,22 +85,22 @@
                     <label style="font-weight: 700; color: #333; margin-bottom: 8px; display: block; font-size: 13px;">Cabang Olahraga</label>
                     <select name="sport" class="form-control" style="height: 42px; border-radius: 4px; border: 1px solid #ccc; font-size: 13.5px;">
                         <option value="">Semua Cabang Olahraga</option>
-                        <?php foreach($sport_types as $sport): ?>
+                        <?php foreach ($sport_types as $sport): ?>
                             <option value="<?php echo $sport->id; ?>" <?php echo ($sport_filter == $sport->id) ? 'selected' : ''; ?>><?php echo $sport->name_type; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-                
+
                 <div class="col-md-4 col-sm-6 col-xs-12" style="text-align: left;">
                     <label style="font-weight: 700; color: #333; margin-bottom: 8px; display: block; font-size: 13px;">Klub Asal</label>
                     <select name="club" class="form-control" style="height: 42px; border-radius: 4px; border: 1px solid #ccc; font-size: 13.5px;">
                         <option value="">Semua Klub</option>
-                        <?php foreach($clubs as $club): ?>
+                        <?php foreach ($clubs as $club): ?>
                             <option value="<?php echo $club->id; ?>" <?php echo ($club_filter == $club->id) ? 'selected' : ''; ?>><?php echo $club->name; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-                
+
                 <div class="col-md-3 col-sm-12 col-xs-12">
                     <button type="submit" class="btn" style="background-color: var(--primary-color); color: #ffffff; font-weight: 700; height: 42px; padding: 0 30px; border-radius: 4px; border: none; width: 100%; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease;">Filter Atlet</button>
                 </div>
@@ -114,26 +114,26 @@
             </div>
         <?php else: ?>
             <div class="row" style="display: flex; flex-wrap: wrap;">
-                <?php foreach($athletes as $athlete): 
-                    $photo_src = (strpos($athlete->photo, 'http') === 0) ? $athlete->photo : base_url('uploads/' . $athlete->photo);
+                <?php foreach ($athletes as $athlete):
+                    $photo_src = (strpos($athlete->photo, 'http') === 0) ? $athlete->photo : base_url('upload/' . $athlete->photo);
                 ?>
-                <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px; display: flex;">
-                    <div class="cm-athlete-card" style="width: 100%;">
-                        <div class="cm-athlete-photo-container">
-                            <a href="<?php echo site_url('atlet/detail/'.$athlete->id); ?>">
-                                <img src="<?php echo $photo_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($athlete->name); ?>">
-                            </a>
-                        </div>
-                        <div class="cm-athlete-info">
-                            <span class="cm-athlete-pos">#<?php echo $athlete->backNumber; ?> - <?php echo $athlete->player_type; ?></span>
-                            <h4><a href="<?php echo site_url('atlet/detail/'.$athlete->id); ?>"><?php echo $athlete->name; ?></a></h4>
-                            <span class="cm-athlete-club"><?php echo $athlete->club_name; ?></span>
+                    <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px; display: flex;">
+                        <div class="cm-athlete-card" style="width: 100%;">
+                            <div class="cm-athlete-photo-container">
+                                <a href="<?php echo site_url('atlet/detail/' . $athlete->id); ?>">
+                                    <img src="<?php echo $photo_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($athlete->name); ?>">
+                                </a>
+                            </div>
+                            <div class="cm-athlete-info">
+                                <span class="cm-athlete-pos">#<?php echo $athlete->backNumber; ?> - <?php echo $athlete->player_type; ?></span>
+                                <h4><a href="<?php echo site_url('atlet/detail/' . $athlete->id); ?>"><?php echo $athlete->name; ?></a></h4>
+                                <span class="cm-athlete-club"><?php echo $athlete->club_name; ?></span>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
-            
+
             <!-- Pagination -->
             <div class="row" style="margin-top: 20px;">
                 <div class="col-md-12 text-center">

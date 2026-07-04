@@ -9,9 +9,9 @@
         border: none;
         border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
         margin-bottom: 30px;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
         position: relative;
     }
 
@@ -126,7 +126,7 @@
         transition: all 0.3s ease;
         text-decoration: none !important;
         border: none;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .cm-back-btn:hover {
@@ -150,12 +150,12 @@
             <div class="row style-flex" style="display: flex; flex-wrap: wrap;">
                 <!-- Athlete Photo -->
                 <div class="col-md-5 col-sm-12 col-xs-12" style="padding: 0; overflow: hidden;">
-                    <?php 
-                    $photo_src = (strpos($athlete->photo, 'http') === 0) ? $athlete->photo : base_url('uploads/' . $athlete->photo);
+                    <?php
+                    $photo_src = (strpos($athlete->photo, 'http') === 0) ? $athlete->photo : base_url('upload/' . $athlete->photo);
                     ?>
                     <img class="cm-athlete-detail-photo" src="<?php echo $photo_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($athlete->name); ?>" />
                 </div>
-                
+
                 <!-- Athlete Details -->
                 <div class="col-md-7 col-sm-12 col-xs-12" style="display: flex; align-items: center;">
                     <div class="cm-athlete-detail-info">
@@ -163,7 +163,7 @@
                             <i class="fa fa-tag" style="margin-right: 4px;"></i> No. Punggung #<?php echo $athlete->backNumber; ?> &bull; <?php echo $athlete->player_type; ?>
                         </span>
                         <h2 class="cm-athlete-detail-name"><?php echo $athlete->name; ?></h2>
-                        
+
                         <table class="cm-athlete-table">
                             <tbody>
                                 <tr>
@@ -174,7 +174,7 @@
                                     <td class="label-cell"><i class="fa fa-shield"></i> Klub Saat Ini</td>
                                     <td class="value-cell">
                                         <?php if (!empty($athlete->sport_club)): ?>
-                                            <a href="<?php echo site_url('klub/detail/'.$athlete->sport_club); ?>" style="color: var(--primary-color, #d8302f); font-weight: 800; text-decoration: none;">
+                                            <a href="<?php echo site_url('klub/detail/' . $athlete->sport_club); ?>" style="color: var(--primary-color, #d8302f); font-weight: 800; text-decoration: none;">
                                                 <?php echo $athlete->club_name; ?>
                                             </a>
                                         <?php else: ?>
@@ -189,16 +189,16 @@
                                 <tr>
                                     <td class="label-cell"><i class="fa fa-birthday-cake"></i> Tanggal Lahir</td>
                                     <td class="value-cell">
-                                        <?php 
-                                            if (!empty($athlete->date_birth)) {
-                                                echo date('d F Y', strtotime($athlete->date_birth));
-                                                $birthDate = new DateTime($athlete->date_birth);
-                                                $today = new DateTime('today');
-                                                $age = $birthDate->diff($today)->y;
-                                                echo " <span style='font-weight: 400; color: #888;'>(" . $age . " Tahun)</span>";
-                                            } else {
-                                                echo "-";
-                                            }
+                                        <?php
+                                        if (!empty($athlete->date_birth)) {
+                                            echo date('d F Y', strtotime($athlete->date_birth));
+                                            $birthDate = new DateTime($athlete->date_birth);
+                                            $today = new DateTime('today');
+                                            $age = $birthDate->diff($today)->y;
+                                            echo " <span style='font-weight: 400; color: #888;'>(" . $age . " Tahun)</span>";
+                                        } else {
+                                            echo "-";
+                                        }
                                         ?>
                                     </td>
                                 </tr>
@@ -216,7 +216,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                         <div>
                             <a href="<?php echo site_url('atlet'); ?>" class="cm-back-btn">
                                 <i class="fa fa-arrow-left"></i> Kembali ke Daftar

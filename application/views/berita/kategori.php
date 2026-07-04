@@ -239,31 +239,31 @@
                     </div>
                 <?php else: ?>
                     <div class="row" style="display: flex; flex-wrap: wrap;">
-                        <?php foreach($news_list as $news): 
+                        <?php foreach ($news_list as $news):
                             $thumb = $news->thumbnail;
-                            $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
+                            $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('upload/' . $thumb);
                         ?>
-                        <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px; display: flex;">
-                            <div class="colormag-news-card">
-                                <div class="card-thumb">
-                                    <a href="<?php echo site_url('news/'.$news->news_slug); ?>">
-                                        <img src="<?php echo $img_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($news->title); ?>" />
-                                    </a>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-meta">
-                                        <span><i class="fa fa-calendar"></i> <?php echo date('d M Y', strtotime($news->created_at)); ?></span>
-                                        <span style="margin-left: 8px;"><i class="fa fa-user"></i> <?php echo $news->fullname; ?></span>
+                            <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px; display: flex;">
+                                <div class="colormag-news-card">
+                                    <div class="card-thumb">
+                                        <a href="<?php echo site_url('news/' . $news->news_slug); ?>">
+                                            <img src="<?php echo $img_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($news->title); ?>" />
+                                        </a>
                                     </div>
-                                    <h3 class="cm-clamp-2"><a href="<?php echo site_url('news/'.$news->news_slug); ?>"><?php echo $news->title; ?></a></h3>
-                                    <p class="cm-clamp-2"><?php echo htmlspecialchars($news->description); ?></p>
-                                    <a href="<?php echo site_url('news/'.$news->news_slug); ?>" class="news-card-btn">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a>
+                                    <div class="card-content">
+                                        <div class="card-meta">
+                                            <span><i class="fa fa-calendar"></i> <?php echo date('d M Y', strtotime($news->created_at)); ?></span>
+                                            <span style="margin-left: 8px;"><i class="fa fa-user"></i> <?php echo $news->fullname; ?></span>
+                                        </div>
+                                        <h3 class="cm-clamp-2"><a href="<?php echo site_url('news/' . $news->news_slug); ?>"><?php echo $news->title; ?></a></h3>
+                                        <p class="cm-clamp-2"><?php echo htmlspecialchars($news->description); ?></p>
+                                        <a href="<?php echo site_url('news/' . $news->news_slug); ?>" class="news-card-btn">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <?php endforeach; ?>
                     </div>
-                    
+
                     <!-- Pagination links -->
                     <div class="row" style="margin-top: 20px;">
                         <div class="col-md-12 text-center">
@@ -272,44 +272,44 @@
                     </div>
                 <?php endif; ?>
             </div>
-            
+
             <!-- Sidebar Widgets (Right) -->
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <!-- Popular News Widget -->
                 <div class="cm-sidebar-widget">
                     <h3 class="cm-sidebar-title">Berita Populer</h3>
                     <ul class="cm-sidebar-news-list">
-                        <?php foreach($popular_news as $pop): 
+                        <?php foreach ($popular_news as $pop):
                             $pop_thumb = $pop->thumbnail;
-                            $pop_img = (strpos($pop_thumb, 'http') === 0) ? $pop_thumb : base_url('uploads/' . $pop_thumb);
+                            $pop_img = (strpos($pop_thumb, 'http') === 0) ? $pop_thumb : base_url('upload/' . $pop_thumb);
                         ?>
-                        <li>
-                            <a href="<?php echo site_url('news/'.$pop->news_slug); ?>" class="cm-sidebar-news-item">
-                                <div class="cm-sidebar-news-thumb">
-                                    <img src="<?php echo $pop_img; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" />
-                                </div>
-                                <div class="cm-sidebar-news-info">
-                                    <h4 class="cm-sidebar-news-title"><?php echo $pop->title; ?></h4>
-                                    <span class="cm-sidebar-news-date"><?php echo date('d M Y', strtotime($pop->created_at)); ?></span>
-                                </div>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="<?php echo site_url('news/' . $pop->news_slug); ?>" class="cm-sidebar-news-item">
+                                    <div class="cm-sidebar-news-thumb">
+                                        <img src="<?php echo $pop_img; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="" />
+                                    </div>
+                                    <div class="cm-sidebar-news-info">
+                                        <h4 class="cm-sidebar-news-title"><?php echo $pop->title; ?></h4>
+                                        <span class="cm-sidebar-news-date"><?php echo date('d M Y', strtotime($pop->created_at)); ?></span>
+                                    </div>
+                                </a>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
-                
+
                 <!-- Other Categories Widget -->
                 <div class="cm-sidebar-widget">
                     <h3 class="cm-sidebar-title">Kategori Lain</h3>
                     <ul class="cm-sidebar-cat-list">
-                        <?php foreach($all_categories as $cat): ?>
+                        <?php foreach ($all_categories as $cat): ?>
                             <?php if ($cat->id != $sport_type->id): ?>
-                            <li>
-                                <a href="<?php echo site_url('sport/'.str_replace(' ', '-', strtolower($cat->name_type))); ?>" class="cm-sidebar-cat-item">
-                                    <span><?php echo $cat->name_type; ?></span>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
+                                <li>
+                                    <a href="<?php echo site_url('sport/' . str_replace(' ', '-', strtolower($cat->name_type))); ?>" class="cm-sidebar-cat-item">
+                                        <span><?php echo $cat->name_type; ?></span>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>

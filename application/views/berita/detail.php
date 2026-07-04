@@ -100,7 +100,7 @@
                     <div class="feature-img">
                         <?php
                         $thumb = $news->thumbnail;
-                        $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
+                        $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('upload/' . $thumb);
                         ?>
                         <img src="<?php echo $img_src; ?>" class="img-responsive" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($news->title); ?>" style="border-radius: 8px; max-height: 450px; width: 100%; object-fit: cover; margin-bottom: 20px;" />
                     </div>
@@ -153,7 +153,7 @@
                         <?php else: ?>
                             <?php foreach ($related_news as $rel):
                                 $rel_thumb = $rel->thumbnail;
-                                $rel_img = (strpos($rel_thumb, 'http') === 0) ? $rel_thumb : base_url('uploads/' . $rel_thumb);
+                                $rel_img = (strpos($rel_thumb, 'http') === 0) ? $rel_thumb : base_url('upload/' . $rel_thumb);
                             ?>
                                 <li>
                                     <a href="<?php echo site_url('news/' . $rel->news_slug); ?>" class="cm-sidebar-news-item">

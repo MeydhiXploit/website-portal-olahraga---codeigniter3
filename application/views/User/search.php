@@ -13,19 +13,18 @@
             </div>
         <?php else: ?>
             <div class="row category-news-row" style="display: flex; flex-wrap: wrap;">
-                <?php foreach($data_news as $news):
+                <?php foreach ($data_news as $news):
                     $thumb = $news->thumbnail ?? '';
-                    $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('uploads/' . $thumb);
+                    $img_src = (strpos($thumb, 'http') === 0) ? $thumb : base_url('upload/' . $thumb);
                 ?>
                     <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px;">
                         <div class="colormag-news-card">
                             <div class="card-thumb">
-                                <a href="<?php echo site_url('news/'.$news->news_slug); ?>" style="display: block; width: 100%; height: 100%;">
+                                <a href="<?php echo site_url('news/' . $news->news_slug); ?>" style="display: block; width: 100%; height: 100%;">
                                     <img
                                         src="<?php echo $img_src; ?>"
                                         onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'"
-                                        alt="<?php echo htmlspecialchars($news->title); ?>"
-                                    />
+                                        alt="<?php echo htmlspecialchars($news->title); ?>" />
                                 </a>
                             </div>
 
@@ -38,12 +37,12 @@
                                 </div>
 
                                 <h3 class="cm-clamp-2">
-                                    <a href="<?php echo site_url('news/'.$news->news_slug); ?>"><?php echo $news->title; ?></a>
+                                    <a href="<?php echo site_url('news/' . $news->news_slug); ?>"><?php echo $news->title; ?></a>
                                 </h3>
 
                                 <p class="cm-clamp-2"><?php echo htmlspecialchars($news->description); ?></p>
 
-                                <a href="<?php echo site_url('news/'.$news->news_slug); ?>" class="news-card-btn">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a>
+                                <a href="<?php echo site_url('news/' . $news->news_slug); ?>" class="news-card-btn">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

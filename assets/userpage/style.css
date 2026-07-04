@@ -1253,7 +1253,7 @@ hr.invis1 {
 	width: 100%;
 	height: 100%;
 	position: relative;
-	background: url("uploads/code.jpg") no-repeat;
+	background: url("upload/code.jpg") no-repeat;
 }
 
 .design-wrapper {
@@ -1274,7 +1274,7 @@ hr.invis1 {
 	position: relative;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
-	background: url("uploads/design.jpg") no-repeat;
+	background: url("upload/design.jpg") no-repeat;
 }
 
 
