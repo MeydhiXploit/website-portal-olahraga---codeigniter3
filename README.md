@@ -134,18 +134,31 @@ Karena database terus berkembang seiring dengan penambahan fitur:
 
 ```text
 website-portal-olahraga/
+├── .editorconfig                        # Konfigurasi editor/format kode
+├── .gitignore                           # File aturan pengecualian Git
+├── .htaccess                            # Aturan rewrite untuk URL friendly
+├── admin/                               # Dashboard admin statis / admin entry point
 ├── application/                         # Direktori kode aplikasi MVC CodeIgniter
 │   ├── config/                          # File konfigurasi sistem CodeIgniter
 │   │   ├── autoload.php                 # Pemuatan otomatis (autoload) library, helper, & model
-│   │   ├── config.php                   # Pengaturan base_url dinamis, index_page, dll
+│   │   ├── config.php                   # Pengaturan base_url, index_page, dll
+│   │   ├── constants.php                # Definisi konstanta aplikasi
 │   │   ├── database.php                 # Konfigurasi koneksi basis data MySQL
-│   │   ├── mimes.php                    # Daftar tipe MIME & ekstensi file yang diizinkan untuk di-upload
+│   │   ├── doctype.php                  # Konfigurasi doctype HTML default
+│   │   ├── foreign_chars.php            # Pemetaan karakter asing untuk URL slug
+│   │   ├── hooks.php                    # Konfigurasi hook CodeIgniter
+│   │   ├── memcached.php                # Konfigurasi cache Memcached (jika digunakan)
+│   │   ├── migration.php                # Konfigurasi migrasi database
+│   │   ├── mimes.php                    # Daftar tipe MIME & ekstensi upload yang diizinkan
+│   │   ├── profiler.php                 # Konfigurasi profiler debugging
 │   │   ├── routes.php                   # Pemetaan URL (routing) aplikasi
-│   │   └── user_agents.php              # Pengaturan browser/platform user-agent
+│   │   ├── smileys.php                  # Daftar emoji/smileys untuk chat atau komentar
+│   │   ├── user_agents.php              # Pengaturan browser/platform user-agent
+│   │   └── index.html                   # Tombol proteksi direktori
 │   ├── controllers/                     # Pengendali alur logika bisnis (Controllers)
 │   │   ├── AthleteController.php        # Kelola data profil, detail fisik, & foto atlet di Dashboard Admin
 │   │   ├── Atlet.php                    # Controller data atlet untuk frontend
-│   │   ├── Auth.php                     # Logika autentikasi login/logout admin
+│   │   ├── Auth.php                     # Logika autentikasi login/logout admin & pengguna
 │   │   ├── Berita.php                   # Controller halaman berita sisi frontend & admin
 │   │   ├── ClubController.php           # Logika manajemen klub olahraga (tambah/edit/hapus)
 │   │   ├── Home.php                     # Halaman beranda utama untuk pengunjung
@@ -159,8 +172,9 @@ website-portal-olahraga/
 │   │   ├── SportController.php          # Kontrol cabang olahraga & master data jenis sport
 │   │   └── UserController.php           # Autentikasi user & pengisian komentar/ulasan
 │   ├── helpers/                         # Fungsi helper tambahan (custom helpers)
-│   │   └── auth_helper.php              # Proteksi session admin & generator dinamis get_image_url()
-│   ├── models/                          # Interaksi Query dengan database MySQL (Models)
+│   │   ├── auth_helper.php              # Proteksi session admin & generator dinamis get_image_url()
+│   │   └── index.html                   # Tombol proteksi direktori
+│   ├── models/                          # Interaksi query dengan database MySQL (Models)
 │   │   ├── Athlete_model.php            # Model dasar manipulasi data atlet
 │   │   ├── Auth_model.php               # Validasi login credential admin
 │   │   ├── Club_model.php               # Kueri tabel sport_club
@@ -179,7 +193,6 @@ website-portal-olahraga/
 │   └── views/                           # Template tampilan antarmuka (Views)
 │       ├── Admin/                       # Halaman Dashboard khusus Administrator
 │       │   ├── athlete/                 # View kelola data atlet (tambah, edit, daftar)
-│       │   ├── dashboard.php            # Halaman utama ringkasan statistik admin
 │       │   ├── foul/                    # View pencatatan pelanggaran pertandingan
 │       │   ├── foul-type/               # View tipe pelanggaran (kartu kuning/merah, dll)
 │       │   ├── league/                  # View manajemen liga/kompetisi
@@ -188,10 +201,11 @@ website-portal-olahraga/
 │       │   ├── player-type/             # View kelola jenis posisi pemain
 │       │   ├── sport-club/              # View kelola logo, negara, & nama klub
 │       │   ├── sport-type/              # View kelola jenis olahraga
-│       │   └── user/                    # View kelola admin user & profile
+│       │   ├── user/                    # View kelola admin user & profile
+│       │   └── dashboard.php            # Halaman utama ringkasan statistik admin
 │       ├── Auth/                        # Halaman login administrator
 │       ├── User/                        # Halaman portal berita sisi pengunjung
-│       │   ├── Home.php                 # View Beranda Utama (slider, berita terkini, populer)
+│       │   ├── Home.php                 # View beranda utama (slider, berita terkini, populer)
 │       │   ├── league.php               # View detail daftar liga kompetisi
 │       │   ├── league-match.php         # View daftar pertandingan di dalam suatu liga
 │       │   ├── news-detail.php          # View isi lengkap artikel berita & form ulasan
@@ -202,12 +216,26 @@ website-portal-olahraga/
 │       │   └── layout-user.php          # Kerangka layout Portal Pengunjung (navigasi, footer)
 │       └── templates/                   # Komponen template parsial (header, footer, dll)
 ├── assets/                              # Aset statis front-end
-│   └── img/                             # Kumpulan aset gambar statis default (e.g. no-image.jpg)
-├── upload/                              # Direktori penyimpanan media unggahan dinamis (Logo, Foto, Thumbnail)
-├── vendor/                              # Library & package dependensi pihak ketiga (via Composer)
-├── system/                              # Berkas core engine Framework CodeIgniter 3
+│   ├── css/                             # Stylesheet CSS
+│   ├── fonts/                           # Font web yang digunakan aplikasi
+│   ├── images/                          # Gambar pendukung tema dan ikon
+│   ├── img/                             # Gambar utama dan aset statis lainnya
+│   ├── js/                              # Skrip JavaScript untuk interaksi UI
+│   └── preview_img/                     # Contoh preview gambar
+├── composer.json                        # Konfigurasi dependensi Composer
+├── conflict_check.txt                   # Catatan pemeriksaan konflik perubahan
+├── conflict_files.txt                   # Daftar file yang bermasalah saat konflik
+├── debug_match.php                      # Skrip debug khusus modul pertandingan
+├── fix_foul_tables.sql                  # Skrip SQL perbaikan tabel foul
+├── index.php                            # Entry point utama aplikasi CodeIgniter
+├── license.txt                          # Lisensi proyek
+├── logo_ubg_transparant.png             # Logo proyek
 ├── portal_olahraga.sql                  # Salinan database MySQL ter-update
-└── README.md                            # Dokumentasi ini
+├── README.md                            # Dokumentasi ini
+├── readme.rst                           # Dokumentasi alternatif/versi lama
+├── system/                              # Berkas core engine Framework CodeIgniter 3
+├── upload/                              # Direktori penyimpanan media unggahan dinamis
+└── vendor/                              # Library & package dependensi pihak ketiga (via Composer)
 ```
 
 ---
