@@ -41,8 +41,7 @@ class MatchController extends CI_Controller
             show_404();
         }
         $context = [
-            'match_today' => $this->M_Match->getMatch_today_only($league_id),
-            'upcoming_match' => $this->M_Match->getMatch_today($league_id),
+            'match_history' => $this->M_Match->getMatch_by_league($league_id),
             'data_match' => $this->M_Match->getMatch_by_league($league_id),
         ];
         $this->template->show('Admin/match/index', $context);

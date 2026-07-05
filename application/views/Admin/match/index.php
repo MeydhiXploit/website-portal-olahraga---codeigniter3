@@ -4,22 +4,22 @@
       <div class="col-md-4">
         <div class="bdrs-3 ov-h bgc-white bd">
           <div class="bgc-deep-purple-500 ta-c p-30">
-            <h1 class="fw-300 mB-5 lh-1 c-white"><?php echo date('l'); ?></h1>
-            <h3 class="c-white"><?php echo date('d F Y'); ?></h3>
+            <h1 class="fw-300 mB-5 lh-1 c-white">Riwayat</h1>
+            <h3 class="c-white">Pertandingan Liga</h3>
           </div>
           <div class="pos-r">
             <div class="m-0 p-0 mT-20 email-wrapper remain-height ov-h">
               <div class="email-list h-100 layers">
                 <div class="layer w-100 fxg-1 scrollable pos-r">
                   <?php
-                  if (!empty($match_today)) {
-                    foreach ($match_today as $match) {
+                  if (!empty($match_history)) {
+                    foreach ($match_history as $match) {
                       echo "<div class='email-list-item peers fxw-nw p-20 bdB bgcH-grey-100 cur-p'>
                                                         <div class='peer mR-10'>
-                                                            <i class='fa fa-fw fa-clock-o c-blue-500'></i>
+                                                            <i class='fa fa-fw fa-history c-blue-500'></i>
                                                         </div>
                                                         <div class='peer peer-greed ov-h'>
-                                                            <span class='fw-600'>$match->club_1 vs $match->club_2 | " . date('H:i', strtotime($match->match_date)) . " | $match->match_status</span>
+                                                            <span class='fw-600'>$match->club_1 vs $match->club_2 | " . date('d M Y H:i', strtotime($match->match_date)) . " | $match->match_status</span>
                                                             <div class='c-grey-600'>
                                                                 <span class='c-grey-700'>$match->club_1_score - $match->club_2_score</span>
                                                             </div>
@@ -27,22 +27,7 @@
                                                     </div>";
                     }
                   } else {
-                    echo "<div class='admin-empty-state m-20'>Tidak ada pertandingan hari ini.</div>";
-                    if (!empty($upcoming_match)) {
-                      foreach ($upcoming_match as $match) {
-                        echo "<div class='email-list-item peers fxw-nw p-20 bdB bgcH-grey-100 cur-p'>
-                                                            <div class='peer mR-10'>
-                                                                <i class='fa fa-fw fa-calendar c-orange-500'></i>
-                                                            </div>
-                                                            <div class='peer peer-greed ov-h'>
-                                                                <span class='fw-600'>Upcoming: $match->club_1 vs $match->club_2 | " . date('d M Y H:i', strtotime($match->match_date)) . " | $match->match_status</span>
-                                                                <div class='c-grey-600'>
-                                                                    <span class='c-grey-700'>$match->club_1_score - $match->club_2_score</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>";
-                      }
-                    }
+                    echo "<div class='admin-empty-state m-20'>Belum ada riwayat pertandingan.</div>";
                   }
                   ?>
                 </div>
