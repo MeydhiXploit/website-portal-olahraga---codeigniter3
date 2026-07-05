@@ -105,34 +105,34 @@
                         <img src="<?php echo $img_src; ?>" class="img-responsive" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($news->title); ?>" style="border-radius: 8px; max-height: 450px; width: 100%; object-fit: cover; margin-bottom: 20px;" />
                     </div>
                     <div class="feature-cont">
-                        <div class="post-people" style="margin-bottom: 25px; border-bottom: 1px solid #eaeaea; padding-bottom: 20px;">
+                        <div class="post-people">
                             <div class="left-profile">
-                                <div class="post-info" style="display: flex; align-items: center;">
-                                    <img src="<?php echo base_url('assets/userpage/images/profile-img.png'); ?>" alt="#" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-color);" />
-                                    <span style="margin-left: 15px; display: flex; flex-direction: column;">
-                                        <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: #333;">Oleh <?php echo $news->fullname; ?></h4>
-                                        <h5 style="margin: 3px 0 0 0; font-size: 12px; color: var(--text-muted); font-weight: 400;">
-                                            <span style="margin-right: 15px;"><i class="fa fa-calendar" style="color: var(--primary-color); margin-right: 4px;"></i> <?php echo date('d M Y', strtotime($news->created_at)); ?></span>
-                                            <span><i class="fa fa-tag" style="color: var(--primary-color); margin-right: 4px;"></i> Kategori: <?php echo $news->name_type; ?></span>
-                                        </h5>
-                                    </span>
+                                <div class="post-info">
+                                    <img src="<?php echo base_url('assets/userpage/images/profile-img.png'); ?>" alt="#" class="post-author-avatar" />
+                                    <div class="post-author-details">
+                                        <h4>Oleh <?php echo $news->fullname; ?></h4>
+                                        <div class="post-meta">
+                                            <span><i class="fa fa-calendar"></i> <?php echo date('d M Y', strtotime($news->created_at)); ?></span>
+                                            <span><i class="fa fa-tag"></i> Kategori: <?php echo $news->name_type; ?></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="post-heading" style="font-size: 15px; line-height: 1.8; color: #444; text-align: left;">
+                        <div class="post-heading">
                             <?php echo $news->body; ?>
                         </div>
 
                         <!-- Article Tags -->
                         <?php if (!empty($news->news_tags)): ?>
-                            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea; text-align: left;">
-                                <strong style="font-size: 13px; color: #333; margin-right: 10px;">TAGS:</strong>
+                            <div class="news-tag-list">
+                                <strong class="news-tag-label">TAGS:</strong>
                                 <?php
                                 $tags = explode(',', $news->news_tags);
                                 foreach ($tags as $tag) {
                                     $tag = trim($tag);
                                     if (!empty($tag)) {
-                                        echo '<span class="badge" style="background-color: var(--primary-color); color: #fff; padding: 6px 12px; font-size: 11px; margin-right: 5px; font-weight: 600; border-radius: 4px;">' . htmlspecialchars($tag) . '</span>';
+                                        echo '<span class="news-tag">' . htmlspecialchars($tag) . '</span>';
                                     }
                                 }
                                 ?>
