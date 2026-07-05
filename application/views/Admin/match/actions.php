@@ -112,3 +112,28 @@ echo form_open($routes, array("class" => "modal-content"));
     <button type="submit" class="btn btn-primary">Save</button>
 </div>
 </form>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var club1 = document.getElementById('sport_club_1');
+        var club2 = document.getElementById('sport_club_2');
+
+        function updateClub2Options() {
+            if (!club1 || !club2) return;
+            var selected1 = club1.value;
+            for (var i = 0; i < club2.options.length; i++) {
+                var option = club2.options[i];
+                if (option.value !== '') {
+                    option.disabled = (selected1 !== '' && option.value === selected1);
+                }
+            }
+            if (club2.value === selected1 && selected1 !== '') {
+                club2.value = '';
+            }
+        }
+
+        if (club1 && club2) {
+            club1.addEventListener('change', updateClub2Options);
+            updateClub2Options();
+        }
+    });
+</script>

@@ -92,7 +92,7 @@ class MatchController extends CI_Controller
     public function check_club($str)
     {
         if ($str === $this->input->post('sport_club_1')) {
-            $this->form_validation->set_message('check_club', 'Sport Club  2 tidak boleh sama dengan Sport Club 1');
+            $this->form_validation->set_message('check_club', 'Club 2 tidak boleh sama dengan Club 1');
             return FALSE;
         } else {
             return TRUE;
