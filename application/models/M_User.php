@@ -1,17 +1,19 @@
 <?php
 
-class M_User extends CI_Model {
+class M_User extends CI_Model
+{
 
     public function get($id = NULL)
     {
         if (!empty($id))
-            return $this->db->get_where('user', array('id'=>$id))->row();
-        else 
+            return $this->db->get_where('user', array('id' => $id))->row();
+        else
             return $this->db->get('user')->result();
     }
 
-    public function get_by_username($username) {
-        return $this->db->get_where('user', array('username'=>$username));
+    public function get_by_username($username)
+    {
+        return $this->db->get_where('user', array('username' => $username));
     }
 
     public function actions($id = NULL)
@@ -27,25 +29,22 @@ class M_User extends CI_Model {
             if (!empty($this->input->post('password'))) {
                 $data['password'] = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
             }
-            return $this->db->update('user', $data, array('id'=> $id));
-        } 
-        else {
+            return $this->db->update('user', $data, array('id' => $id));
+        } else {
             $data = [
                 'fullname' => $this->input->post('fullname'),
                 'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
-                'password' => password_hash($this->input->post('password'),PASSWORD_BCRYPT),
+                'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
                 'gender' => $this->input->post('gender'),
                 'role' => $this->input->post('role'),
             ];
+            if (!isset($data['id'])) {
+                $query = $this->db->select_max('id')->get('user')->row();
+                $data['id'] = (!empty($query->id) ? intval($query->id) + 1 : 1);
+            }
             return $this->db->insert('user', $data);
         }
-        
-    }
-
-    public function delete($id) 
-    {
-        return $this->db->delete('user', array('id'=>$id));
     }
 
     public function check_username($str, $id = NULL)

@@ -8,12 +8,12 @@
         background: #ffffff;
         border: none;
         border-radius: 16px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
         padding: 50px 40px;
         max-width: 460px;
         margin: 0 auto;
         text-align: left;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
         position: relative;
     }
 
@@ -77,12 +77,12 @@
 
     .cm-auth-form .form-control:focus {
         border-color: var(--primary-color, #d8302f);
-        box-shadow: 0 0 0 3px rgba(216,48,47,0.12);
+        box-shadow: 0 0 0 3px rgba(216, 48, 47, 0.12);
         background: #ffffff;
         outline: none;
     }
 
-    .cm-auth-form .form-control:focus + i {
+    .cm-auth-form .form-control:focus+i {
         color: var(--primary-color, #d8302f);
     }
 
@@ -143,13 +143,13 @@
     <div class="container">
         <div class="cm-auth-card">
             <h2 class="cm-auth-title">Masuk Akun</h2>
-            
+
             <?php if (!empty($this->session->flashdata('failed'))): ?>
                 <div class="alert alert-danger text-center" style="border-radius: 8px; padding: 12px; font-size: 13px; font-weight: 600; margin-bottom: 25px; border: none; background-color: #fff5f5; color: #c53030;">
                     <i class="fa fa-exclamation-triangle" style="margin-right: 5px;"></i> <?php echo $this->session->flashdata('failed'); ?>
                 </div>
             <?php endif; ?>
-            
+
             <?php if (!empty($this->session->flashdata('success'))): ?>
                 <div class="alert alert-success text-center" style="border-radius: 8px; padding: 12px; font-size: 13px; font-weight: 600; margin-bottom: 25px; border: none; background-color: #f0fff4; color: #22543d;">
                     <i class="fa fa-check-circle" style="margin-right: 5px;"></i> <?php echo $this->session->flashdata('success'); ?>
@@ -158,16 +158,16 @@
 
             <form class="cm-auth-form" method="POST" action="<?php echo site_url('login'); ?>">
                 <div class="form-group">
-                    <label for="email">Alamat Email</label>
+                    <label for="username">Username atau E-mail</label>
                     <div class="cm-input-wrapper">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="nama@email.com" value="<?php echo set_value('email'); ?>" required autocomplete="email">
-                        <i class="fa fa-envelope"></i>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username atau E-mail" value="<?php echo set_value('username'); ?>" required autocomplete="username">
+                        <i class="fa fa-user"></i>
                     </div>
-                    <?php if (form_error('email')): ?>
-                        <span class="cm-auth-error"><?php echo form_error('email'); ?></span>
+                    <?php if (form_error('username')): ?>
+                        <span class="cm-auth-error"><?php echo form_error('username'); ?></span>
                     <?php endif; ?>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="cm-input-wrapper">
@@ -178,10 +178,10 @@
                         <span class="cm-auth-error"><?php echo form_error('password'); ?></span>
                     <?php endif; ?>
                 </div>
-                
+
                 <button type="submit" class="cm-auth-btn">Sign In</button>
             </form>
-            
+
             <div class="cm-auth-footer">
                 Belum punya akun? <a href="<?php echo site_url('register'); ?>">Daftar Sekarang</a>
             </div>

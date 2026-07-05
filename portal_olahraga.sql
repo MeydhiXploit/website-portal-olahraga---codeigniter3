@@ -370,6 +370,9 @@ ALTER TABLE `sport_type`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `user`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
 --
 -- Indexes for table `visitor`
 --

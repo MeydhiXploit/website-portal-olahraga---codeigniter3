@@ -1,77 +1,92 @@
 <div id="mainContent">
-            <div class="container-fluid">
-              <div class="row gap-20">
-                <div class="col-md-4">
-                  <div class="bdrs-3 ov-h bgc-white bd">
-                    <div class="bgc-deep-purple-500 ta-c p-30">
-                      <h1 class="fw-300 mB-5 lh-1 c-white"><?php echo date('l'); ?></h1>
-                      <h3 class="c-white"><?php echo date('d F Y'); ?></h3>
-                    </div>
-                    <div class="pos-r">
-                      <div class="m-0 p-0 mT-20 email-wrapper remain-height ov-h">
-                        <div class="email-list h-100 layers">
-                            <div class="layer w-100 fxg-1 scrollable pos-r">
-                                <?php 
-                                    if (!empty($match_today)) {
-                                    foreach ($match_today as $match) {
-                                        echo "<div class='email-list-item peers fxw-nw p-20 bdB bgcH-grey-100 cur-p'>
-                                                    <div class='peer mR-10'>
-                                                        <i class='fa fa-fw fa-clock-o c-blue-500'></i>
-                                                    </div>
-                                                    <div class='peer peer-greed ov-h'>
-                                                        <span class='fw-600'>$match->club_1 vs $match->club_2 | ".date('H:i', strtotime($match->match_date))." | $match->match_status</span>
-                                                        <div class='c-grey-600'>
-                                                            <span class='c-grey-700'>$match->club_1_score - $match->club_2_score</span>
+  <div class="container-fluid">
+    <div class="row gap-20">
+      <div class="col-md-4">
+        <div class="bdrs-3 ov-h bgc-white bd">
+          <div class="bgc-deep-purple-500 ta-c p-30">
+            <h1 class="fw-300 mB-5 lh-1 c-white"><?php echo date('l'); ?></h1>
+            <h3 class="c-white"><?php echo date('d F Y'); ?></h3>
+          </div>
+          <div class="pos-r">
+            <div class="m-0 p-0 mT-20 email-wrapper remain-height ov-h">
+              <div class="email-list h-100 layers">
+                <div class="layer w-100 fxg-1 scrollable pos-r">
+                  <?php
+                  if (!empty($match_today)) {
+                    foreach ($match_today as $match) {
+                      echo "<div class='email-list-item peers fxw-nw p-20 bdB bgcH-grey-100 cur-p'>
+                                                        <div class='peer mR-10'>
+                                                            <i class='fa fa-fw fa-clock-o c-blue-500'></i>
                                                         </div>
-                                                    </div>
-                                                </div>";
-                                    }
-                                    } else {
-                                        echo "<div class='admin-empty-state m-20'>Tidak ada pertandingan hari ini.</div>";
-                                    }
-                                ?>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                                                        <div class='peer peer-greed ov-h'>
+                                                            <span class='fw-600'>$match->club_1 vs $match->club_2 | " . date('H:i', strtotime($match->match_date)) . " | $match->match_status</span>
+                                                            <div class='c-grey-600'>
+                                                                <span class='c-grey-700'>$match->club_1_score - $match->club_2_score</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>";
+                    }
+                  } else {
+                    echo "<div class='admin-empty-state m-20'>Tidak ada pertandingan hari ini.</div>";
+                    if (!empty($upcoming_match)) {
+                      foreach ($upcoming_match as $match) {
+                        echo "<div class='email-list-item peers fxw-nw p-20 bdB bgcH-grey-100 cur-p'>
+                                                            <div class='peer mR-10'>
+                                                                <i class='fa fa-fw fa-calendar c-orange-500'></i>
+                                                            </div>
+                                                            <div class='peer peer-greed ov-h'>
+                                                                <span class='fw-600'>Upcoming: $match->club_1 vs $match->club_2 | " . date('d M Y H:i', strtotime($match->match_date)) . " | $match->match_status</span>
+                                                                <div class='c-grey-600'>
+                                                                    <span class='c-grey-700'>$match->club_1_score - $match->club_2_score</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>";
+                      }
+                    }
+                  }
+                  ?>
                 </div>
-                <div class="col-md-8">
-                <div class="row gap-20">
-                <div class="col-md-12">
-                    <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <h4 class="c-grey-900 mB-20">Match</h4>
-                      </div>
-                      <div class="col-sm-6">
-                        <a href="<?php echo site_url('admin/match/action/'.$this->uri->segment(4))?>" class="btn cur-p btn-success btn-color float-end">Add Match</a>
-                      </div>
-                    </div>
-                    <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                        <tr>
-                            <th>Match</th>
-                            <th>Score</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row gap-20">
+          <div class="col-md-12">
+            <div class="bgc-white bd bdrs-3 p-20 mB-20">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="c-grey-900 mB-20">Match</h4>
+                </div>
+                <div class="col-sm-6">
+                  <a href="<?php echo site_url('admin/match/action/' . $this->uri->segment(4)) ?>" class="btn cur-p btn-success btn-color float-end">Add Match</a>
+                </div>
+              </div>
+              <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>Match</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
 
-                        <tbody>
-                        <?php 
-                         if (!empty($data_match)) {
-                         foreach($data_match as $match) {
-                          $status_class = $match->match_status === 'published' ? 'is-published' : 'is-draft';
-                          echo "<tr>
+                <tbody>
+                  <?php
+                  if (!empty($data_match)) {
+                    foreach ($data_match as $match) {
+                      $status_class = $match->match_status === 'published' ? 'is-published' : 'is-draft';
+                      echo "<tr>
                                 <td>$match->club_1 vs $match->club_2</td>
                                 <td><span class='admin-score-badge'>$match->club_1_score - $match->club_2_score</span></td>
-                                <td>".date('d F Y', strtotime($match->match_date))."</td>
+                                <td>" . date('d F Y', strtotime($match->match_date)) . "</td>
                                 <td><span class='admin-status-badge $status_class'>$match->match_status</span></td>
 
                                 <td>
-                                  <a href='".site_url('admin/match/action/'.$this->uri->segment(4).'/'.$match->id)."' class='btn cur-p btn-warning m-3'>Edit</a>
+                                  <a href='" . site_url('admin/match/action/' . $this->uri->segment(4) . '/' . $match->id) . "' class='btn cur-p btn-warning m-3'>Edit</a>
                                   <button type='button' class='btn cur-p btn-danger btn-color m-3' data-bs-toggle='modal' data-bs-target='#delete-modal$match->id'>Delete</button>
                                 <div class='modal fade' id='delete-modal$match->id' tabindex='-1' aria-labelledby='delete-modal' aria-hidden='true' style='display:none'>
                                   <div class='modal-dialog modal-md modal-dialog-centered'>
@@ -83,26 +98,26 @@
                                       <div class='modal-body'>Yakin ingin menghapus pertandingan $match->club_1 vs $match->club_2?</div>
                                       <div class='modal-footer'>
                                         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-                                        <a href='".site_url('admin/match/delete/'.$match->id)."' class='btn btn-danger'>Confirm</a>
+                                        <a href='" . site_url('admin/match/delete/' . $match->id) . "' class='btn btn-danger'>Confirm</a>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 </td>
                                </tr>
-                              "; 
-                        }
-                        } else {
-                          echo "<tr><td colspan='5'><div class='admin-empty-state'>Belum ada match untuk liga ini.</div></td></tr>";
-                        }
-                        ?>
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-                </div>
-                </div>
-              </div>
-              
+                              ";
+                    }
+                  } else {
+                    echo "<tr><td colspan='5'><div class='admin-empty-state'>Belum ada match untuk liga ini.</div></td></tr>";
+                  }
+                  ?>
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

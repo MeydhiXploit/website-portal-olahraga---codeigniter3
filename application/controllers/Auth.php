@@ -1,15 +1,18 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Auth extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model(array('Auth_model', 'M_Sport_Type'));
         $this->load->library('form_validation');
     }
 
-    public function login() {
+    public function login()
+    {
         if (!empty($this->session->userdata('id')) && !empty($this->session->userdata('role'))) {
             if (in_array($this->session->userdata('role'), ['admin', 'editor'])) {
                 redirect('admin/dashboard');
@@ -46,7 +49,7 @@ class Auth extends CI_Controller {
                     ];
                     $this->session->set_userdata($session_data);
                     $this->session->unset_userdata('failed');
-                    
+
                     if (in_array($user->role, ['admin', 'editor'])) {
                         redirect('admin/dashboard');
                     } else {
@@ -60,10 +63,11 @@ class Auth extends CI_Controller {
             }
         }
 
-        $this->load->view('Auth/login');
+        $this->load->view('Auth/user_login');
     }
 
-    public function register() {
+    public function register()
+    {
         if (!empty($this->session->userdata('id')) && !empty($this->session->userdata('role'))) {
             redirect('/');
         }
@@ -104,10 +108,11 @@ class Auth extends CI_Controller {
             redirect('login');
         }
 
-        $this->load->view('Auth/register');
+        $this->load->view('Auth/user_register');
     }
 
-    public function logout() {
+    public function logout()
+    {
         $this->session->sess_destroy();
         redirect('/');
     }
