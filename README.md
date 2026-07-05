@@ -221,7 +221,8 @@ website-portal-olahraga/
 │   ├── images/                          # Gambar pendukung tema dan ikon
 │   ├── img/                             # Gambar utama dan aset statis lainnya
 │   ├── js/                              # Skrip JavaScript untuk interaksi UI
-│   └── preview_img/                     # Contoh preview gambar
+│   ├── preview_img/                     # Contoh preview gambar
+│   └── userpage/                        # Halaman statis/preview user (template contoh)
 ├── composer.json                        # Konfigurasi dependensi Composer
 ├── conflict_check.txt                   # Catatan pemeriksaan konflik perubahan
 ├── conflict_files.txt                   # Daftar file yang bermasalah saat konflik
