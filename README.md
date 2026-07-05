@@ -150,7 +150,7 @@ website-portal-olahraga/
 ├── conflict_files.txt
 ├── contributing.md
 ├── debug_match.php
-├── fix_foul_tables.sql
+
 ├── index.php
 ├── license.txt
 ├── logo_ubg_transparant.png
@@ -162,77 +162,29 @@ website-portal-olahraga/
 └── vendor/
 ```
 
-│ │ ├── foul/ # View pencatatan pelanggaran pertandingan
-│ │ ├── foul-type/ # View tipe pelanggaran (kartu kuning/merah, dll)
-│ │ ├── league/ # View manajemen liga/kompetisi
-│ │ ├── match/ # View kelola jadwal & skor pertandingan
-│ │ ├── news/ # View penulisan, edit, & daftar artikel berita
-│ │ ├── player-type/ # View kelola jenis posisi pemain
-│ │ ├── sport-club/ # View kelola logo, negara, & nama klub
-│ │ ├── sport-type/ # View kelola jenis olahraga
-│ │ ├── user/ # View kelola admin user & profile
-│ │ └── dashboard.php # Halaman utama ringkasan statistik admin
-│ ├── Auth/ # Halaman login administrator
-│ ├── User/ # Halaman portal berita sisi pengunjung
-│ │ ├── Home.php # View beranda utama (slider, berita terkini, populer)
-│ │ ├── league.php # View detail daftar liga kompetisi
-│ │ ├── league-match.php # View daftar pertandingan di dalam suatu liga
-│ │ ├── news-detail.php # View isi lengkap artikel berita & form ulasan
-│ │ ├── search.php # View hasil pencarian artikel
-│ │ └── sport.php # View filter berita berdasarkan cabang olahraga
-│ ├── layouts/ # Master layout pembungkus halaman (reusable)
-│ │ ├── layout-admin.php # Kerangka layout Dashboard Admin (sidebar, nav, footer)
-│ │ └── layout-user.php # Kerangka layout Portal Pengunjung (navigasi, footer)
-│ └── templates/ # Komponen template parsial (header, footer, dll)
-├── assets/ # Aset statis front-end
-│ ├── css/ # Stylesheet CSS
-│ ├── fonts/ # Font web yang digunakan aplikasi
-│ ├── images/ # Gambar pendukung tema dan ikon
-│ ├── img/ # Gambar utama dan aset statis lainnya
-│ ├── js/ # Skrip JavaScript untuk interaksi UI
-│ ├── preview_img/ # Contoh preview gambar
-│ └── userpage/ # Halaman statis/preview user (template contoh)
-├── composer.json # Konfigurasi dependensi Composer
-├── conflict_check.txt # Catatan pemeriksaan konflik perubahan
-├── conflict_files.txt # Daftar file yang bermasalah saat konflik
-├── debug_match.php # Skrip debug khusus modul pertandingan
-├── fix_foul_tables.sql # Skrip SQL perbaikan tabel foul
-├── index.php # Entry point utama aplikasi CodeIgniter
-├── license.txt # Lisensi proyek
-├── logo_ubg_transparant.png # Logo proyek
-├── portal_olahraga.sql # Salinan database MySQL ter-update
-├── README.md # Dokumentasi ini
-├── readme.rst # Dokumentasi alternatif/versi lama
-├── system/ # Berkas core engine Framework CodeIgniter 3
-├── upload/ # Direktori penyimpanan media unggahan dinamis
-
 ## 💡 Solusi Masalah Umum (Troubleshooting)
-
-└── vendor/ # Library & package dependensi pihak ketiga (via Composer)
-
-````
 
 **Ringkasan Poin Penting untuk Presentasi (MVC & File Kunci)**
 
 - **MVC — Ringkasan & Alur:** aplikasi ini memakai pola Model-View-Controller (MVC). Singkatnya:
-    1. Permintaan HTTP masuk ke `index.php` (entrypoint).
-    2. Router (`application/config/routes.php`) menentukan Controller yang dipanggil.
-    3. Controller (`application/controllers/`) menjalankan logika, memanggil Model untuk akses data.
-    4. Model (`application/models/`) melakukan query ke database (`portal_olahraga.sql`) dan mengembalikan data.
-    5. Controller me-render View (`application/views/`) yang menampilkan HTML ke pengguna.
+  1. Permintaan HTTP masuk ke `index.php` (entrypoint).
+  2. Router (`application/config/routes.php`) menentukan Controller yang dipanggil.
+  3. Controller (`application/controllers/`) menjalankan logika, memanggil Model untuk akses data.
+  4. Model (`application/models/`) melakukan query ke database (`portal_olahraga.sql`) dan mengembalikan data.
+  5. Controller me-render View (`application/views/`) yang menampilkan HTML ke pengguna.
 
 - **Contoh file kunci:** `application/controllers/NewsController.php`, `application/models/M_News.php`, `application/views/Admin/news/` (tunjukkan pada demo).
 
 - **Assets (`assets/`)**: tempat file statis (CSS, JS, gambar). Struktur penting:
-    - `assets/css/`, `assets/js/`, `assets/img/`, `assets/userpage/` (template halaman statis untuk preview).
-    - Views memanggil aset menggunakan path relatif ke base URL, contoh: `<link href="/website-portal-olahraga/assets/css/style.css">`.
+  - `assets/css/`, `assets/js/`, `assets/img/`, `assets/userpage/` (template halaman statis untuk preview).
+  - Views memanggil aset menggunakan path relatif ke base URL, contoh: `<link href="/website-portal-olahraga/assets/css/style.css">`.
 
 - **Upload (`upload/`)**: direktori penyimpanan file yang diunggah pengguna (mis. foto atlet, logo klub).
-    - Pastikan `upload/` dapat ditulis oleh server web (permission) dan tidak diekspos langsung tanpa validasi.
-    - Referensi berkas hasil upload umumnya disimpan di database dan ditampilkan lewat helper `get_image_url()` di view.
+  - Pastikan `upload/` dapat ditulis oleh server web (permission) dan tidak diekspos langsung tanpa validasi.
+  - Referensi berkas hasil upload umumnya disimpan di database dan ditampilkan lewat helper `get_image_url()` di view.
 
 - **Vendor & Composer (`composer.json` / `vendor/`)**:
-    - Dependensi pihak ketiga dikelola lewat Composer. Jika `vendor/` kosong, jalankan:
+  - Dependensi pihak ketiga dikelola lewat Composer. Jika `vendor/` kosong, jalankan:
 
 ```bash
 composer install
@@ -245,12 +197,12 @@ composer install
 - **Entrypoint & Konfigurasi**: `index.php` (root), `application/config/config.php` (base_url dan opsi aplikasi), `application/config/database.php` (koneksi DB). Tunjukkan lokasi ini saat demo.
 
 - **Hubungan / Alur Terhubung (concrete example):**
-    - User klik `http://.../admin/news` → `routes.php` → `NewsController::index()` → `M_News::getAll()` → tampilkan `application/views/Admin/news/index.php` → halaman memuat CSS/JS dari `assets/` dan gambar dari `upload/`.
+  - User klik `http://.../admin/news` → `routes.php` → `NewsController::index()` → `M_News::getAll()` → tampilkan `application/views/Admin/news/index.php` → halaman memuat CSS/JS dari `assets/` dan gambar dari `upload/`.
 
 - **Import database contoh (lokal):**
-    ```bash
-    mysql -u root -p portal_olahraga < portal_olahraga.sql
-    ```
+  ```bash
+  mysql -u root -p portal_olahraga < portal_olahraga.sql
+  ```
 
 Catatan singkat: saat presentasi, tunjukkan satu contoh end-to-end (route → controller → model → view) dan tunjukkan file-file kunci yang sudah disebutkan.
 
@@ -269,6 +221,8 @@ Catatan singkat: saat presentasi, tunjukkan satu contoh end-to-end (route → co
 
   <!--  Contoh Benar: -->
   <img src="<?php echo get_image_url($club->logo); ?>" />
+  ```
+
 ````
 
 ### 2. Gagal Upload Gambar: _"The filetype you are attempting to upload is not allowed"_
@@ -299,3 +253,4 @@ Jika setelah mengeksekusi `git pull` muncul pesan konflik, ikuti instruksi berik
     git commit -m "chore: menyelesaikan conflict pada [nama file]"
     git push origin [nama-branch-fitur-anda]
     ```
+````
