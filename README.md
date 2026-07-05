@@ -12,108 +12,64 @@ Website Portal Berita Olahraga ini dibangun menggunakan framework **CodeIgniter 
 ## 🔗 Akses Cepat (Server Lokal)
 
 Untuk mengakses website di lingkungan server lokal Anda:
-*   **Halaman Utama (User/Frontend):** `http://localhost/website-portal-olahraga/`
-*   **Halaman Dashboard (Admin/Backend):** `http://localhost/website-portal-olahraga/admin/login`
+
+- **Halaman Utama (User/Frontend):** `http://localhost/website-portal-olahraga/`
+- **Halaman Dashboard (Admin/Backend):** `http://localhost/website-portal-olahraga/admin/login`
 
 ---
 
 ## 👥 Tim Pengembang & Kontributor (Kelas B)
 
-| Peran | NIM | Nama |
-| :--- | :--- | :--- |
-| **Ketua Kelompok** | `24010110126` | Meydhi Ari Nugroho |
-| **Anggota** | `24010110088` | Clara Septia Ramdhani |
-| **Anggota** | `24010110076` | Villari Naufal Nety |
-| **Anggota** | `24010110078` | M. Syarifudin |
+| Peran              | NIM           | Nama                  |
+| :----------------- | :------------ | :-------------------- |
+| **Ketua Kelompok** | `24010110126` | Meydhi Ari Nugroho    |
+| **Anggota**        | `24010110088` | Clara Septia Ramdhani |
+| **Anggota**        | `24010110076` | Villari Naufal Nety   |
+| **Anggota**        | `24010110078` | M. Syarifudin         |
 
 ---
 
-## 🚀 Panduan Alur Kerja Git (Git Workflow)
-
-> [!WARNING]
-> **ATURAN UTAMA: DILARANG KERAS MELAKUKAN PUSH LANGSUNG KE BRANCH `main`!**
->
-> Semua anggota tim **tidak diperbolehkan** mengeksekusi `git push origin main`. Push langsung dapat memicu konflik kode (*merge conflict*) yang rumit dan berpotensi merusak kode stabil di server produksi/repositori utama.
-
-### 🛠️ Alur Kerja Wajib untuk Setiap Fitur/Perbaikan:
-
-```mermaid
-graph TD
-    A[main branch] -->|1. git pull| B[Update Local Code]
-    B -->|2. git checkout -b| C[Create New Feature/Fix Branch]
-    C -->|3. Code & Test| D[Write Code & Run Locally]
-    D -->|4. git commit| E[Commit Changes Locally]
-    E -->|5. git push origin| F[Push Branch to GitHub]
-    F -->|6. Pull Request| G[Review & Merge to main on GitHub]
-```
-
-1.  **Tarik Kode Terbaru:** Pastikan branch `main` lokal Anda sinkron dengan GitHub sebelum membuat perubahan.
-    ```bash
-    git checkout main
-    git pull origin main
-    ```
-2.  **Buat Branch Baru:** Gunakan penamaan branch yang deskriptif.
-    ```bash
-    # Format: feature/nama-fitur atau fix/nama-bug
-    git checkout -b feature/tambah-detail-liga
-    ```
-3.  **Lakukan Perubahan Kode:** Kerjakan tugas Anda pada text editor (misal: VS Code).
-4.  **Simpan dan Commit Perubahan:**
-    ```bash
-    git add .
-    git commit -m "feat: menambah halaman detail liga dan daftar klub"
-    ```
-    *   `feat:` untuk penambahan fitur baru.
-    *   `fix:` untuk perbaikan bug/error.
-    *   `docs:` untuk pembaruan dokumentasi (README).
-    *   `style:` untuk kosmetik kode/tampilan (CSS/HTML layout) tanpa merubah logika.
-5.  **Push Branch ke GitHub:**
-    ```bash
-    git push origin feature/tambah-detail-liga
-    ```
-6.  **Buat Pull Request (PR):** Buka halaman repositori GitHub, klik **Compare & pull request**, lalu minta anggota tim lain untuk meninjau sebelum digabungkan (*merge*) ke `main`.
-
----
-
-## 📥 Panduan Instalasi & Setup Pertama Kali
+## Panduan Instalasi & Setup Pertama Kali
 
 Pilih panduan di bawah ini yang sesuai dengan aplikasi web server lokal yang Anda gunakan di laptop Anda:
 
 ### A. Panduan untuk Pengguna Laragon (Direkomendasikan)
+
 1.  **Buka Terminal Git Bash** di direktori web server:
-    *   Masuk ke folder `C:\laragon\www\` menggunakan File Explorer.
-    *   Klik kanan di area kosong dan pilih **Git Bash Here** (di Windows 11: klik kanan $\rightarrow$ **Show more options** $\rightarrow$ **Git Bash Here**).
+    - Masuk ke folder `C:\laragon\www\` menggunakan File Explorer.
+    - Klik kanan di area kosong dan pilih **Git Bash Here** (di Windows 11: klik kanan $\rightarrow$ **Show more options** $\rightarrow$ **Git Bash Here**).
 2.  **Clone Repositori:**
     ```bash
     git clone https://github.com/[GITHUB_USERNAME]/website-portal-olahraga---codeigniter3.git
     ```
-    *(Ganti `[GITHUB_USERNAME]` dengan username pemilik repositori).*
+    _(Ganti `[GITHUB_USERNAME]` dengan username pemilik repositori)._
 3.  **Sesuaikan Nama Folder:**
-    *   Ubah nama folder hasil clone dari `website-portal-olahraga---codeigniter3` menjadi **`website-portal-olahraga`**.
+    - Ubah nama folder hasil clone dari `website-portal-olahraga---codeigniter3` menjadi **`website-portal-olahraga`**.
 4.  **Jalankan Laragon:** Buka aplikasi Laragon, lalu klik **Start All**.
 5.  **Import Database (HeidiSQL):**
-    *   Klik tombol **Database** di Laragon untuk membuka HeidiSQL.
-    *   Klik **Open** untuk masuk ke session lokal (password default kosong).
-    *   Klik kanan pada daftar database sebelah kiri $\rightarrow$ **Create new** $\rightarrow$ **Database** $\rightarrow$ beri nama **`portal_olahraga`**.
-    *   Klik database `portal_olahraga` $\rightarrow$ klik menu **File** $\rightarrow$ **Run SQL file...** $\rightarrow$ pilih file `portal_olahraga.sql` yang ada di dalam folder project Anda.
+    - Klik tombol **Database** di Laragon untuk membuka HeidiSQL.
+    - Klik **Open** untuk masuk ke session lokal (password default kosong).
+    - Klik kanan pada daftar database sebelah kiri $\rightarrow$ **Create new** $\rightarrow$ **Database** $\rightarrow$ beri nama **`portal_olahraga`**.
+    - Klik database `portal_olahraga` $\rightarrow$ klik menu **File** $\rightarrow$ **Run SQL file...** $\rightarrow$ pilih file `portal_olahraga.sql` yang ada di dalam folder project Anda.
 6.  **Akses Web:** `http://localhost/website-portal-olahraga/` atau `http://website-portal-olahraga.test/`.
 
 ### B. Panduan untuk Pengguna XAMPP
+
 1.  **Buka Terminal Git Bash** di direktori web server:
-    *   Masuk ke folder `C:\xampp\htdocs\` menggunakan File Explorer.
-    *   Klik kanan di area kosong dan pilih **Git Bash Here**.
+    - Masuk ke folder `C:\xampp\htdocs\` menggunakan File Explorer.
+    - Klik kanan di area kosong dan pilih **Git Bash Here**.
 2.  **Clone Repositori:**
     ```bash
     git clone https://github.com/[GITHUB_USERNAME]/website-portal-olahraga---codeigniter3.git
     ```
-    *(Ganti `[GITHUB_USERNAME]` dengan username pemilik repositori).*
+    _(Ganti `[GITHUB_USERNAME]` dengan username pemilik repositori)._
 3.  **Sesuaikan Nama Folder:**
-    *   Ubah nama folder hasil clone menjadi **`website-portal-olahraga`**.
+    - Ubah nama folder hasil clone menjadi **`website-portal-olahraga`**.
 4.  **Jalankan XAMPP:** Buka XAMPP Control Panel, lalu klik **Start** pada modul **Apache** dan **MySQL**.
 5.  **Import Database (phpMyAdmin):**
-    *   Buka browser dan buka alamat `http://localhost/phpmyadmin/`.
-    *   Klik **New** di kolom kiri $\rightarrow$ beri nama database **`portal_olahraga`** $\rightarrow$ klik **Create**.
-    *   Pilih database `portal_olahraga` $\rightarrow$ klik tab **Import** di bagian atas $\rightarrow$ pilih file `portal_olahraga.sql` dari folder project Anda $\rightarrow$ klik **Import** (Kirim) di bagian bawah.
+    - Buka browser dan buka alamat `http://localhost/phpmyadmin/`.
+    - Klik **New** di kolom kiri $\rightarrow$ beri nama database **`portal_olahraga`** $\rightarrow$ klik **Create**.
+    - Pilih database `portal_olahraga` $\rightarrow$ klik tab **Import** di bagian atas $\rightarrow$ pilih file `portal_olahraga.sql` dari folder project Anda $\rightarrow$ klik **Import** (Kirim) di bagian bawah.
 6.  **Akses Web:** `http://localhost/website-portal-olahraga/`.
 
 ---
@@ -131,10 +87,11 @@ Setelah instalasi selesai, sesuaikan file konfigurasi berikut agar project berja
     ```
 2.  **Konfigurasi Base URL:**
     Buka file [application/config/config.php](file:///c:/laragon/www/website-portal-olahraga/application/config/config.php):
+
     ```php
     // Default konfigurasi lokal
     $config['base_url'] = 'http://localhost/website-portal-olahraga/';
-    
+
     // Atau jika menggunakan domain .test di Laragon:
     // $config['base_url'] = 'http://website-portal-olahraga.test/';
     ```
@@ -144,6 +101,7 @@ Setelah instalasi selesai, sesuaikan file konfigurasi berikut agar project berja
 ## ⚡ Sinkronisasi Perubahan Skema Database
 
 Karena database terus berkembang seiring dengan penambahan fitur:
+
 1.  Jika Anda menambah tabel, mengubah kolom, atau memodifikasi relasi database di MySQL lokal Anda, **wajib** melakukan **Export** ulang database Anda.
 2.  Gantikan/timpa file `portal_olahraga.sql` lama di direktori utama project dengan file hasil export yang baru.
 3.  Commit dan sertakan file `portal_olahraga.sql` baru tersebut saat melakukan push branch ke GitHub.
@@ -154,19 +112,21 @@ Karena database terus berkembang seiring dengan penambahan fitur:
 ## 🛠️ Fitur Utama Aplikasi
 
 ### 💻 Halaman Pengunjung (Frontend Portal)
-*   **Halaman Beranda (Home):** Menampilkan slider artikel utama terbaru, klasifikasi berita berdasarkan cabang olahraga, dan daftar artikel paling populer.
-*   **Cabang Olahraga:** Kategori navigasi berita berdasarkan jenis olahraga (seperti Sepakbola, Basket, Badminton, dll.).
-*   **Halaman Detail Liga:** Menampilkan ringkasan kompetisi, daftar jadwal pertandingan mendatang, serta artikel khusus mengenai liga bersangkutan.
-*   **Detail Artikel Berita:** Konten lengkap berita dilengkapi info penulis, tanggal publikasi, dan kolom komentar interaktif.
-*   **Pencarian Cepat:** Fitur pencarian kata kunci artikel berita secara instan.
+
+- **Halaman Beranda (Home):** Menampilkan slider artikel utama terbaru, klasifikasi berita berdasarkan cabang olahraga, dan daftar artikel paling populer.
+- **Cabang Olahraga:** Kategori navigasi berita berdasarkan jenis olahraga (seperti Sepakbola, Basket, Badminton, dll.).
+- **Halaman Detail Liga:** Menampilkan ringkasan kompetisi, daftar jadwal pertandingan mendatang, serta artikel khusus mengenai liga bersangkutan.
+- **Detail Artikel Berita:** Konten lengkap berita dilengkapi info penulis, tanggal publikasi, dan kolom komentar interaktif.
+- **Pencarian Cepat:** Fitur pencarian kata kunci artikel berita secara instan.
 
 ### 🔐 Halaman Dashboard Pengelola (Backend Admin)
-*   **Manajemen Autentikasi:** Sistem login admin terproteksi menggunakan pengkondisian session (`isAdminLogin`).
-*   **Manajemen Kategori Olahraga (Sport Type):** Menambah, mengubah, dan menghapus jenis olahraga.
-*   **Manajemen Liga:** Mengatur kompetisi/liga di bawah naungan cabang olahraga tertentu.
-*   **Manajemen Klub:** Database klub peserta liga, negara asal, beserta logo klub.
-*   **Manajemen Berita:** Editor konten berita (tambah/edit/hapus/status publikasi) lengkap dengan fitur unggah thumbnail gambar.
-*   **Manajemen Profil Atlet:** Database profil pemain/atlet lengkap dengan nomor punggung, detail fisik (tinggi/berat badan), posisi bermain, dan foto profil.
+
+- **Manajemen Autentikasi:** Sistem login admin terproteksi menggunakan pengkondisian session (`isAdminLogin`).
+- **Manajemen Kategori Olahraga (Sport Type):** Menambah, mengubah, dan menghapus jenis olahraga.
+- **Manajemen Liga:** Mengatur kompetisi/liga di bawah naungan cabang olahraga tertentu.
+- **Manajemen Klub:** Database klub peserta liga, negara asal, beserta logo klub.
+- **Manajemen Berita:** Editor konten berita (tambah/edit/hapus/status publikasi) lengkap dengan fitur unggah thumbnail gambar.
+- **Manajemen Profil Atlet:** Database profil pemain/atlet lengkap dengan nomor punggung, detail fisik (tinggi/berat badan), posisi bermain, dan foto profil.
 
 ---
 
@@ -250,39 +210,44 @@ website-portal-olahraga/
 └── README.md                            # Dokumentasi ini
 ```
 
-
 ---
 
 ## 💡 Solusi Masalah Umum (Troubleshooting)
 
 ### 1. Masalah Gambar/Logo Pecah (Tidak Tampil)
-*   **Penyebab:** Database menyimpan URL absolut server lokal pembuat awal (`http://localhost/...`). Ketika diakses menggunakan IP lokal atau domain virtual host lain (seperti `.test`), URL gambar menjadi tidak valid.
-*   **Solusi:** Gunakan helper global `get_image_url($path)` di dalam views untuk merelasikan path secara dinamis.
-    ```html
-    <!-- ❌ Contoh Salah: -->
-    <img src="<?php echo $club->logo; ?>">
 
-    <!--  Contoh Benar: -->
-    <img src="<?php echo get_image_url($club->logo); ?>">
-    ```
+- **Penyebab:** Database menyimpan URL absolut server lokal pembuat awal (`http://localhost/...`). Ketika diakses menggunakan IP lokal atau domain virtual host lain (seperti `.test`), URL gambar menjadi tidak valid.
+- **Solusi:** Gunakan helper global `get_image_url($path)` di dalam views untuk merelasikan path secara dinamis.
 
-### 2. Gagal Upload Gambar: *"The filetype you are attempting to upload is not allowed"*
-*   **Penyebab:** Ekstensi berkas tidak cocok dengan data MIME asli (misalnya mengubah tipe berkas secara paksa dengan me-rename ekstensinya), atau MIME type belum terdaftar di konfigurasi CodeIgniter.
-*   **Solusi:**
-    1. Hindari mengubah ekstensi secara manual. Pastikan format berkas asli.
-    2. Tambahkan tipe MIME cadangan `application/octet-stream` atau tipe MIME spesifik lainnya pada array ekstensi yang bersangkutan di file [application/config/mimes.php](file:///c:/laragon/www/website-portal-olahraga/application/config/mimes.php).
+  ```html
+  <!-- ❌ Contoh Salah: -->
+  <img src="<?php echo $club->logo; ?>" />
+
+  <!--  Contoh Benar: -->
+  <img src="<?php echo get_image_url($club->logo); ?>" />
+  ```
+
+### 2. Gagal Upload Gambar: _"The filetype you are attempting to upload is not allowed"_
+
+- **Penyebab:** Ekstensi berkas tidak cocok dengan data MIME asli (misalnya mengubah tipe berkas secara paksa dengan me-rename ekstensinya), atau MIME type belum terdaftar di konfigurasi CodeIgniter.
+- **Solusi:**
+  1. Hindari mengubah ekstensi secara manual. Pastikan format berkas asli.
+  2. Tambahkan tipe MIME cadangan `application/octet-stream` atau tipe MIME spesifik lainnya pada array ekstensi yang bersangkutan di file [application/config/mimes.php](file:///c:/laragon/www/website-portal-olahraga/application/config/mimes.php).
 
 ### 3. Masalah Database Exception: `Unknown column 'sport_athlete.player_type' in 'where clause'`
-*   **Penyebab:** Kueri relasi di model tidak selaras dengan skema tabel fisik di MySQL.
-*   **Solusi:** Pastikan kueri pada model memetakan kolom kunci tamu (*foreign key*) dengan benar. Kolom relasi di tabel `sport_athlete` adalah `playerType_id` bukan `player_type`.
+
+- **Penyebab:** Kueri relasi di model tidak selaras dengan skema tabel fisik di MySQL.
+- **Solusi:** Pastikan kueri pada model memetakan kolom kunci tamu (_foreign key_) dengan benar. Kolom relasi di tabel `sport_athlete` adalah `playerType_id` bukan `player_type`.
 
 ### 4. Mengatasi Merge Conflict di Git (Konflik Penggabungan)
+
 Jika setelah mengeksekusi `git pull` muncul pesan konflik, ikuti instruksi berikut:
+
 1.  Buka berkas berkonflik di **VS Code**. Daerah konflik akan ditandai dengan warna kontras.
 2.  Identifikasi bagian penanda konflik:
-    *   `<<<<<<< HEAD` : Perubahan lokal Anda.
-    *   `=======` : Batas pemisah kode.
-    *   `>>>>>>> [branch_name]` : Perubahan masuk dari repositori GitHub.
+    - `<<<<<<< HEAD` : Perubahan lokal Anda.
+    - `=======` : Batas pemisah kode.
+    - `>>>>>>> [branch_name]` : Perubahan masuk dari repositori GitHub.
 3.  Pilih opsi di atas kode: **Accept Current Change** (pertahankan kode Anda), **Accept Incoming Change** (terima kode dari remote), atau **Accept Both Changes** (gabungkan keduanya).
 4.  Rapatkan kode, pastikan tidak ada sintaks penanda konflik yang tersisa, lalu selesaikan dengan commit baru:
     ```bash
