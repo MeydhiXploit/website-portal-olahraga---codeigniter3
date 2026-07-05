@@ -214,15 +214,45 @@ website-portal-olahraga/
 
 **Ringkasan Poin Penting untuk Presentasi (MVC & File Kunci)**
 
-- **Model (Data & Query):** `application/models/` (contoh: `M_News.php`, `M_Match.php`, `Auth_model.php`)
-- **View (Tampilan):** `application/views/` (frontend: `User/`, backend: `Admin/`, layouts)
-- **Controller (Logika):** `application/controllers/` (rute utama: `Home.php`, `Auth.php`, `MatchController.php`)
-- **Entrypoint & Konfigurasi:** `index.php`, `application/config/config.php`, `application/config/database.php`
-- **Database:** `portal_olahraga.sql` (schema & sample data)
-- **Assets & Uploads:** `assets/` dan `upload/` (file statis dan media pengguna)
-- **Framework Core:** `system/` (CodeIgniter core — jangan ubah kecuali paham risikonya)
+- **MVC — Ringkasan & Alur:** aplikasi ini memakai pola Model-View-Controller (MVC). Singkatnya:
+    1. Permintaan HTTP masuk ke `index.php` (entrypoint).
+    2. Router (`application/config/routes.php`) menentukan Controller yang dipanggil.
+    3. Controller (`application/controllers/`) menjalankan logika, memanggil Model untuk akses data.
+    4. Model (`application/models/`) melakukan query ke database (`portal_olahraga.sql`) dan mengembalikan data.
+    5. Controller me-render View (`application/views/`) yang menampilkan HTML ke pengguna.
 
-Catatan singkat: saat presentasi, jelaskan alur permintaan HTTP → `index.php` → Router → Controller → Model → View. Tunjukkan file kunci di masing-masing komponen MVC.
+- **Contoh file kunci:** `application/controllers/NewsController.php`, `application/models/M_News.php`, `application/views/Admin/news/` (tunjukkan pada demo).
+
+- **Assets (`assets/`)**: tempat file statis (CSS, JS, gambar). Struktur penting:
+    - `assets/css/`, `assets/js/`, `assets/img/`, `assets/userpage/` (template halaman statis untuk preview).
+    - Views memanggil aset menggunakan path relatif ke base URL, contoh: `<link href="/website-portal-olahraga/assets/css/style.css">`.
+
+- **Upload (`upload/`)**: direktori penyimpanan file yang diunggah pengguna (mis. foto atlet, logo klub).
+    - Pastikan `upload/` dapat ditulis oleh server web (permission) dan tidak diekspos langsung tanpa validasi.
+    - Referensi berkas hasil upload umumnya disimpan di database dan ditampilkan lewat helper `get_image_url()` di view.
+
+- **Vendor & Composer (`composer.json` / `vendor/`)**:
+    - Dependensi pihak ketiga dikelola lewat Composer. Jika `vendor/` kosong, jalankan:
+
+```bash
+composer install
+```
+
+    - Jangan commit `vendor/` jika tim memakai pendekatan dependency install pada server/runner.
+
+- **Framework Core (`system/`)**: folder ini berisi engine CodeIgniter 3. Hindari perubahan kecuali benar-benar diperlukan.
+
+- **Entrypoint & Konfigurasi**: `index.php` (root), `application/config/config.php` (base_url dan opsi aplikasi), `application/config/database.php` (koneksi DB). Tunjukkan lokasi ini saat demo.
+
+- **Hubungan / Alur Terhubung (concrete example):**
+    - User klik `http://.../admin/news` → `routes.php` → `NewsController::index()` → `M_News::getAll()` → tampilkan `application/views/Admin/news/index.php` → halaman memuat CSS/JS dari `assets/` dan gambar dari `upload/`.
+
+- **Import database contoh (lokal):**
+    ```bash
+    mysql -u root -p portal_olahraga < portal_olahraga.sql
+    ```
+
+Catatan singkat: saat presentasi, tunjukkan satu contoh end-to-end (route → controller → model → view) dan tunjukkan file-file kunci yang sudah disebutkan.
 
 ---
 

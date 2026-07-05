@@ -28,11 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `foul_type` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `sport_type` int NOT NULL,
   `foul_name` varchar(150) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sport_type` (`sport_type`),
+  CONSTRAINT `foul_type_ibfk_1` FOREIGN KEY (`sport_type`) REFERENCES `sport_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -42,13 +45,20 @@ CREATE TABLE `foul_type` (
 --
 
 CREATE TABLE `foul` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `minute` time NOT NULL,
   `foul_type` int NOT NULL,
   `match_id` int NOT NULL,
   `athlete_id` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `foul_type` (`foul_type`),
+  KEY `match_id` (`match_id`),
+  KEY `athlete_id` (`athlete_id`),
+  CONSTRAINT `foul_ibfk_1` FOREIGN KEY (`foul_type`) REFERENCES `foul_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `foul_ibfk_2` FOREIGN KEY (`match_id`) REFERENCES `sport_match` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `foul_ibfk_3` FOREIGN KEY (`athlete_id`) REFERENCES `sport_athlete` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -286,18 +296,7 @@ INSERT INTO `visitor` (`id`, `date`, `ip`, `url`, `user_agent`, `user_id`, `crea
 --
 -- Indexes for table `foul_type`
 --
-ALTER TABLE `foul_type`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sport_type` (`sport_type`);
-
---
--- Indexes for table `foul`
---
-ALTER TABLE `foul`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `foul_type` (`foul_type`),
-  ADD KEY `match_id` (`match_id`),
-  ADD KEY `athlete_id` (`athlete_id`);
+-- (primary keys and indexes for `foul_type` and `foul` are defined inline in CREATE TABLE)
 
 --
 -- Indexes for table `league`
@@ -387,14 +386,12 @@ ALTER TABLE `visitor`
 --
 -- AUTO_INCREMENT for table `foul_type`
 --
-ALTER TABLE `foul_type`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+-- `foul_type` AUTO_INCREMENT set in CREATE TABLE above
 
 --
 -- AUTO_INCREMENT for table `foul`
 --
-ALTER TABLE `foul`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+-- `foul` AUTO_INCREMENT set in CREATE TABLE above
 
 --
 -- AUTO_INCREMENT for table `league`
@@ -469,16 +466,7 @@ ALTER TABLE `visitor`
 --
 -- Constraints for table `foul_type`
 --
-ALTER TABLE `foul_type`
-  ADD CONSTRAINT `foul_type_ibfk_1` FOREIGN KEY (`sport_type`) REFERENCES `sport_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `foul`
---
-ALTER TABLE `foul`
-  ADD CONSTRAINT `foul_ibfk_1` FOREIGN KEY (`foul_type`) REFERENCES `foul_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `foul_ibfk_2` FOREIGN KEY (`match_id`) REFERENCES `sport_match` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `foul_ibfk_3` FOREIGN KEY (`athlete_id`) REFERENCES `sport_athlete` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+-- FK constraints for `foul_type` and `foul` are declared inline in their CREATE TABLE statements above
 
 --
 -- Constraints for table `league`
