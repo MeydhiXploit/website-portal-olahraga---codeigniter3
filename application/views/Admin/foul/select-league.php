@@ -1,7 +1,7 @@
 <div id="mainContent">
     
 <h4 class="c-grey-900 mT-10 mB-30">Pilih Liga Foul</h4>
-<a href="<?php echo site_url('admin/sport-club'); ?>" class="btn btn-info mB-20">Kembali</a>
+<a href="<?php echo site_url('admin/foul'); ?>" class="btn btn-info mB-20">Kembali</a>
 
     <div class="row gap-20 masonry pos-r">
     <div class="masonry-sizer col-md-6"></div>

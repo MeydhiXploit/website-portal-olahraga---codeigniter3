@@ -40,7 +40,7 @@
         <?php
         // var_dump($data_sportType);die;
         if (empty($data_match)) {
-            echo "<option><strong>Data Club Olahraga Kosong !!!</strong></option>";
+            echo "<option><strong>Data Pertandingan Kosong !!!</strong></option>";
         }
         else {
             echo empty(set_value('match')) || (set_value('match') == "--- Pilih Pertandingan ---") ?"<option>--- Pilih Pertandingan ---</option>" : ''; 
@@ -85,7 +85,7 @@
     </div>
     </div>
     <div class="modal-footer">
-    <a href="<?php echo site_url('admin/user')?>" class="btn btn-secondary">Cancel</a>
+    <a href="<?php echo site_url('admin/foul/league/'.$this->uri->segment(4))?>" class="btn btn-secondary">Cancel</a>
     <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>

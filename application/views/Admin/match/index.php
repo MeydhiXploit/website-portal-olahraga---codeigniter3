@@ -12,6 +12,7 @@
                         <div class="email-list h-100 layers">
                             <div class="layer w-100 fxg-1 scrollable pos-r">
                                 <?php 
+                                    if (!empty($match_today)) {
                                     foreach ($match_today as $match) {
                                         echo "<div class='email-list-item peers fxw-nw p-20 bdB bgcH-grey-100 cur-p'>
                                                     <div class='peer mR-10'>
@@ -24,6 +25,9 @@
                                                         </div>
                                                     </div>
                                                 </div>";
+                                    }
+                                    } else {
+                                        echo "<div class='admin-empty-state m-20'>Tidak ada pertandingan hari ini.</div>";
                                     }
                                 ?>
                             </div>
@@ -57,26 +61,28 @@
 
                         <tbody>
                         <?php 
+                         if (!empty($data_match)) {
                          foreach($data_match as $match) {
+                          $status_class = $match->match_status === 'published' ? 'is-published' : 'is-draft';
                           echo "<tr>
                                 <td>$match->club_1 vs $match->club_2</td>
-                                <td>$match->club_1_score - $match->club_2_score</td>
+                                <td><span class='admin-score-badge'>$match->club_1_score - $match->club_2_score</span></td>
                                 <td>".date('d F Y', strtotime($match->match_date))."</td>
-                                <td>$match->match_status</td>
+                                <td><span class='admin-status-badge $status_class'>$match->match_status</span></td>
 
                                 <td>
-                                  <a href='".site_url('admin/match/action/'.$this->uri->segment(4).'/'.$match->id)."' class='btn cur-p btn-warning m-3'>edit</a>
+                                  <a href='".site_url('admin/match/action/'.$this->uri->segment(4).'/'.$match->id)."' class='btn cur-p btn-warning m-3'>Edit</a>
                                   <button type='button' class='btn cur-p btn-danger btn-color m-3' data-bs-toggle='modal' data-bs-target='#delete-modal$match->id'>Delete</button>
                                 <div class='modal fade' id='delete-modal$match->id' tabindex='-1' aria-labelledby='delete-modal' aria-hidden='true' style='display:none'>
                                   <div class='modal-dialog modal-md modal-dialog-centered'>
                                     <div class='modal-content'>
                                       <div class='modal-header'>
-                                        <h5 class='modal-title' id='add-modal'>Delete User</h5>
+                                        <h5 class='modal-title' id='add-modal'>Delete Match</h5>
                                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                       </div>
-                                      <div class='modal-body'>Yakin ingin menghapus club $match->club_1 vs $match->club_2</div>
+                                      <div class='modal-body'>Yakin ingin menghapus pertandingan $match->club_1 vs $match->club_2?</div>
                                       <div class='modal-footer'>
-                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>cancel</button>
+                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
                                         <a href='".site_url('admin/match/delete/'.$match->id)."' class='btn btn-danger'>Confirm</a>
                                       </div>
                                     </div>
@@ -85,6 +91,9 @@
                                 </td>
                                </tr>
                               "; 
+                        }
+                        } else {
+                          echo "<tr><td colspan='5'><div class='admin-empty-state'>Belum ada match untuk liga ini.</div></td></tr>";
                         }
                         ?>
                         </tbody>

@@ -10,6 +10,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        position: relative;
     }
 
     .cm-athlete-card:hover {
@@ -19,7 +20,7 @@
     }
 
     .cm-athlete-photo-container {
-        height: 250px;
+        height: 240px;
         overflow: hidden;
         background-color: #f8f9fa;
         position: relative;
@@ -31,18 +32,51 @@
         object-fit: cover;
     }
 
+    .cm-athlete-number-badge {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        min-width: 46px;
+        height: 34px;
+        padding: 0 10px;
+        border-radius: 6px;
+        background: var(--primary-color);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 34px;
+        box-shadow: 0 6px 14px rgba(216, 48, 47, 0.25);
+    }
+
+    .cm-athlete-sport-badge {
+        position: absolute;
+        right: 14px;
+        top: 14px;
+        max-width: 120px;
+        padding: 7px 10px;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.72);
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .cm-athlete-info {
-        padding: 20px;
+        padding: 18px;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .cm-athlete-info h4 {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
-        margin: 0 0 8px 0;
+        margin: 0 0 10px 0;
         color: #333;
     }
 
@@ -61,14 +95,90 @@
         font-weight: 700;
         color: var(--primary-color);
         text-transform: uppercase;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
         display: block;
     }
 
     .cm-athlete-club {
         font-size: 12px;
         color: var(--text-muted);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .cm-athlete-club img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 1px solid #eeeeee;
+    }
+
+    .cm-athlete-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
         margin-top: auto;
+        margin-bottom: 15px;
+    }
+
+    .cm-athlete-meta-item {
+        background: #f8f9fa;
+        border: 1px solid #eeeeee;
+        border-radius: 6px;
+        padding: 8px 6px;
+        min-height: 54px;
+    }
+
+    .cm-athlete-meta-label {
+        display: block;
+        font-size: 9px;
+        color: #888888;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+    }
+
+    .cm-athlete-meta-value {
+        display: block;
+        font-size: 12px;
+        color: #222222;
+        font-weight: 800;
+    }
+
+    .cm-athlete-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 38px;
+        border-radius: 6px;
+        background: #1f2937;
+        color: #ffffff !important;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        text-decoration: none !important;
+        transition: all 0.25s ease;
+    }
+
+    .cm-athlete-action:hover {
+        background: var(--primary-color);
+        transform: translateY(-1px);
+    }
+
+    .cm-athlete-action i {
+        margin-left: 8px;
+    }
+
+    @media (max-width: 767px) {
+        .cm-athlete-photo-container {
+            height: 220px;
+        }
     }
 </style>
 
@@ -116,6 +226,22 @@
             <div class="row" style="display: flex; flex-wrap: wrap;">
                 <?php foreach ($athletes as $athlete):
                     $photo_src = (strpos($athlete->photo, 'http') === 0) ? $athlete->photo : base_url('upload/' . $athlete->photo);
+                    $club_logo = !empty($athlete->club_logo) ? ((strpos($athlete->club_logo, 'http') === 0) ? $athlete->club_logo : base_url('upload/' . $athlete->club_logo)) : '';
+                    $position = !empty($athlete->player_type) ? $athlete->player_type : 'Posisi belum diisi';
+                    $club_name = !empty($athlete->club_name) ? $athlete->club_name : 'Tanpa Klub';
+                    $sport_name = !empty($athlete->name_type) ? $athlete->name_type : 'Olahraga';
+                    $league_name = !empty($athlete->name_league) ? $athlete->name_league : '-';
+                    $gender_label = ($athlete->gender == 'male') ? 'Pria' : (($athlete->gender == 'female') ? 'Wanita' : '-');
+                    $age_label = '-';
+                    if (!empty($athlete->date_birth) && $athlete->date_birth !== '0000-00-00') {
+                        $birthDate = new DateTime($athlete->date_birth);
+                        $today = new DateTime('today');
+                        $age_label = $birthDate->diff($today)->y . ' Th';
+                    } elseif (!empty($athlete->age)) {
+                        $age_label = $athlete->age . ' Th';
+                    }
+                    $height_label = !empty($athlete->height) ? $athlete->height . ' cm' : '-';
+                    $back_number = !empty($athlete->backNumber) ? $athlete->backNumber : '0';
                 ?>
                     <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px; display: flex;">
                         <div class="cm-athlete-card" style="width: 100%;">
@@ -123,11 +249,37 @@
                                 <a href="<?php echo site_url('atlet/detail/' . $athlete->id); ?>">
                                     <img src="<?php echo $photo_src; ?>" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($athlete->name); ?>">
                                 </a>
+                                <span class="cm-athlete-number-badge">#<?php echo htmlspecialchars($back_number); ?></span>
+                                <span class="cm-athlete-sport-badge"><?php echo htmlspecialchars($sport_name); ?></span>
                             </div>
                             <div class="cm-athlete-info">
-                                <span class="cm-athlete-pos">#<?php echo $athlete->backNumber; ?> - <?php echo $athlete->player_type; ?></span>
-                                <h4><a href="<?php echo site_url('atlet/detail/' . $athlete->id); ?>"><?php echo $athlete->name; ?></a></h4>
-                                <span class="cm-athlete-club"><?php echo $athlete->club_name; ?></span>
+                                <span class="cm-athlete-pos"><?php echo htmlspecialchars($position); ?></span>
+                                <h4><a href="<?php echo site_url('atlet/detail/' . $athlete->id); ?>"><?php echo htmlspecialchars($athlete->name); ?></a></h4>
+                                <span class="cm-athlete-club">
+                                    <?php if (!empty($club_logo)): ?>
+                                        <img src="<?php echo $club_logo; ?>" onerror="this.style.display='none'" alt="<?php echo htmlspecialchars($club_name); ?>">
+                                    <?php else: ?>
+                                        <i class="fa fa-shield"></i>
+                                    <?php endif; ?>
+                                    <?php echo htmlspecialchars($club_name); ?> &bull; <?php echo htmlspecialchars($league_name); ?>
+                                </span>
+                                <div class="cm-athlete-meta-grid">
+                                    <div class="cm-athlete-meta-item">
+                                        <span class="cm-athlete-meta-label">Gender</span>
+                                        <span class="cm-athlete-meta-value"><?php echo htmlspecialchars($gender_label); ?></span>
+                                    </div>
+                                    <div class="cm-athlete-meta-item">
+                                        <span class="cm-athlete-meta-label">Usia</span>
+                                        <span class="cm-athlete-meta-value"><?php echo htmlspecialchars($age_label); ?></span>
+                                    </div>
+                                    <div class="cm-athlete-meta-item">
+                                        <span class="cm-athlete-meta-label">Tinggi</span>
+                                        <span class="cm-athlete-meta-value"><?php echo htmlspecialchars($height_label); ?></span>
+                                    </div>
+                                </div>
+                                <a class="cm-athlete-action" href="<?php echo site_url('atlet/detail/' . $athlete->id); ?>">
+                                    Lihat Profil <i class="fa fa-angle-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>

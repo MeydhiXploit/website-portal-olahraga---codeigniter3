@@ -24,6 +24,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `foul_type`
+--
+
+CREATE TABLE `foul_type` (
+  `id` int NOT NULL,
+  `sport_type` int NOT NULL,
+  `foul_name` varchar(150) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `foul`
+--
+
+CREATE TABLE `foul` (
+  `id` int NOT NULL,
+  `minute` time NOT NULL,
+  `foul_type` int NOT NULL,
+  `match_id` int NOT NULL,
+  `athlete_id` int NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `league`
 --
 
@@ -254,6 +284,22 @@ INSERT INTO `visitor` (`id`, `date`, `ip`, `url`, `user_agent`, `user_id`, `crea
 --
 
 --
+-- Indexes for table `foul_type`
+--
+ALTER TABLE `foul_type`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sport_type` (`sport_type`);
+
+--
+-- Indexes for table `foul`
+--
+ALTER TABLE `foul`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `foul_type` (`foul_type`),
+  ADD KEY `match_id` (`match_id`),
+  ADD KEY `athlete_id` (`athlete_id`);
+
+--
 -- Indexes for table `league`
 --
 ALTER TABLE `league`
@@ -336,6 +382,18 @@ ALTER TABLE `visitor`
 --
 
 --
+-- AUTO_INCREMENT for table `foul_type`
+--
+ALTER TABLE `foul_type`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `foul`
+--
+ALTER TABLE `foul`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `league`
 --
 ALTER TABLE `league`
@@ -404,6 +462,20 @@ ALTER TABLE `visitor`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `foul_type`
+--
+ALTER TABLE `foul_type`
+  ADD CONSTRAINT `foul_type_ibfk_1` FOREIGN KEY (`sport_type`) REFERENCES `sport_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `foul`
+--
+ALTER TABLE `foul`
+  ADD CONSTRAINT `foul_ibfk_1` FOREIGN KEY (`foul_type`) REFERENCES `foul_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `foul_ibfk_2` FOREIGN KEY (`match_id`) REFERENCES `sport_match` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `foul_ibfk_3` FOREIGN KEY (`athlete_id`) REFERENCES `sport_athlete` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `league`
