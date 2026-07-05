@@ -235,8 +235,21 @@ website-portal-olahraga/
 ├── readme.rst                           # Dokumentasi alternatif/versi lama
 ├── system/                              # Berkas core engine Framework CodeIgniter 3
 ├── upload/                              # Direktori penyimpanan media unggahan dinamis
+## 💡 Solusi Masalah Umum (Troubleshooting)
 └── vendor/                              # Library & package dependensi pihak ketiga (via Composer)
 ```
+
+**Ringkasan Poin Penting untuk Presentasi (MVC & File Kunci)**
+
+- **Model (Data & Query):** `application/models/` (contoh: `M_News.php`, `M_Match.php`, `Auth_model.php`)
+- **View (Tampilan):** `application/views/` (frontend: `User/`, backend: `Admin/`, layouts)
+- **Controller (Logika):** `application/controllers/` (rute utama: `Home.php`, `Auth.php`, `MatchController.php`)
+- **Entrypoint & Konfigurasi:** `index.php`, `application/config/config.php`, `application/config/database.php`
+- **Database:** `portal_olahraga.sql` (schema & sample data)
+- **Assets & Uploads:** `assets/` dan `upload/` (file statis dan media pengguna)
+- **Framework Core:** `system/` (CodeIgniter core — jangan ubah kecuali paham risikonya)
+
+Catatan singkat: saat presentasi, jelaskan alur permintaan HTTP → `index.php` → Router → Controller → Model → View. Tunjukkan file kunci di masing-masing komponen MVC.
 
 ---
 
