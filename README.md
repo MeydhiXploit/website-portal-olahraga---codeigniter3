@@ -1,256 +1,311 @@
-# 🏆 Web Portal Berita Olahraga
+# Web Portal Berita Olahraga
 
-[![CodeIgniter](https://img.shields.io/badge/CodeIgniter-v3.1.13-EE4326?style=flat-squared&logo=codeigniter&logoColor=white)](https://codeigniter.com/)
-[![PHP](https://img.shields.io/badge/PHP-%3E%3D%207.4%20%7C%208.1-777BB4?style=flat-squared&logo=php&logoColor=white)](https://www.php.net/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5-7952B3?style=flat-squared&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
-[![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=flat-squared&logo=mysql&logoColor=white)](https://www.mysql.com/)
+Website Portal Berita Olahraga adalah aplikasi berbasis **CodeIgniter 3** dengan pola **MVC (Model-View-Controller)**. Aplikasi ini menyediakan halaman frontend untuk pengunjung dan halaman backend untuk admin dalam mengelola berita olahraga, jenis olahraga, liga, klub, atlet, pertandingan, user, tipe pemain, pelanggaran, dan review.
 
-Website Portal Berita Olahraga ini dibangun menggunakan framework **CodeIgniter 3** dengan arsitektur MVC (Model-View-Controller). Platform ini menyajikan informasi terkini seputar dunia olahraga, dilengkapi dengan sistem manajemen konten (CMS) di halaman backend khusus admin untuk mengelola kategori olahraga, liga, klub, artikel berita, dan profil atlet secara dinamis.
+Project ini memakai **PHP**, **MySQL**, **Bootstrap**, asset template frontend di folder `assets/userpage/`, serta database utama dari file `portal_olahraga.sql`.
 
----
+## Akses Lokal
 
-## 🔗 Akses Cepat (Server Lokal)
+- Frontend: `http://localhost/website-portal-olahraga/`
+- Admin: `http://localhost/website-portal-olahraga/admin/login`
 
-Untuk mengakses website di lingkungan server lokal Anda:
+## Tim Pengembang
 
-- **Halaman Utama (User/Frontend):** `http://localhost/website-portal-olahraga/`
-- **Halaman Dashboard (Admin/Backend):** `http://localhost/website-portal-olahraga/admin/login`
+| Peran | NIM | Nama |
+| :-- | :-- | :-- |
+| Ketua Kelompok | `24010110126` | Meydhi Ari Nugroho |
+| Anggota | `24010110088` | Clara Septia Ramdhani |
+| Anggota | `24010110076` | Villari Naufal Nety |
+| Anggota | `24010110078` | M. Syarifudin |
 
----
+## Cara Kerja Singkat Project
 
-## 👥 Tim Pengembang & Kontributor (Kelas B)
+Alur utama aplikasi mengikuti pola MVC CodeIgniter:
 
-| Peran              | NIM           | Nama                  |
-| :----------------- | :------------ | :-------------------- |
-| **Ketua Kelompok** | `24010110126` | Meydhi Ari Nugroho    |
-| **Anggota**        | `24010110088` | Clara Septia Ramdhani |
-| **Anggota**        | `24010110076` | Villari Naufal Nety   |
-| **Anggota**        | `24010110078` | M. Syarifudin         |
+1. Request masuk melalui `index.php`.
+2. Route dibaca dari `application/config/routes.php`.
+3. Controller di `application/controllers/` menerima request dan menjalankan logika.
+4. Controller memanggil model di `application/models/` untuk mengambil atau menyimpan data.
+5. Model membaca database MySQL yang strukturnya tersedia di `portal_olahraga.sql`.
+6. Controller mengirim data ke view di `application/views/`.
+7. View menampilkan halaman HTML, CSS, JavaScript, gambar dari `assets/`, dan file upload dari `upload/`.
 
----
+Contoh alur nyata:
 
-## Panduan Instalasi & Setup Pertama Kali
+```text
+/admin/news
+-> application/config/routes.php
+-> NewsController::select_sportType()
+-> M_Sport_Type dan M_News
+-> application/views/Admin/news/
+-> assets/userpage/ dan upload/
+```
 
-Pilih panduan di bawah ini yang sesuai dengan aplikasi web server lokal yang Anda gunakan di laptop Anda:
+Contoh alur halaman utama:
 
-### A. Panduan untuk Pengguna Laragon (Direkomendasikan)
+```text
+/
+-> default_controller: Home/index
+-> application/controllers/Home.php
+-> News_model, M_Sport_Type, Match_model, Athlete_model, Club_model
+-> application/views/home/index.php
+-> layout frontend dari application/views/layouts/
+```
 
-1.  **Buka Terminal Git Bash** di direktori web server:
-    - Masuk ke folder `C:\laragon\www\` menggunakan File Explorer.
-    - Klik kanan di area kosong dan pilih **Git Bash Here** (di Windows 11: klik kanan $\rightarrow$ **Show more options** $\rightarrow$ **Git Bash Here**).
-2.  **Clone Repositori:**
-    ```bash
-    git clone https://github.com/[GITHUB_USERNAME]/website-portal-olahraga---codeigniter3.git
-    ```
-    _(Ganti `[GITHUB_USERNAME]` dengan username pemilik repositori)._
-3.  **Sesuaikan Nama Folder:**
-    - Ubah nama folder hasil clone dari `website-portal-olahraga---codeigniter3` menjadi **`website-portal-olahraga`**.
-4.  **Jalankan Laragon:** Buka aplikasi Laragon, lalu klik **Start All**.
-5.  **Import Database (HeidiSQL):**
-    - Klik tombol **Database** di Laragon untuk membuka HeidiSQL.
-    - Klik **Open** untuk masuk ke session lokal (password default kosong).
-    - Klik kanan pada daftar database sebelah kiri $\rightarrow$ **Create new** $\rightarrow$ **Database** $\rightarrow$ beri nama **`portal_olahraga`**.
-    - Klik database `portal_olahraga` $\rightarrow$ klik menu **File** $\rightarrow$ **Run SQL file...** $\rightarrow$ pilih file `portal_olahraga.sql` yang ada di dalam folder project Anda.
-6.  **Akses Web:** `http://localhost/website-portal-olahraga/` atau `http://website-portal-olahraga.test/`.
-
-### B. Panduan untuk Pengguna XAMPP
-
-1.  **Buka Terminal Git Bash** di direktori web server:
-    - Masuk ke folder `C:\xampp\htdocs\` menggunakan File Explorer.
-    - Klik kanan di area kosong dan pilih **Git Bash Here**.
-2.  **Clone Repositori:**
-    ```bash
-    git clone https://github.com/[GITHUB_USERNAME]/website-portal-olahraga---codeigniter3.git
-    ```
-    _(Ganti `[GITHUB_USERNAME]` dengan username pemilik repositori)._
-3.  **Sesuaikan Nama Folder:**
-    - Ubah nama folder hasil clone menjadi **`website-portal-olahraga`**.
-4.  **Jalankan XAMPP:** Buka XAMPP Control Panel, lalu klik **Start** pada modul **Apache** dan **MySQL**.
-5.  **Import Database (phpMyAdmin):**
-    - Buka browser dan buka alamat `http://localhost/phpmyadmin/`.
-    - Klik **New** di kolom kiri $\rightarrow$ beri nama database **`portal_olahraga`** $\rightarrow$ klik **Create**.
-    - Pilih database `portal_olahraga` $\rightarrow$ klik tab **Import** di bagian atas $\rightarrow$ pilih file `portal_olahraga.sql` dari folder project Anda $\rightarrow$ klik **Import** (Kirim) di bagian bawah.
-6.  **Akses Web:** `http://localhost/website-portal-olahraga/`.
-
----
-
-## 🔧 Konfigurasi Aplikasi Lokal
-
-Setelah instalasi selesai, sesuaikan file konfigurasi berikut agar project berjalan lancar di PC Anda:
-
-1.  **Konfigurasi Koneksi Database:**
-    Buka file [application/config/database.php](file:///c:/laragon/www/website-portal-olahraga/application/config/database.php) dan sesuaikan pengaturannya:
-    ```php
-    'username' => 'root',             // Username default server lokal
-    'password' => '',                 // Password database default (kosong)
-    'database' => 'portal_olahraga',  // Nama database yang telah di-import
-    ```
-2.  **Konfigurasi Base URL:**
-    Buka file [application/config/config.php](file:///c:/laragon/www/website-portal-olahraga/application/config/config.php):
-
-## 📂 Struktur Direktori Utama
+## Struktur Folder Penting
 
 ```text
 website-portal-olahraga/
-├── .agents/
-├── .editorconfig
-├── .git/
-├── .gitignore
-├── .htaccess
-├── application/
-│   ├── .htaccess
-│   ├── cache/
-│   ├── config/
-│   │   ├── autoload.php
-│   │   ├── config.php
-│   │   ├── constants.php
-│   │   ├── database.php
-│   │   ├── doctypes.php
-│   │   ├── foreign_chars.php
-│   │   ├── hooks.php
-│   │   ├── index.html
-│   │   ├── memcached.php
-│   │   ├── migration.php
-│   │   ├── mimes.php
-│   │   ├── profiler.php
-│   │   ├── routes.php
-│   │   ├── smileys.php
-│   │   └── user_agents.php
-│   ├── controllers/
-│   │   ├── AthleteController.php
-│   │   ├── Atlet.php
-│   │   ├── Auth.php
-│   │   ├── Berita.php
-│   │   ├── ClubController.php
-│   │   ├── Home.php
-│   │   ├── HomeController.php
-│   │   ├── Klub.php
-│   │   ├── LeagueController.php
-│   │   ├── MatchController.php
-│   │   ├── NewsController.php
-│   │   ├── Pertandingan.php
-│   │   ├── Player_type.php
-│   │   ├── SportController.php
-│   │   └── UserController.php
-│   ├── core/
-│   ├── helpers/
-│   ├── hooks/
-│   ├── index.html
-│   ├── language/
-│   ├── libraries/
-│   ├── logs/
-│   ├── models/
-│   ├── third_party/
-│   └── views/
-├── assets/
-│   ├── img/
-│   └── userpage/
-├── composer.json
-├── conflict_check.txt
-├── conflict_files.txt
-├── contributing.md
-├── debug_match.php
-
-├── index.php
-├── license.txt
-├── logo_ubg_transparant.png
-├── portal_olahraga.sql
-├── README.md
-├── readme.rst
-├── system/
-├── upload/
-└── vendor/
+|-- application/
+|   |-- config/
+|   |-- controllers/
+|   |-- helpers/
+|   |-- libraries/
+|   |-- models/
+|   +-- views/
+|-- assets/
+|   |-- img/
+|   +-- userpage/
+|-- system/
+|-- upload/
+|-- vendor/
+|-- index.php
+|-- composer.json
+|-- portal_olahraga.sql
++-- README.md
 ```
 
-## 💡 Solusi Masalah Umum (Troubleshooting)
+Penjelasan hubungan folder:
 
-**Ringkasan Poin Penting untuk Presentasi (MVC & File Kunci)**
+- `index.php` adalah pintu masuk aplikasi CodeIgniter. Semua request akan melewati file ini sebelum diarahkan ke route dan controller.
+- `application/config/` berisi konfigurasi aplikasi. File yang paling sering dipakai adalah `config.php`, `database.php`, `routes.php`, `autoload.php`, dan `mimes.php`.
+- `application/controllers/` berisi pengendali request. Contohnya `Home.php` untuk halaman utama, `Auth.php` untuk login/register, `NewsController.php` untuk berita admin dan review, `MatchController.php` untuk pertandingan, `AthleteController.php` untuk atlet dan foul, serta `SportController.php` untuk jenis olahraga dan klub.
+- `application/models/` berisi query dan akses database. Contohnya `M_News.php`, `M_Match.php`, `M_Sport_Type.php`, `M_League.php`, `Athlete_model.php`, `Club_model.php`, `Auth_model.php`, dan `M_User.php`.
+- `application/views/` berisi tampilan halaman. Folder `Admin/` untuk dashboard admin, `User/` dan folder frontend lain untuk halaman pengunjung, serta `layouts/` untuk layout utama seperti `layout-admin.php` dan `layout-user.php`.
+- `application/helpers/` berisi helper tambahan. Project ini memakai `auth_helper.php` untuk fungsi bantu autentikasi seperti pengecekan login admin.
+- `application/libraries/` berisi library custom. Project ini memiliki `Template.php` untuk pemanggilan layout dan `Visitor.php` untuk pencatatan visitor.
+- `assets/` berisi file statis seperti CSS, JavaScript, font, gambar template, dan gambar default. Folder `assets/userpage/` dipakai oleh tampilan frontend.
+- `upload/` dipakai untuk menyimpan file yang diunggah dari halaman admin, seperti thumbnail berita, logo klub, atau gambar lain.
+- `system/` adalah core CodeIgniter 3. Folder ini sebaiknya tidak diubah kecuali benar-benar diperlukan.
+- `vendor/` berisi dependency dari Composer.
+- `portal_olahraga.sql` berisi struktur dan data database yang harus di-import ke MySQL.
 
-- **MVC — Ringkasan & Alur:** aplikasi ini memakai pola Model-View-Controller (MVC). Singkatnya:
-  1. Permintaan HTTP masuk ke `index.php` (entrypoint).
-  2. Router (`application/config/routes.php`) menentukan Controller yang dipanggil.
-  3. Controller (`application/controllers/`) menjalankan logika, memanggil Model untuk akses data.
-  4. Model (`application/models/`) melakukan query ke database (`portal_olahraga.sql`) dan mengembalikan data.
-  5. Controller me-render View (`application/views/`) yang menampilkan HTML ke pengguna.
+## Controller Utama
 
-- **Contoh file kunci:** `application/controllers/NewsController.php`, `application/models/M_News.php`, `application/views/Admin/news/` (tunjukkan pada demo).
+| Controller | Fungsi utama |
+| :-- | :-- |
+| `Home.php` | Halaman utama frontend, berita terbaru, pertandingan terbaru, atlet, dan klub. |
+| `HomeController.php` | Dashboard admin dan pencarian berita. |
+| `Auth.php` | Login, register, dan logout user. |
+| `UserController.php` | Login admin dan manajemen user. |
+| `NewsController.php` | Manajemen berita admin, upload thumbnail, dan review. |
+| `Berita.php` | Halaman berita frontend, detail berita, dan kategori olahraga. |
+| `MatchController.php` | Manajemen pertandingan di admin. |
+| `Pertandingan.php` | Daftar pertandingan di frontend. |
+| `AthleteController.php` | Manajemen atlet, tipe foul, dan foul di admin. |
+| `Atlet.php` | Daftar dan detail atlet di frontend. |
+| `SportController.php` | Manajemen jenis olahraga dan klub olahraga. |
+| `Klub.php` | Daftar dan detail klub di frontend. |
+| `LeagueController.php` | Manajemen liga. |
+| `Player_type.php` | Manajemen tipe pemain. |
 
-- **Assets (`assets/`)**: tempat file statis (CSS, JS, gambar). Struktur penting:
-  - `assets/css/`, `assets/js/`, `assets/img/`, `assets/userpage/` (template halaman statis untuk preview).
-  - Views memanggil aset menggunakan path relatif ke base URL, contoh: `<link href="/website-portal-olahraga/assets/css/style.css">`.
+## View Utama
 
-- **Upload (`upload/`)**: direktori penyimpanan file yang diunggah pengguna (mis. foto atlet, logo klub).
-  - Pastikan `upload/` dapat ditulis oleh server web (permission) dan tidak diekspos langsung tanpa validasi.
-  - Referensi berkas hasil upload umumnya disimpan di database dan ditampilkan lewat helper `get_image_url()` di view.
+```text
+application/views/
+|-- Admin/
+|   |-- athlete/
+|   |-- foul/
+|   |-- foul-type/
+|   |-- league/
+|   |-- match/
+|   |-- news/
+|   |-- player-type/
+|   |-- player_type/
+|   |-- sport-club/
+|   |-- sport-type/
+|   |-- user/
+|   +-- dashboard.php
+|-- Auth/
+|-- User/
+|-- atlet/
+|-- berita/
+|-- home/
+|-- klub/
+|-- layouts/
++-- pertandingan/
+```
 
-- **Vendor & Composer (`composer.json` / `vendor/`)**:
-  - Dependensi pihak ketiga dikelola lewat Composer. Jika `vendor/` kosong, jalankan:
+Folder `Admin/` dipakai untuk halaman CRUD admin. Folder `home/`, `berita/`, `atlet/`, `klub/`, dan `pertandingan/` dipakai untuk halaman frontend. Folder `layouts/` menyimpan kerangka tampilan agar header, sidebar, navbar, dan footer bisa dipakai ulang.
+
+## File Konfigurasi Penting
+
+- `application/config/routes.php`: mengatur URL ke controller dan method.
+- `application/config/database.php`: mengatur koneksi database MySQL.
+- `application/config/config.php`: mengatur `base_url` dan konfigurasi dasar aplikasi.
+- `application/config/autoload.php`: mengatur library dan helper yang otomatis dimuat. Project ini memuat `database`, `upload`, `session`, `visitor`, `template`, `url`, dan `auth_helper`.
+- `application/config/mimes.php`: mengatur MIME type file upload.
+
+## Route Penting
+
+Frontend:
+
+- `/` -> `Home/index`
+- `/login` -> `Auth/login`
+- `/register` -> `Auth/register`
+- `/logout` -> `Auth/logout`
+- `/news/{slug}` -> `Berita/detail`
+- `/sport/{slug}` -> `Berita/kategori`
+- `/pertandingan` -> `Pertandingan/index`
+- `/atlet` -> `Atlet/index`
+- `/klub` -> `Klub/index`
+- `/search` -> `HomeController/searchNews`
+
+Admin:
+
+- `/admin/login` -> `UserController/loginAdmin`
+- `/admin/dashboard` -> `HomeController/indexAdmin`
+- `/admin/user` -> `UserController/index`
+- `/admin/sport-type` -> `SportController/sportType`
+- `/admin/league` -> `LeagueController/select_sportType`
+- `/admin/sport-club` -> `SportController/select_sportType`
+- `/admin/player-type` -> `Player_type/index`
+- `/admin/foul-type` -> `AthleteController/foulType_selectSport`
+- `/admin/match` -> `MatchController/select_sportType`
+- `/admin/athlete` -> `AthleteController/athlete_selectSport`
+- `/admin/foul` -> `AthleteController/foul_selectSport`
+- `/admin/news` -> `NewsController/select_sportType`
+
+## Instalasi Lokal
+
+### Menggunakan Laragon
+
+1. Letakkan project di folder `C:\laragon\www\website-portal-olahraga`.
+2. Jalankan Laragon, lalu klik `Start All`.
+3. Buat database MySQL bernama `portal_olahraga`.
+4. Import file `portal_olahraga.sql` ke database tersebut.
+5. Buka `application/config/database.php`, lalu pastikan konfigurasi sesuai:
+
+```php
+'hostname' => 'localhost',
+'username' => 'root',
+'password' => '',
+'database' => 'portal_olahraga',
+```
+
+6. Buka `application/config/config.php`, lalu sesuaikan `base_url`:
+
+```php
+$config['base_url'] = 'http://localhost/website-portal-olahraga/';
+```
+
+7. Akses project melalui browser:
+
+```text
+http://localhost/website-portal-olahraga/
+```
+
+### Menggunakan XAMPP
+
+1. Letakkan project di folder `C:\xampp\htdocs\website-portal-olahraga`.
+2. Jalankan Apache dan MySQL dari XAMPP Control Panel.
+3. Buka `http://localhost/phpmyadmin/`.
+4. Buat database bernama `portal_olahraga`.
+5. Import file `portal_olahraga.sql`.
+6. Sesuaikan `database.php` dan `config.php`.
+7. Akses project di `http://localhost/website-portal-olahraga/`.
+
+## Database
+
+Database utama project ada di file:
+
+```text
+portal_olahraga.sql
+```
+
+File ini harus di-import sebelum aplikasi dijalankan. Model di folder `application/models/` mengambil data dari tabel-tabel di database tersebut. Contohnya:
+
+- `M_News.php` berhubungan dengan data berita.
+- `M_Match.php` dan `Match_model.php` berhubungan dengan pertandingan.
+- `M_Sport_Type.php` berhubungan dengan jenis olahraga.
+- `M_League.php` berhubungan dengan liga.
+- `Athlete_model.php` berhubungan dengan atlet.
+- `Club_model.php` berhubungan dengan klub.
+- `Auth_model.php` dan `M_User.php` berhubungan dengan user dan autentikasi.
+
+## Upload dan Asset
+
+File gambar yang di-upload admin disimpan di folder:
+
+```text
+upload/
+```
+
+Asset bawaan frontend dan tampilan berada di:
+
+```text
+assets/userpage/
+```
+
+Contoh file penting:
+
+- `assets/userpage/css/home.css`
+- `assets/userpage/css/bootstrap.css`
+- `assets/userpage/js/custom.js`
+- `assets/userpage/images/`
+- `assets/img/no-image.jpg`
+
+## Composer
+
+Jika dependency belum tersedia, jalankan:
 
 ```bash
 composer install
 ```
 
-    - Jangan commit `vendor/` jika tim memakai pendekatan dependency install pada server/runner.
+File `composer.json` menyimpan daftar dependency, sedangkan hasil install berada di folder `vendor/`.
 
-- **Framework Core (`system/`)**: folder ini berisi engine CodeIgniter 3. Hindari perubahan kecuali benar-benar diperlukan.
+## Troubleshooting
 
-- **Entrypoint & Konfigurasi**: `index.php` (root), `application/config/config.php` (base_url dan opsi aplikasi), `application/config/database.php` (koneksi DB). Tunjukkan lokasi ini saat demo.
+### Gambar tidak tampil
 
-- **Hubungan / Alur Terhubung (concrete example):**
-  - User klik `http://.../admin/news` → `routes.php` → `NewsController::index()` → `M_News::getAll()` → tampilkan `application/views/Admin/news/index.php` → halaman memuat CSS/JS dari `assets/` dan gambar dari `upload/`.
+Pastikan path gambar di database dan folder `upload/` sesuai. Jika project dipindahkan dari komputer lain, URL absolut seperti `http://localhost/...` bisa menyebabkan gambar tidak muncul saat base URL berbeda.
 
-- **Import database contoh (lokal):**
-  ```bash
-  mysql -u root -p portal_olahraga < portal_olahraga.sql
-  ```
+### Upload gambar gagal
 
-Catatan singkat: saat presentasi, tunjukkan satu contoh end-to-end (route → controller → model → view) dan tunjukkan file-file kunci yang sudah disebutkan.
+Pastikan format file sesuai dengan konfigurasi upload. Untuk pengaturan tipe file, cek:
 
----
+```text
+application/config/mimes.php
+```
 
-## 💡 Solusi Masalah Umum (Troubleshooting)
+Pada `NewsController.php`, upload thumbnail memakai folder `upload/` dan tipe file:
 
-### 1. Masalah Gambar/Logo Pecah (Tidak Tampil)
+```text
+jpg, jpeg, png, webp, gif
+```
 
-- **Penyebab:** Database menyimpan URL absolut server lokal pembuat awal (`http://localhost/...`). Ketika diakses menggunakan IP lokal atau domain virtual host lain (seperti `.test`), URL gambar menjadi tidak valid.
-- **Solusi:** Gunakan helper global `get_image_url($path)` di dalam views untuk merelasikan path secara dinamis.
+### Database error
 
-  ```html
-  <!-- ❌ Contoh Salah: -->
-  <img src="<?php echo $club->logo; ?>" />
+Pastikan database `portal_olahraga` sudah dibuat dan file `portal_olahraga.sql` sudah di-import. Periksa juga konfigurasi di:
 
-  <!--  Contoh Benar: -->
-  <img src="<?php echo get_image_url($club->logo); ?>" />
-  ```
+```text
+application/config/database.php
+```
 
-````
+### Halaman 404
 
-### 2. Gagal Upload Gambar: _"The filetype you are attempting to upload is not allowed"_
+Pastikan route yang diakses sudah terdaftar di:
 
-- **Penyebab:** Ekstensi berkas tidak cocok dengan data MIME asli (misalnya mengubah tipe berkas secara paksa dengan me-rename ekstensinya), atau MIME type belum terdaftar di konfigurasi CodeIgniter.
-- **Solusi:**
-  1. Hindari mengubah ekstensi secara manual. Pastikan format berkas asli.
-  2. Tambahkan tipe MIME cadangan `application/octet-stream` atau tipe MIME spesifik lainnya pada array ekstensi yang bersangkutan di file [application/config/mimes.php](file:///c:/laragon/www/website-portal-olahraga/application/config/mimes.php).
+```text
+application/config/routes.php
+```
 
-### 3. Masalah Database Exception: `Unknown column 'sport_athlete.player_type' in 'where clause'`
+Pastikan juga nama controller dan method sesuai dengan route.
 
-- **Penyebab:** Kueri relasi di model tidak selaras dengan skema tabel fisik di MySQL.
-- **Solusi:** Pastikan kueri pada model memetakan kolom kunci tamu (_foreign key_) dengan benar. Kolom relasi di tabel `sport_athlete` adalah `playerType_id` bukan `player_type`.
+## Catatan Pengembangan
 
-### 4. Mengatasi Merge Conflict di Git (Konflik Penggabungan)
-
-Jika setelah mengeksekusi `git pull` muncul pesan konflik, ikuti instruksi berikut:
-
-1.  Buka berkas berkonflik di **VS Code**. Daerah konflik akan ditandai dengan warna kontras.
-2.  Identifikasi bagian penanda konflik:
-    - `<<<<<<< HEAD` : Perubahan lokal Anda.
-    - `=======` : Batas pemisah kode.
-    - `>>>>>>> [branch_name]` : Perubahan masuk dari repositori GitHub.
-3.  Pilih opsi di atas kode: **Accept Current Change** (pertahankan kode Anda), **Accept Incoming Change** (terima kode dari remote), atau **Accept Both Changes** (gabungkan keduanya).
-4.  Rapatkan kode, pastikan tidak ada sintaks penanda konflik yang tersisa, lalu selesaikan dengan commit baru:
-    ```bash
-    git add .
-    git commit -m "chore: menyelesaikan conflict pada [nama file]"
-    git push origin [nama-branch-fitur-anda]
-    ```
-````
+- Utamakan perubahan di folder `application/`, `assets/`, dan `upload/`.
+- Hindari mengubah folder `system/` karena folder tersebut adalah core CodeIgniter.
+- Jika menambah halaman baru, tambahkan route di `routes.php`, controller di `controllers/`, model jika membutuhkan database, dan view di `views/`.
+- Jika menambah fitur admin, ikuti pola folder `application/views/Admin/` yang sudah ada.
