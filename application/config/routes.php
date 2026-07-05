@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -60,6 +60,7 @@ $route['logout'] = 'Auth/logout';
 $route['news/(:any)'] = 'Berita/detail/$1';
 $route['sport/(:any)'] = 'Berita/kategori/$1';
 $route['sport/(:any)/(:num)'] = 'Berita/kategori/$1/$2';
+$route['league/(:any)/match'] = 'LeagueController/league_match/$1';
 $route['pertandingan'] = 'Pertandingan/index';
 $route['pertandingan/(:num)'] = 'Pertandingan/index/$1';
 $route['atlet'] = 'Atlet/index';
@@ -142,5 +143,3 @@ $route['admin/news/sport/:num'] = 'NewsController/news';
 $route['admin/news/action/:num'] = 'NewsController/news_actions';
 $route['admin/news/action/:num/:num'] = 'NewsController/news_actions';
 $route['admin/news/delete/:num'] = 'NewsController/news_delete';
-
-
