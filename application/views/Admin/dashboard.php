@@ -1,4 +1,33 @@
 <div id="mainContent">
+  <style>
+    .admin-quick-guide {
+      overflow: hidden;
+    }
+
+    .admin-quick-guide .list-group-item {
+      gap: 16px;
+      padding: 14px 0;
+      background: transparent;
+    }
+
+    .admin-quick-action {
+      min-width: 132px;
+      border: 0;
+      border-radius: 6px;
+      background: #1d4ed8;
+      color: #fff !important;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(29, 78, 216, .18);
+    }
+
+    .admin-quick-action:hover,
+    .admin-quick-action:focus {
+      background: #1e40af;
+      color: #fff !important;
+      text-decoration: none;
+    }
+  </style>
   <div class="container-fluid">
     <h4 class="c-grey-900 mT-10 mB-30">Dashboard</h4>
     
@@ -102,20 +131,22 @@
     <!-- Quick Navigation Tips -->
     <div class="row mT-30">
       <div class="col-md-6">
-        <div class="bgc-white bd bdrs-3 p-20">
+        <div class="bgc-white bd bdrs-3 p-20 admin-quick-guide">
           <h5 class="c-grey-900 mB-15">Panduan Cepat Admin</h5>
           <ul class="list-group list-group-flush">
+            <?php if ($this->session->role === 'admin'): ?>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Mengelola Pengguna Website
-              <a href="<?php echo site_url('admin/user')?>" class="btn btn-sm btn-outline-primary">Kelola User</a>
+              <a href="<?php echo site_url('admin/user')?>" class="btn btn-sm admin-quick-action">Kelola User</a>
             </li>
+            <?php endif; ?>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Menulis / Mengedit Berita Olahraga
-              <a href="<?php echo site_url('admin/news')?>" class="btn btn-sm btn-outline-primary">Kelola Berita</a>
+              <a href="<?php echo site_url('admin/news')?>" class="btn btn-sm admin-quick-action">Kelola Berita</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Mengatur Profil Atlet Olahraga
-              <a href="<?php echo site_url('admin/athlete')?>" class="btn btn-sm btn-outline-primary">Kelola Atlet</a>
+              <a href="<?php echo site_url('admin/athlete')?>" class="btn btn-sm admin-quick-action">Kelola Atlet</a>
             </li>
           </ul>
         </div>

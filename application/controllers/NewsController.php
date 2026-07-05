@@ -146,9 +146,19 @@ class NewsController extends CI_Controller{
 
     public function news_delete()
     {
+        isAdminLogin();
         $id = $this->uri->segment(4);
+        $news = $this->M_News->getNews(NULL, $id);
+        $sport_type_id = !empty($news->sport_type) ? $news->sport_type : NULL;
+
         $this->M_News->delete($id);
-        echo "<script>history.back()</script>";
+        $this->session->set_flashdata('success', 'Berita berhasil dihapus.');
+
+        if (!empty($sport_type_id)) {
+            redirect('admin/news/sport/' . $sport_type_id);
+        }
+
+        redirect('admin/news');
 
     }
 

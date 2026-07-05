@@ -5,7 +5,12 @@ class M_Sport_Athlete extends CI_Model {
     
     
     public function get_sportType($club_Id) {
-        return $this->db->query("SELECT sport_type.* FROM sport_type, sport_club where sport_type.id = sport_club.id and sport_club.id = $club_Id");
+        $club_Id = (int) $club_Id;
+        return $this->db->query("SELECT sport_type.*
+                                 FROM sport_type
+                                 JOIN league ON league.sport_type = sport_type.id
+                                 JOIN sport_club ON sport_club.sport_league = league.id
+                                 WHERE sport_club.id = $club_Id");
     }
 
 
@@ -17,7 +22,11 @@ class M_Sport_Athlete extends CI_Model {
         if (!empty($id)) {
             return $this->db->query("SELECT * FROM sport_athlete WHERE id = $id")->row();
         } else {
-            return $this->db->query("SELECT sport_athlete.*, player_type.player_type as 'player' FROM `sport_athlete`, player_type WHERE sport_athlete.playerType_id = player_type.id and sport_athlete.sport_club = $club_id;")->result();
+            $club_id = (int) $club_id;
+            return $this->db->query("SELECT sport_athlete.*, COALESCE(player_type.player_type, 'Tipe pemain belum diisi') as 'player'
+                                     FROM sport_athlete
+                                     LEFT JOIN player_type ON sport_athlete.playerType_id = player_type.id
+                                     WHERE sport_athlete.sport_club = $club_id;")->result();
         }
     }
 
@@ -78,7 +87,7 @@ class M_Sport_Athlete extends CI_Model {
 
     public function getPlayerType_by_sporType($id)
     {
-        return $this->db->get('player_type', array('sport_type'=>$id))->result();
+        return $this->db->get_where('player_type', array('sport_type'=>$id))->result();
     }
 
     public function actionsPlayerType($sportType_id, $id = NULL) 

@@ -124,6 +124,35 @@ $pageTitle = isset($pageTitles[$adminSection]) ? $pageTitles[$adminSection] : 'D
       background: #fef3c7;
       color: #92400e;
     }
+
+    input[type="file"].form-control {
+      height: auto;
+      min-height: 40px;
+      padding: 6px 12px;
+      line-height: 1.5;
+    }
+
+    input[type="file"].form-control::file-selector-button {
+      margin: -6px 14px -6px -12px;
+      padding: 6px 14px;
+      border: 0;
+      border-right: 1px solid #ced4da;
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    input[type="file"].form-control::-webkit-file-upload-button {
+      margin: -6px 14px -6px -12px;
+      padding: 6px 14px;
+      border: 0;
+      border-right: 1px solid #ced4da;
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 600;
+      cursor: pointer;
+    }
   </style>
   <script defer="defer" src="<?php echo site_url('vendor/admin/dist/main.js') ?>"></script>
 </head>

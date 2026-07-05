@@ -72,12 +72,12 @@
         <?php
         // var_dump($data_sportType);die;
         if (empty($data_playerType)) {
-            echo "<option><strong>Data Player Type Kosong !!!</strong></option>";
+            echo "<option value='' disabled selected>Data Player Type Kosong !!!</option>";
         }
         else {
-            echo empty(set_value('player_type')) || (set_value('player_type') == "--- Pilih Player Type ---") ?"<option>--- Pilih Player Type ---</option>" : ''; 
+            echo empty(set_value('player_type')) ?"<option value=''>--- Pilih Player Type ---</option>" : ''; 
             foreach ($data_playerType as $playerType) {
-                if ( (isset($data_athlete) && $data_athlete->player_type == $playerType->id) || set_value('playerType') == $playerType->id) {
+                if ( (isset($data_athlete) && $data_athlete->playerType_id == $playerType->id) || set_value('player_type') == $playerType->id) {
                     echo "<option value='$playerType->id' selected>$playerType->player_type</option>";  
                 }
                 else {

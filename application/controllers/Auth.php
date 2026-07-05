@@ -63,7 +63,7 @@ class Auth extends CI_Controller
             }
         }
 
-        $this->load->view('Auth/user_login');
+        $this->load->view('Auth/login');
     }
 
     public function register()
@@ -108,7 +108,7 @@ class Auth extends CI_Controller
             redirect('login');
         }
 
-        $this->load->view('Auth/user_register');
+        $this->load->view('Auth/register');
     }
 
     public function logout()

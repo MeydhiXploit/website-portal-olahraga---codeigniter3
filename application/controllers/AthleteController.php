@@ -156,9 +156,19 @@ class AthleteController extends CI_Controller
 
     public function delete()
     {
+        isAdminLogin();
         $id = $this->uri->segment(4);
+        $athlete = $this->M_Sport_Athlete->getAthlete(NULL, $id);
+
+        if (empty($athlete)) {
+            $this->session->set_flashdata('failed', 'Athlete tidak ditemukan.');
+            redirect('admin/athlete');
+        }
+
+        $club_id = $athlete->sport_club;
         $this->M_Sport_Athlete->delete($id);
-        echo "<script>history.back()</script>";
+        $this->session->set_flashdata('success', 'Athlete berhasil dihapus.');
+        redirect('admin/athlete/club/' . $club_id);
     }
 
     /**
@@ -204,9 +214,19 @@ class AthleteController extends CI_Controller
 
     public function playerType_delete()
     {
+        isAdminLogin();
         $id = $this->uri->segment(4);
+        $player_type = $this->M_Sport_Athlete->getPlayerType(NULL, $id);
+        $sport_type = !empty($player_type->sport_type) ? $player_type->sport_type : NULL;
+
         $this->M_Sport_Athlete->deletePlayerType($id);
-        echo "<script>history.back()</script>";
+        $this->session->set_flashdata('success', 'Player type berhasil dihapus.');
+
+        if (!empty($sport_type)) {
+            redirect('admin/player-type/' . $sport_type);
+        }
+
+        redirect('admin/player-type');
     }
 
     /**
@@ -251,9 +271,19 @@ class AthleteController extends CI_Controller
 
     public function foulType_delete()
     {
+        isAdminLogin();
         $id = $this->uri->segment(4);
+        $foul_type = $this->M_Sport_Athlete->getFoulType(NULL, $id);
+        $sport_type = !empty($foul_type->sport_type) ? $foul_type->sport_type : NULL;
+
         $this->M_Sport_Athlete->deleteFoulType($id);
-        echo "<script>history.back()</script>";
+        $this->session->set_flashdata('success', 'Tipe pelanggaran berhasil dihapus.');
+
+        if (!empty($sport_type)) {
+            redirect('admin/foul-type/' . $sport_type);
+        }
+
+        redirect('admin/foul-type');
     }
 
     /**
@@ -324,8 +354,28 @@ class AthleteController extends CI_Controller
 
     public function foul_delete()
     {
+        isAdminLogin();
         $id = $this->uri->segment(4);
+        $foul = $this->M_Sport_Athlete->getFoul(NULL, $id);
+        $league_id = NULL;
+
+        if (!empty($foul->match_id)) {
+            $match = $this->M_Match->get($foul->match_id);
+            if (!empty($match->sport_club_1)) {
+                $club = $this->M_Sport_Club->get(NULL, $match->sport_club_1);
+                if (!empty($club->sport_league)) {
+                    $league_id = $club->sport_league;
+                }
+            }
+        }
+
         $this->M_Sport_Athlete->deleteFoul($id);
-        echo "<script>history.back()</script>";
+        $this->session->set_flashdata('success', 'Pelanggaran berhasil dihapus.');
+
+        if (!empty($league_id)) {
+            redirect('admin/foul/league/' . $league_id);
+        }
+
+        redirect('admin/foul');
     }
 }
