@@ -5,8 +5,11 @@ class M_Visitor extends CI_Model {
 
     public function check_visitor($data){
         
-        $sql = "SELECT * FROM visitor WHERE visitor.ip = '".$data['ip']."' AND visitor.url = '".$data['url']."' AND visitor.date = '".$data['date']."'";
-        return $this->db->query($sql)->num_rows();
+        return $this->db->get_where('visitor', array(
+            'ip' => $data['ip'],
+            'url' => $data['url'],
+            'date' => $data['date'],
+        ))->num_rows();
     }
 
     public function save($data) {

@@ -1,31 +1,53 @@
 <div class="hero">
     <h1 class="hero-caption"><?php echo $news->title; ?></h1>
 </div>
-<section id="contant" class="contant main-heading single-blog" style="margin-top: 40px; margin-bottom: 40px;">
-    <div class="row">
-        <div class="container">
+<section id="contant" class="contant main-heading single-blog news-detail-section">
+    <div class="container">
+        <div class="row">
             <div class="col-md-9">
-                <div class="feature-post" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px;">
+                <article class="feature-post">
                     <div class="feature-img">
-                        <img src="<?php echo get_image_url($news->thumbnail); ?>" class="img-responsive" alt="<?php echo htmlspecialchars($news->title); ?>" style="border-radius: 8px; max-height: 450px; width: 100%; object-fit: cover; margin-bottom: 20px;" />
+                        <img src="<?php echo get_image_url($news->thumbnail); ?>" class="img-responsive" alt="<?php echo htmlspecialchars($news->title); ?>" />
                     </div>
                     <div class="feature-cont">
-                        <div class="post-people" style="margin-bottom: 25px; border-bottom: 1px solid #eaeaea; padding-bottom: 20px;">
+                        <div class="post-people">
                             <div class="left-profile">
-                                <div class="post-info" style="display: flex; align-items: center;">
-                                    <img src="<?php echo base_url('assets/userpage/images/profile-img.png'); ?>" alt="#" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-color);" />
-                                    <span style="margin-left: 15px; display: flex; flex-direction: column;">
-                                        <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: #333;">Oleh <?php echo $news->fullname; ?></h4>
-                                        <h5 style="margin: 3px 0 0 0; font-size: 12px; color: var(--text-muted); font-weight: 400;"><i class="fa fa-calendar" style="color: var(--primary-color); margin-right: 4px;"></i> <?php echo date('d M Y', strtotime($news->created_at)); ?></h5>
+                                <div class="post-info">
+                                    <img src="<?php echo base_url('assets/userpage/images/profile-img.png'); ?>" alt="Foto profil penulis" />
+                                    <span>
+                                        <h4>Oleh <?php echo $news->fullname; ?></h4>
+                                        <h5><i class="fa fa-calendar"></i> <?php echo date('d M Y', strtotime($news->created_at)); ?></h5>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="post-heading" style="font-size: 15px; line-height: 1.8; color: #444;">
+
+                        <?php if (!empty($news->description)): ?>
+                            <div class="post-description">
+                                <?php echo $news->description; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="post-heading">
                             <?php echo $news->body; ?>
                         </div>
+
+                        <?php if (!empty($news->news_tags)): ?>
+                            <div class="news-tag-list">
+                                <strong class="news-tag-label">TAGS:</strong>
+                                <?php
+                                $tags = explode(',', $news->news_tags);
+                                foreach ($tags as $tag) {
+                                    $tag = trim($tag);
+                                    if (!empty($tag)) {
+                                        echo '<span class="news-tag">' . htmlspecialchars($tag) . '</span>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                </div>
+                </article>
             </div>
 
             <div class="col-md-3">
@@ -63,7 +85,7 @@
                     <div class="cm-sidebar-match-list">
                         <?php
                         if (empty($data_match)) {
-                            echo "<p style='font-size: 12px; color: var(--text-muted); text-align: center; margin: 10px 0;'>Tidak ada pertandingan terdekat.</p>";
+                            echo "<p class='cm-sidebar-empty-message'>Tidak ada pertandingan terdekat.</p>";
                         } else {
                             $match_count = 0;
                             foreach ($data_match as $match) {

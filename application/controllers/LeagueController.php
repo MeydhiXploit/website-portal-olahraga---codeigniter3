@@ -10,10 +10,27 @@ class LeagueController extends CI_Controller
         $this->load->model(array('M_League', 'M_Sport_Type', 'M_News', 'M_Match', 'M_Sport_Club'));
     }
 
-    public function league()
+    private function resolve_league($value = NULL)
     {
-        $slug = str_replace('-', ' ', $this->uri->segment(2));
-        $league = $this->M_League->get_by_name($slug);
+        $value = $value ?: $this->uri->segment(2);
+        if (empty($value)) {
+            return NULL;
+        }
+
+        if (ctype_digit((string) $value)) {
+            return $this->M_League->get(NULL, (int) $value);
+        }
+
+        return $this->M_League->get_by_name(str_replace('-', ' ', $value));
+    }
+
+    public function league($slug = NULL)
+    {
+        $league = $this->resolve_league($slug);
+        if (empty($league)) {
+            show_404();
+        }
+
         $context = [
             'lastest_news_result' => $this->M_News->get_lastest_news_result(),
             'data_sportType' => $this->M_Sport_Type->get(),
@@ -25,10 +42,13 @@ class LeagueController extends CI_Controller
         $this->template->user_template('User/league', $context);
     }
 
-    public function league_match()
+    public function league_match($slug = NULL)
     {
-        $slug = str_replace('-', ' ', $this->uri->segment(2));
-        $league = $this->M_League->get_by_name($slug);
+        $league = $this->resolve_league($slug);
+        if (empty($league)) {
+            show_404();
+        }
+
         $context = [
             'lastest_news_result' => $this->M_News->get_lastest_news_result(),
             'data_sportType' => $this->M_Sport_Type->get(),

@@ -2,6 +2,20 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Sport_Athlete extends CI_Model {
+
+    private function calculate_age($date_birth)
+    {
+        if (empty($date_birth)) {
+            return 0;
+        }
+
+        try {
+            $birth = new DateTime($date_birth);
+            return $birth->diff(new DateTime())->y;
+        } catch (Exception $e) {
+            return 0;
+        }
+    }
     
     
     public function get_sportType($club_Id) {
@@ -37,15 +51,19 @@ class M_Sport_Athlete extends CI_Model {
 
     public function actions($sport_club, $id = NULL, $photo = NULL)
     {
+        $date_birth = $this->input->post('date_birth');
+        $age = $this->calculate_age($date_birth);
+
         if (!empty($id)) {
             $data = [
                 'name' => $this->input->post('name'),
                 'gender' => empty($this->input->post('gender')) ? $this->input->post('gender-lama') : $this->input->post('gender'),
+                'age' => $age,
                 'backNumber' => $this->input->post('backNumber'),
                 'weight' => $this->input->post('weight'),
                 'height' => $this->input->post('height'),
                 'photo' => !empty($photo) ? site_url('upload/' . $photo) : $this->input->post('photo-lama'),
-                'date_birth' => date('Y-m-d', strtotime($this->input->post('date_birth'))),
+                'date_birth' => date('Y-m-d', strtotime($date_birth)),
                 'playerType_id' => $this->input->post('player_type'),
                 'sport_club' => $sport_club,
             ];
@@ -54,11 +72,12 @@ class M_Sport_Athlete extends CI_Model {
             $data = [
                 'name' => $this->input->post('name'),
                 'gender' => $this->input->post('gender'),
+                'age' => $age,
                 'backNumber' => $this->input->post('backNumber'),
                 'weight' => $this->input->post('weight'),
                 'height' => $this->input->post('height'),
                 'photo' => site_url('upload/' . $photo),
-                'date_birth' => date('Y-m-d', strtotime($this->input->post('date_birth'))),
+                'date_birth' => date('Y-m-d', strtotime($date_birth)),
                 'playerType_id' => $this->input->post('player_type'),
                 'sport_club' => $sport_club,
             ];

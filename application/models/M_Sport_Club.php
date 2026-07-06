@@ -28,7 +28,7 @@ class M_Sport_Club extends CI_Model
         return $this->db->query("SELECT sport_club.* FROM `sport_club` , league, sport_type WHERE sport_club.sport_league = league.id AND league.sport_type = sport_type.id AND sport_type.id = $id;")->result();
     }   
 
-    public function actions($id = NULL, $league_id,  $logo = NULL)
+    public function actions($id = NULL, $league_id = NULL,  $logo = NULL)
     {
         if (!empty($id)) {
             $data = [

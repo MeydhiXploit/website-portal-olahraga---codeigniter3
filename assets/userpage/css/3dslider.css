@@ -22,7 +22,7 @@
   left: 10%;
   width: 10%;
   height: 40%;
-  background-image: url('images/img-01.jpg');
+  background-image: url('../images/img-01.jpg');
   transition: width 1s, height 1s, top 1s, left 1s
 }
 
@@ -32,7 +32,7 @@
   left: 0%;
   width: 10%;
   height: 30%;
-  background-image: url('images/img-02.jpg');
+  background-image: url('../images/img-02.jpg');
   transition: width 1s, height 1s, top 1s, left 1s
 }
 
@@ -42,7 +42,7 @@
   left: 20%;
   width: 60%;
   height: 90%;
-  background-image: url('images/img-03.jpg');
+  background-image: url('../images/img-03.jpg');
   transition: width 1s, height 1s, top 1s, left 1s
 }
 
@@ -52,7 +52,7 @@
   left: 80%;
   width: 10%;
   height: 40%;
-  background-image: url('images/img-04.jpg');
+  background-image: url('../images/img-04.jpg');
   transition: width 1s, height 1s, top 1s, left 1s
 }
 

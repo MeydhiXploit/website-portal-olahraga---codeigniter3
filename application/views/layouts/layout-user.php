@@ -513,7 +513,7 @@
 
                                     <i class="fa fa-envelope"></i>
 
-                                    [info@universitasbumigora.ac.id](mailto:info@universitasbumigora.ac.id)
+                                    <a href="mailto:info@universitasbumigora.ac.id">info@universitasbumigora.ac.id</a>
 
                                 </li>
 

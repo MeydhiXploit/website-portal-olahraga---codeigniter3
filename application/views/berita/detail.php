@@ -96,7 +96,7 @@
         <div class="container">
             <!-- Article Body (Left) -->
             <div class="col-md-9 col-sm-8 col-xs-12">
-                <div class="feature-post" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px;">
+                <div class="feature-post" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; padding: 25px; margin-bottom: 30px;">
                     <div class="feature-img">
                         <?php
                         $thumb = $news->thumbnail;
@@ -105,7 +105,7 @@
                         <img src="<?php echo $img_src; ?>" class="img-responsive" onerror="this.src='<?php echo base_url('assets/img/no-image.jpg'); ?>'" alt="<?php echo htmlspecialchars($news->title); ?>" style="border-radius: 8px; max-height: 450px; width: 100%; object-fit: cover; margin-bottom: 20px;" />
                     </div>
                     <div class="feature-cont">
-                        <div class="post-people">
+                        <div class="post-people" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
                             <div class="left-profile">
                                 <div class="post-info">
                                     <img src="<?php echo base_url('assets/userpage/images/profile-img.png'); ?>" alt="#" class="post-author-avatar" />
@@ -119,25 +119,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="post-heading">
-                            <?php echo $news->body; ?>
-                        </div>
 
                         <!-- Article Tags -->
                         <?php if (!empty($news->news_tags)): ?>
-                            <div class="news-tag-list">
-                                <strong class="news-tag-label">TAGS:</strong>
+                            <div class="news-tag-list" style="display:block; width:100%; clear:both; text-align:left; margin-top:0; padding-top:10px; border-top:none;">
+                                <strong class="news-tag-label" style="display:block; font-size:13px; color:#333; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; margin:0 0 12px 0;">TAGS:</strong>
                                 <?php
                                 $tags = explode(',', $news->news_tags);
                                 foreach ($tags as $tag) {
                                     $tag = trim($tag);
                                     if (!empty($tag)) {
-                                        echo '<span class="news-tag">' . htmlspecialchars($tag) . '</span>';
+                                        echo '<span class="news-tag" style="display:inline-flex; align-items:center; justify-content:center; background-color:#d8302f; color:#ffffff; padding:8px 14px; font-size:12px; font-weight:600; border-radius:999px; margin:0 10px 10px 0; white-space:nowrap;">' . htmlspecialchars($tag) . '</span>';
                                     }
                                 }
                                 ?>
                             </div>
                         <?php endif; ?>
+
+                        <?php if (!empty($news->description)): ?>
+                            <div class="post-description" style="font-size:15px; line-height:1.9; color:#555; margin:8px 0 0; text-align:left;">
+                                <?php echo $news->description; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="post-heading">
+                            <?php echo $news->body; ?>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1482,6 +1482,19 @@ body section#contant .post-info span h4 {
      text-align: left;
      margin-top: 15px;
 }
+ .post-heading img,
+ .single-blog .feature-img img {
+     width: 100%;
+     max-width: 100%;
+     height: auto;
+     object-fit: cover;
+     display: block;
+     border-radius: 8px;
+}
+ .news-detail-section {
+     margin-top: 40px;
+     margin-bottom: 40px;
+}
  .feature-post .post-people {
      margin-bottom: 30px;
      border-bottom: 1px solid #eaeaea;
@@ -1529,60 +1542,70 @@ body section#contant .post-info span h4 {
      text-align: left;
      margin-top: 24px;
 }
- .news-tag-list {
-     margin-top: 30px;
-     padding-top: 24px;
-     border-top: 1px solid #eaeaea;
-     display: flex;
-     align-items: center;
-     flex-wrap: wrap;
-     gap: 10px;
+ .news-detail-section .news-tag-list,
+ .single-blog .feature-cont .news-tag-list {
+     width: 100% !important;
+     margin-top: 30px !important;
+     padding-top: 24px !important;
+     border-top: 1px solid #eaeaea !important;
+     display: block !important;
+     text-align: left !important;
+     clear: both !important;
+     position: relative !important;
 }
- .news-tag-label {
-     font-size: 12px;
-     color: #333;
-     letter-spacing: 0.5px;
-     text-transform: uppercase;
-     font-weight: 700;
+ .news-detail-section .news-tag-label,
+ .single-blog .feature-cont .news-tag-label {
+     display: block !important;
+     font-size: 13px !important;
+     color: #333 !important;
+     font-weight: 700 !important;
+     letter-spacing: 0.5px !important;
+     text-transform: uppercase !important;
+     margin: 0 0 12px 0 !important;
+     padding: 0 !important;
 }
- .news-tag {
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     background-color: var(--primary-color);
-     color: #ffffff;
-     padding: 8px 14px;
-     font-size: 12px;
-     font-weight: 600;
-     border-radius: 999px;
-     margin: 0;
-     white-space: nowrap;
+ .news-detail-section .news-tag,
+ .single-blog .feature-cont .news-tag {
+     display: inline-flex !important;
+     align-items: center !important;
+     justify-content: center !important;
+     background-color: var(--primary-color) !important;
+     color: #ffffff !important;
+     padding: 8px 14px !important;
+     font-size: 12px !important;
+     font-weight: 600 !important;
+     border-radius: 999px !important;
+     margin: 0 10px 10px 0 !important;
+     white-space: nowrap !important;
 }
- .post-heading h3 {
+ .news-detail-section .news-tag-list .news-tag:last-child,
+ .single-blog .feature-cont .news-tag-list .news-tag:last-child {
+     margin-right: 0 !important;
+}
+ .single-blog .feature-cont .news-tag-list {
+     position: relative !important;
+}
+ .news-tag-list::after {
+     content: '' !important;
+     display: table !important;
+     clear: both !important;
+}
+ .news-detail-section .post-description,
+ .single-blog .post-description {
+     font-size: 15px;
+     line-height: 1.9;
+     color: #555;
+     margin: 12px 0 0;
+     text-align: left;
+}
+ .news-detail-section .post-heading h3 {
      font-size: 18px;
      font-weight: 600;
      line-height: 25px;
      margin: 0 0 15px 0;
      padding: 0;
 }
- .news-tag-list {
-     margin-top: 30px;
-     padding-top: 20px;
-     border-top: 1px solid #eaeaea;
-     display: flex;
-     align-items: center;
-     flex-wrap: wrap;
-     gap: 10px;
-}
- .news-tag-label {
-     font-size: 13px;
-     color: #333;
-     font-weight: 700;
-}
- .news-tag {
-     display: inline-flex;
-     align-items: center;
-     background-color: var(--primary-color);
+
      color: #ffffff;
      padding: 6px 12px;
      font-size: 12px;
@@ -1773,6 +1796,24 @@ body section#contant .post-info span h4 {
      padding-left: 0;
      padding-right: 0;
 }
+ .news-detail-section .feature-post {
+     background: #ffffff;
+     border: 1px solid #eaeaea;
+     border-radius: 8px;
+     margin-bottom: 30px;
+ }
+ .news-detail-section .post-description {
+     font-size: 15px;
+     line-height: 1.9;
+     color: #555;
+     margin: 24px 0 0;
+ }
+ .news-detail-section .post-heading {
+     font-size: 15px;
+     line-height: 1.8;
+     color: #444;
+     margin-top: 24px;
+ }
  .clients-say {
      width: 100%;
      margin: 25px 0;

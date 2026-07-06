@@ -68,6 +68,19 @@
                                    AND news.sport_type ='$sport_id' ")->result();
         }
 
+        public function getNews_by_league($league_id)
+        {
+            return $this->db->select('news.*, user.fullname')
+                ->from('news')
+                ->join('user', 'news.user_id = user.id', 'left')
+                ->join('league', 'news.sport_type = league.sport_type', 'left')
+                ->where('news.news_status', 'published')
+                ->where('league.id', (int) $league_id)
+                ->order_by('news.created_at', 'DESC')
+                ->get()
+                ->result();
+        }
+
         public function actions($sport_type_id, $id = NULL, $photo = NULL)
         {
             $session_user_id = $this->session->userdata('id') ?? '10'; // Fallback to admin ID 10

@@ -23,7 +23,7 @@ class Visitor {
         if ($this->CI->M_Visitor->check_visitor($data) === 0) {
             // if user with ip and url not exist in database, save visitor data
             $data['user_id'] =!empty($this->CI->session->userdata('id')) ? $this->CI->session->userdata('id') : '2';
-            $data['user_agent'] = $this->CI->input->user_agent();
+            $data['user_agent'] = $this->CI->input->user_agent() ?: 'CLI';
             $this->CI->M_Visitor->save($data);
         }
         //
