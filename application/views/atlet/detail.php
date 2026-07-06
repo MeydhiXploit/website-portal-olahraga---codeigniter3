@@ -119,7 +119,7 @@
         padding: 12px 28px;
         border-radius: 30px;
         text-transform: uppercase;
-        font-size: 12px;
+        font-size: 12px; 
         letter-spacing: 0.5px;
         display: inline-flex;
         align-items: center;

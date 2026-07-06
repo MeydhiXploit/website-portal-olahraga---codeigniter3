@@ -1,3 +1,9 @@
+<!-- 
+     HALAMAN DETAIL BERITA
+     Fungsi :
+     Menampilkan informasi lengkap dari berita yang dipilih,
+     seperti judul, isi berita, gambar, serta sidebar yang
+     berisi daftar berita lainnya. -->
 <style>
     .cm-sidebar-widget {
         background-color: #ffffff;
@@ -94,7 +100,11 @@
 <section id="contant" class="contant main-heading single-blog" style="margin-top: 40px; margin-bottom: 40px;">
     <div class="row">
         <div class="container">
-            <!-- Article Body (Left) -->
+            <!-- BAGIAN ISI ARTIKEL BERITA
+     Fungsi :
+     Menampilkan isi lengkap berita yang dipilih, meliputi
+     gambar utama, informasi penulis, tanggal publikasi,
+     kategori berita, serta isi artikel. -->
             <div class="col-md-9 col-sm-8 col-xs-12">
                 <div class="feature-post" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 30px;">
                     <div class="feature-img">
@@ -123,7 +133,11 @@
                             <?php echo $news->body; ?>
                         </div>
 
-                        <!-- Article Tags -->
+                        <!-- TAG BERITA
+     Fungsi :
+     Menampilkan daftar tag yang berkaitan dengan berita.
+     Tag digunakan untuk mengelompokkan topik sehingga
+     memudahkan pengguna mengenali isi berita. -->
                         <?php if (!empty($news->news_tags)): ?>
                             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea; text-align: left;">
                                 <strong style="font-size: 13px; color: #333; margin-right: 10px;">TAGS:</strong>
@@ -142,9 +156,18 @@
                 </div>
             </div>
 
-            <!-- Sidebar Widgets (Right) -->
+            <!-- SIDEBAR HALAMAN DETAIL BERITA
+     Fungsi :
+     Menjadi area di sebelah kanan halaman yang digunakan
+     untuk menampilkan informasi tambahan, seperti berita
+     terkait, berita terbaru, atau widget lainnya. -->
             <div class="col-md-3 col-sm-4 col-xs-12">
-                <!-- Related News Widget -->
+                <!-- WIDGET BERITA TERKAIT
+     Fungsi :
+     Menampilkan daftar berita yang memiliki hubungan dengan
+     berita yang sedang dibaca sehingga pengguna dapat
+     melihat berita lain yang relevan.
+ -->
                 <div class="cm-sidebar-widget">
                     <h3 class="cm-sidebar-title">Berita Terkait</h3>
                     <ul class="cm-sidebar-news-list">

@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Basic -->
+<!-- LAYOUT USER
+     Fungsi :
+     Sebagai template utama website yang mengatur struktur
+     halaman seperti Header, Navbar, Footer, CSS, JavaScript,
+     dan tempat menampilkan isi halaman. -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- Mobile Metas -->
+<!--  META DATA HALAMAN
+     Fungsi :
+     Memberikan informasi dasar kepada browser mengenai
+     karakter, kompatibilitas browser, dan tampilan mobile. -->
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- Site Metas -->
+<!-- PENGATURAN TAMPILAN MOBILE
+     Fungsi :
+     Membuat tampilan website menyesuaikan ukuran layar
+     perangkat seperti HP, Tablet, maupun Desktop. -->
 <title>Game Info</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<!-- Site Icons -->
+<!-- IDENTITAS WEBSITE (SITE METAS)
+     Fungsi :
+     Memberikan informasi mengenai website seperti judul,
+     kata kunci, deskripsi, dan pembuat website. -->
 <link rel="shortcut icon" href="" type="image/x-icon" />
 <link rel="apple-touch-icon" href="">
-<!-- Bootstrap CSS -->
+<!--SITE ICONS
+     Fungsi :
+     Menampilkan ikon (favicon) website pada tab browser
+     dan ikon saat website disimpan di perangkat Apple. -->
 <link rel="stylesheet" href="<?php echo base_url('assets/userpage/css/bootstrap.min.css') ?>">
 <!-- Site CSS -->
 <link rel="stylesheet" href="<?php echo base_url('assets/userpage/style.css') ?>">
@@ -35,6 +51,11 @@
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <script src="<?php echo base_url('assets/userpage/js/3dslider.js') ?>"></script>
 <style>
+    /* 
+   STYLE HEADER WEBSITE
+   Fungsi :
+   Mengatur tampilan Header mulai dari background,
+   posisi, ukuran, tombol login, dan efek hover.*/
     header {
         position: relative !important;
         min-height: auto !important;
@@ -80,20 +101,29 @@
         font-size: 14px !important;
     }
 
-    /* Make the menu bar look clean like the mockup */
+    /* MENU NAVIGASI WEBSITE
+   Fungsi :
+   Mengatur tampilan menu agar lebih modern, rapi,
+   dan memiliki efek bayangan. */
     .menu {
         border-radius: 4px !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
         overflow: hidden !important;
     }
 
-    /* Navbar brand style */
+    /* NAVBAR BRAND
+   Fungsi :
+   Mengatur tampilan logo atau nama website yang berada
+   di dalam Navbar. */
     .navbar-inverse .navbar-brand {
         display: none !important;
         /* Hide brand name 'Menu' on desktop */
     }
 
-    /* Search bar styling */
+    /* SEARCH BAR WEBSITE
+   Fungsi :
+   Mengatur tampilan kotak pencarian (Search Bar)
+   yang berada pada bagian menu navigasi */
     .search-bar {
         float: right !important;
         width: 280px !important;
@@ -127,7 +157,10 @@
         outline: none !important;
     }
 
-    /* Adjust navbar-nav link hover background */
+    /* MENU NAVIGASI (NAVBAR)
+   Fungsi :
+   Mengatur warna, ukuran, efek hover, dan status menu
+   yang sedang aktif pada Navbar. */
     .navbar-inverse .navbar-nav>li>a {
         color: #333333 !important;
         font-weight: 600 !important;
@@ -146,13 +179,20 @@
         font-weight: 700 !important;
     }
 
-    /* Fix container paddings for clean grid alignment */
+    /*  HEADER TOP
+   Fungsi :
+   Mengatur jarak (padding dan margin) pada bagian atas
+   Header agar tampil lebih rapi dan sejajar. */
     .header-top {
         padding: 10px 0 !important;
         margin: 0 !important;
     }
 
-    /* Flexbox Sticky Footer */
+    /* FLEXBOX STICKY FOOTER
+   Fungsi :
+   Mengatur layout website menggunakan Flexbox agar
+   Footer selalu berada di bagian bawah halaman,
+   meskipun isi halaman sedikit. */
     html {
         height: 100% !important;
     }
@@ -183,9 +223,11 @@
         flex-shrink: 0 !important;
     }
 
-    /* =====================
-   FIX FOOTER CONTACT + MAP
-===================== */
+    /* 
+   FOOTER - CONTACT & MAP
+   Fungsi :
+   Mengatur tata letak bagian Contact dan Google Maps
+   pada Footer agar sejajar dan memiliki jarak yang rapi. */
 
 
     .footer .row {
@@ -196,17 +238,26 @@
     }
 
 
-    /* Contact lebih lebar */
+    /* PENGATURAN WIDGET FOOTER
+   Fungsi :
+   Memberikan ruang di sisi kanan pada widget Contact
+   agar tampilannya lebih lega dan tidak terlalu dekat
+   dengan widget Menu atau Google Maps.
+ */
 
     .footer-widget {
 
-        padding-right: 30px;
+        padding-right: 40px;
 
     }
 
 
 
-    /* Map pindah agak kanan */
+    /* PENGATURAN POSISI GOOGLE MAPS
+   Fungsi :
+   Mengatur posisi Google Maps pada Footer agar
+   tampil lebih rapi dan sejajar dengan widget lainnya.
+ */
 
     .footer-map {
 
@@ -236,7 +287,11 @@
 
 
 
-    /* email jangan turun aneh */
+    /* PERBAIKAN TAMPILAN DAFTAR KONTAK
+   Fungsi :
+   Mengatur posisi ikon dan teks agar tetap sejajar
+   serta mencegah email atau alamat turun secara
+   tidak rapi.*/
 
     .address-list li {
 
@@ -256,7 +311,10 @@
 
 
 
-    /* responsive */
+    /* RESPONSIVE FOOTER
+   Fungsi :
+   Mengatur tampilan Footer agar tetap rapi ketika
+   website dibuka pada layar kecil (HP/Tablet). */
 
     @media(max-width:768px) {
 
@@ -276,7 +334,11 @@
 
     }
 
-    /* Mobile Responsiveness Improvements */
+    /*    RESPONSIVE MOBILE
+   Fungsi :
+   Mengatur tampilan website ketika dibuka pada layar
+   handphone atau tablet agar tetap rapi dan nyaman digunakan.
+ */
     @media (max-width: 767px) {
         .logo {
             text-align: center !important;
@@ -389,7 +451,11 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                            <!-- /.nav-collapse -->
+                                            <!-- /.     PENUTUP NAVIGASI
+     Fungsi :
+     Menutup tag <nav> setelah seluruh menu navigasi selesai
+     dibuat.
+ -->
                                         </nav>
                                     </div>
                                 </div>
@@ -439,7 +505,10 @@
 
                     </div>
 
-                    <!-- MENU -->
+                    <!-- BAGIAN MENU FOOTER
+     Fungsi :
+     Menampilkan daftar menu navigasi pada bagian Footer
+     agar pengguna dapat mengakses halaman penting dengan mudah.-->
 
                     <div class="col-md-3">
 
@@ -487,7 +556,10 @@
 
                     </div>
 
-                    <!-- CONTACT -->
+                    <!--  BAGIAN CONTACT US
+     Fungsi :
+     Menampilkan informasi kontak resmi website
+     yang dapat dihubungi oleh pengguna. -->
 
                     <div class="col-md-3">
 
@@ -529,7 +601,10 @@
 
                     </div>
 
-                    <!-- MAP -->
+                    <!-- BAGIAN GOOGLE MAPS
+     Fungsi :
+     Menampilkan lokasi Universitas Bumigora menggunakan
+     Google Maps Embed pada bagian Footer website. -->
 
                     <div class="col-md-2">
 
@@ -539,9 +614,9 @@
 
                                 src="https://maps.google.com/maps?q=Universitas%20Bumigora&t=&z=15&output=embed"
 
-                                width="100%"
+                                width="200%"
 
-                                height="180"
+                                height="200"
 
                                 frameborder="0"
 
@@ -557,7 +632,10 @@
 
             </div>
 
-            <!-- COPYRIGHT -->
+            <!-- COPYRIGHT WEBSITE
+     Fungsi :
+     Menampilkan informasi hak cipta (Copyright)
+     pada bagian paling bawah website. -->
 
             <div class="footer-bottom">
 
@@ -583,7 +661,10 @@
 
     </section>
     <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-    <!-- ALL JS FILES -->
+    <!--  MEMUAT FILE JAVASCRIPT
+     Fungsi :
+     Menghubungkan file JavaScript agar fitur interaktif
+     pada website dapat berjalan dengan baik. -->
     <script>
         var exports = window.exports = window.exports || {};
     </script>

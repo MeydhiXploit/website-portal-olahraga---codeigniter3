@@ -1,15 +1,17 @@
 <style>
-    /* Premium Home Styles */
+    /* Premium Home Styles
+    Fungsi : Mengatur tampilan utama pada halaman Home.
+       CSS ini digunakan untuk mempercantik elemen Featured News. */
     .cm-featured-large {
         position: relative;
-        width: 100%;
+        width: 50%;
         height: 400px;
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.06);
         background-color: #000;
     }
-
+    
     .cm-featured-large img {
         width: 100%;
         height: 100%;
@@ -249,7 +251,11 @@
         text-decoration: none;
     }
 
-    /* ===== Tampilan Kartu Klub ===== */
+    /* ===== Tampilan Kartu Klub 
+    STYLE KARTU KLUB
+   Fungsi :
+   Mengatur tampilan setiap kartu klub pada halaman Home
+   agar terlihat rapi, modern, dan responsif.===== */
     .cm-home-club-card {
         text-align: center;
         background-color: #ffffff;
@@ -291,7 +297,11 @@
         width: 100%;
     }
 
-   /* ===== Tampilan Kartu Atlet ===== */
+   /* ===== Tampilan Kartu Atlet
+   STYLE KARTU ATLET
+   Fungsi :
+   Mengatur tampilan kartu atlet agar terlihat modern,
+   rapi, dan responsif pada halaman Home. ===== */
     .cm-athlete-card {
         background: #ffffff;
         border: 1px solid #eaeaea;
@@ -365,7 +375,11 @@
     }
 </style>
 
-<!-- ===== Bagian Banner / Halaman Utama ===== -->
+<!-- ===== Bagian Banner / Halaman Utama
+ SECTION BANNER / HALAMAN UTAMA
+     Fungsi :
+     Menampilkan banner atau tampilan pertama yang dilihat
+     pengguna saat membuka halaman Home. ===== -->
 <div class="hero">
     <h1 class="hero-caption">Portal Olahraga UBG</h1>
     <h2>Informasi Olahraga Paling Update dan Akurat</h2>
@@ -380,7 +394,10 @@
 </div>
 <?php else: ?>
 
-<!-- Section TERKINI (Latest News Grid) -->
+<!-- Section TERKINI (Latest News Grid) 
+  SECTION BERITA TERKINI
+     Fungsi :
+     Menampilkan bagian Berita Terkini pada halaman Home.-->
 <div class="container" style="margin-top: 40px; margin-bottom: 20px;">
     <div class="colormag-category-header" style="margin-top: 0; margin-bottom: 25px;">
         <h2 class="colormag-category-title">
@@ -389,7 +406,12 @@
     </div>
     
     <div class="row">
-        <!-- Main Featured (Left) -->
+
+        <!-- Main Featured (Left)
+         BERITA UTAMA (FEATURED NEWS)
+     Fungsi :
+     Menampilkan berita terbaru sebagai berita utama
+     dengan ukuran card yang lebih besar pada halaman Home. -->
         <div class="col-md-7 col-sm-12">
             <?php 
             if (isset($latest_news[0])): 
@@ -413,7 +435,11 @@
             <?php endif; ?>
         </div>
         
-        <!-- Small items (Right) -->
+        <!-- Small items (Right) 
+         BERITA KECIL (SMALL FEATURED NEWS)
+     Fungsi :
+     Menampilkan 4 berita terbaru setelah berita utama
+     pada sisi kanan halaman Home.-->
         <div class="col-md-5 col-sm-12">
             <div class="cm-featured-small-list">
                 <?php 
@@ -445,7 +471,11 @@
     </div>
 </div>
 
-<!-- ===== Bagian Pertandingan Terbaru ===== -->
+<!-- ===== Bagian Pertandingan Terbaru ===== 
+ SECTION PERTANDINGAN TERBARU
+     Fungsi :
+     Menampilkan daftar pertandingan terbaru yang telah
+     dikirim dari Controller ke halaman Home.-->
 <div class="container" style="margin-top: 30px; margin-bottom: 20px;">
     <div class="colormag-category-header" style="margin-top: 0; margin-bottom: 25px;">
         <h2 class="colormag-category-title">
@@ -488,7 +518,11 @@
     </div>
 </div>
 
-<!-- ===== Bagian Kategori Berita ===== -->
+<!-- ===== Bagian Kategori Berita
+ SECTION KATEGORI BERITA
+     Fungsi :
+     Menampilkan berita berdasarkan kategori olahraga
+     seperti Sepak Bola, Basket, Voli, Badminton, dll. ===== -->
 <section id="contant" class="contant main-heading team" style="padding-top: 0; margin-bottom: 20px;">
     <?php foreach($news_by_sport as $sport_name => $sport_news): ?>
         <?php if (!empty($sport_news)): ?>
@@ -534,7 +568,11 @@
     <?php endforeach; ?>
 </section>
 
-<!-- ===== Bagian Atlet Unggulan ===== -->
+<!-- ===== Bagian Atlet Unggulan 
+ SECTION ATLET UNGGULAN
+     Fungsi :
+     Menampilkan daftar atlet unggulan pada halaman Home
+     yang dikirim dari Controller. ===== -->
 <div class="container" style="margin-top: 10px; margin-bottom: 20px;">
     <div class="colormag-category-header" style="margin-top: 0; margin-bottom: 25px;">
         <h2 class="colormag-category-title">
@@ -572,7 +610,11 @@
     </div>
 </div>
 
-<!-- ===== Bagian Klub Terbaru ===== -->
+<!-- ===== Bagian Klub Terbaru 
+  SECTION KLUB TERKINI
+     Fungsi :
+     Menampilkan daftar klub terbaru pada halaman Home
+     yang dikirim dari Controller.===== -->
 <div class="container" style="margin-top: 20px; margin-bottom: 50px;">
     <div class="colormag-category-header" style="margin-top: 0; margin-bottom: 25px;">
         <h2 class="colormag-category-title">
